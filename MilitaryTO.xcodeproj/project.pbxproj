@@ -1,0 +1,790 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D8D8CD434B713909967FEBA /* Pods_MilitaryTO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4120BFD06BC05A12A7084F /* Pods_MilitaryTO.framework */; };
+		CB173B56202D740500E5B861 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B55202D740500E5B861 /* LoginViewModel.swift */; };
+		CB173B582032C08500E5B861 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B572032C08500E5B861 /* SearchViewController.swift */; };
+		CB173B5A2032C93800E5B861 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B592032C93800E5B861 /* SearchResultCell.swift */; };
+		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
+		CBB120EB201F185D000DC061 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120EA201F185D000DC061 /* ViewController.swift */; };
+		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
+		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
+		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
+		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
+		E3894466935E45819807C4BC /* Pods_MilitaryTOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C8C577B7B3D4A162092BBE /* Pods_MilitaryTOTests.framework */; };
+		FEF1455259ECBD7CB552BA8B /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47102EC5B421620A775659AE /* Pods_MilitaryTOUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CBB120FA201F185D000DC061 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBB120DD201F185C000DC061 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBB120E4201F185D000DC061;
+			remoteInfo = MilitaryTO;
+		};
+		CBB12105201F185D000DC061 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBB120DD201F185C000DC061 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBB120E4201F185D000DC061;
+			remoteInfo = MilitaryTO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3E4120BFD06BC05A12A7084F /* Pods_MilitaryTO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47102EC5B421620A775659AE /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59C2A5809EC1182440D1C40E /* Pods-MilitaryTOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOUITests/Pods-MilitaryTOUITests.release.xcconfig"; sourceTree = "<group>"; };
+		74C8C577B7B3D4A162092BBE /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9998607C7C5BDF15FE5F61 /* Pods-MilitaryTOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests.release.xcconfig"; sourceTree = "<group>"; };
+		ABA51D7E22E891FB5C0A1EAF /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
+		CB173B55202D740500E5B861 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CB173B572032C08500E5B861 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CB173B592032C93800E5B861 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CBB120EA201F185D000DC061 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBB120F2201F185D000DC061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CBB120F4201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBB120F9201F185D000DC061 /* MilitaryTOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilitaryTOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOTests.swift; sourceTree = "<group>"; };
+		CBB120FF201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilitaryTOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOUITests.swift; sourceTree = "<group>"; };
+		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6B8711B7364516DCB58CC9E /* Pods-MilitaryTOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E0C0EDB5FE67C2A7A0913CB3 /* Pods-MilitaryTOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOUITests/Pods-MilitaryTOUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E5916F9D0E539F290E3A635E /* Pods-MilitaryTO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBB120E2201F185D000DC061 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8D8CD434B713909967FEBA /* Pods_MilitaryTO.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB120F6201F185D000DC061 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3894466935E45819807C4BC /* Pods_MilitaryTOTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB12101201F185D000DC061 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEF1455259ECBD7CB552BA8B /* Pods_MilitaryTOUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46957CF9EE3DEA826D7E7687 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E4120BFD06BC05A12A7084F /* Pods_MilitaryTO.framework */,
+				74C8C577B7B3D4A162092BBE /* Pods_MilitaryTOTests.framework */,
+				47102EC5B421620A775659AE /* Pods_MilitaryTOUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBB120DC201F185C000DC061 = {
+			isa = PBXGroup;
+			children = (
+				CBB120E7201F185D000DC061 /* MilitaryTO */,
+				CBB120FC201F185D000DC061 /* MilitaryTOTests */,
+				CBB12107201F185D000DC061 /* MilitaryTOUITests */,
+				CBB120E6201F185D000DC061 /* Products */,
+				E8DB00EFFF93B775AB86ABBF /* Pods */,
+				46957CF9EE3DEA826D7E7687 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CBB120E6201F185D000DC061 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBB120E5201F185D000DC061 /* MilitaryTO.app */,
+				CBB120F9201F185D000DC061 /* MilitaryTOTests.xctest */,
+				CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBB120E7201F185D000DC061 /* MilitaryTO */ = {
+			isa = PBXGroup;
+			children = (
+				CBB120E8201F185D000DC061 /* AppDelegate.swift */,
+				CBB120EA201F185D000DC061 /* ViewController.swift */,
+				CB173B572032C08500E5B861 /* SearchViewController.swift */,
+				CB173B55202D740500E5B861 /* LoginViewModel.swift */,
+				CBB120EF201F185D000DC061 /* Assets.xcassets */,
+				CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */,
+				CBB120F4201F185D000DC061 /* Info.plist */,
+				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
+			);
+			path = MilitaryTO;
+			sourceTree = "<group>";
+		};
+		CBB120FC201F185D000DC061 /* MilitaryTOTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */,
+				CBB120FF201F185D000DC061 /* Info.plist */,
+			);
+			path = MilitaryTOTests;
+			sourceTree = "<group>";
+		};
+		CBB12107201F185D000DC061 /* MilitaryTOUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */,
+				CBB1210A201F185D000DC061 /* Info.plist */,
+			);
+			path = MilitaryTOUITests;
+			sourceTree = "<group>";
+		};
+		E8DB00EFFF93B775AB86ABBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5916F9D0E539F290E3A635E /* Pods-MilitaryTO.debug.xcconfig */,
+				ABA51D7E22E891FB5C0A1EAF /* Pods-MilitaryTO.release.xcconfig */,
+				D6B8711B7364516DCB58CC9E /* Pods-MilitaryTOTests.debug.xcconfig */,
+				8A9998607C7C5BDF15FE5F61 /* Pods-MilitaryTOTests.release.xcconfig */,
+				E0C0EDB5FE67C2A7A0913CB3 /* Pods-MilitaryTOUITests.debug.xcconfig */,
+				59C2A5809EC1182440D1C40E /* Pods-MilitaryTOUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBB120E4201F185D000DC061 /* MilitaryTO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBB1210D201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTO" */;
+			buildPhases = (
+				0A03CD5EB677A843FA059EAF /* [CP] Check Pods Manifest.lock */,
+				CBB120E1201F185D000DC061 /* Sources */,
+				CBB120E2201F185D000DC061 /* Frameworks */,
+				CBB120E3201F185D000DC061 /* Resources */,
+				CBB12116201F188F000DC061 /* ShellScript */,
+				4762608FAE520AE7FACDAF2E /* [CP] Embed Pods Frameworks */,
+				8EBE3CBA9148C0BAD78ADCBB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MilitaryTO;
+			productName = MilitaryTO;
+			productReference = CBB120E5201F185D000DC061 /* MilitaryTO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CBB120F8201F185D000DC061 /* MilitaryTOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBB12110201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTOTests" */;
+			buildPhases = (
+				B186F4480AC62C0772A2AE0E /* [CP] Check Pods Manifest.lock */,
+				CBB120F5201F185D000DC061 /* Sources */,
+				CBB120F6201F185D000DC061 /* Frameworks */,
+				CBB120F7201F185D000DC061 /* Resources */,
+				CB33C9812A05F8C85BBD054B /* [CP] Embed Pods Frameworks */,
+				F117FCC6B4C30ABE60D1905C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBB120FB201F185D000DC061 /* PBXTargetDependency */,
+			);
+			name = MilitaryTOTests;
+			productName = MilitaryTOTests;
+			productReference = CBB120F9201F185D000DC061 /* MilitaryTOTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CBB12103201F185D000DC061 /* MilitaryTOUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBB12113201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTOUITests" */;
+			buildPhases = (
+				4F913E2B1D45A3A6884682C7 /* [CP] Check Pods Manifest.lock */,
+				CBB12100201F185D000DC061 /* Sources */,
+				CBB12101201F185D000DC061 /* Frameworks */,
+				CBB12102201F185D000DC061 /* Resources */,
+				07B123D3D283AFD048F646E9 /* [CP] Embed Pods Frameworks */,
+				4728831995D8006A0C720425 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBB12106201F185D000DC061 /* PBXTargetDependency */,
+			);
+			name = MilitaryTOUITests;
+			productName = MilitaryTOUITests;
+			productReference = CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBB120DD201F185C000DC061 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "장혜준";
+				TargetAttributes = {
+					CBB120E4201F185D000DC061 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					CBB120F8201F185D000DC061 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CBB120E4201F185D000DC061;
+					};
+					CBB12103201F185D000DC061 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CBB120E4201F185D000DC061;
+					};
+				};
+			};
+			buildConfigurationList = CBB120E0201F185C000DC061 /* Build configuration list for PBXProject "MilitaryTO" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CBB120DC201F185C000DC061;
+			productRefGroup = CBB120E6201F185D000DC061 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBB120E4201F185D000DC061 /* MilitaryTO */,
+				CBB120F8201F185D000DC061 /* MilitaryTOTests */,
+				CBB12103201F185D000DC061 /* MilitaryTOUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBB120E3201F185D000DC061 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */,
+				CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB120F7201F185D000DC061 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB12102201F185D000DC061 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07B123D3D283AFD048F646E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTOUITests/Pods-MilitaryTOUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A03CD5EB677A843FA059EAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MilitaryTO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4728831995D8006A0C720425 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTOUITests/Pods-MilitaryTOUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4762608FAE520AE7FACDAF2E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F913E2B1D45A3A6884682C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MilitaryTOUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EBE3CBA9148C0BAD78ADCBB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B186F4480AC62C0772A2AE0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MilitaryTOTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB33C9812A05F8C85BBD054B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBB12116201F188F000DC061 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		F117FCC6B4C30ABE60D1905C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBB120E1201F185D000DC061 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBB120EB201F185D000DC061 /* ViewController.swift in Sources */,
+				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
+				CB173B582032C08500E5B861 /* SearchViewController.swift in Sources */,
+				CB173B56202D740500E5B861 /* LoginViewModel.swift in Sources */,
+				CB173B5A2032C93800E5B861 /* SearchResultCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB120F5201F185D000DC061 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBB12100201F185D000DC061 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CBB120FB201F185D000DC061 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBB120E4201F185D000DC061 /* MilitaryTO */;
+			targetProxy = CBB120FA201F185D000DC061 /* PBXContainerItemProxy */;
+		};
+		CBB12106201F185D000DC061 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBB120E4201F185D000DC061 /* MilitaryTO */;
+			targetProxy = CBB12105201F185D000DC061 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBB120F2201F185D000DC061 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CBB1210B201F185D000DC061 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CBB1210C201F185D000DC061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBB1210E201F185D000DC061 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5916F9D0E539F290E3A635E /* Pods-MilitaryTO.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Jhyejun.MilitaryTO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CBB1210F201F185D000DC061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABA51D7E22E891FB5C0A1EAF /* Pods-MilitaryTO.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Jhyejun.MilitaryTO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CBB12111201F185D000DC061 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B8711B7364516DCB58CC9E /* Pods-MilitaryTOTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilitaryTO.app/MilitaryTO";
+			};
+			name = Debug;
+		};
+		CBB12112201F185D000DC061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A9998607C7C5BDF15FE5F61 /* Pods-MilitaryTOTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilitaryTO.app/MilitaryTO";
+			};
+			name = Release;
+		};
+		CBB12114201F185D000DC061 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C0EDB5FE67C2A7A0913CB3 /* Pods-MilitaryTOUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MilitaryTO;
+			};
+			name = Debug;
+		};
+		CBB12115201F185D000DC061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59C2A5809EC1182440D1C40E /* Pods-MilitaryTOUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XZYKQ99YK;
+				INFOPLIST_FILE = MilitaryTOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MilitaryTO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBB120E0201F185C000DC061 /* Build configuration list for PBXProject "MilitaryTO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBB1210B201F185D000DC061 /* Debug */,
+				CBB1210C201F185D000DC061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBB1210D201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBB1210E201F185D000DC061 /* Debug */,
+				CBB1210F201F185D000DC061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBB12110201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBB12111201F185D000DC061 /* Debug */,
+				CBB12112201F185D000DC061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBB12113201F185D000DC061 /* Build configuration list for PBXNativeTarget "MilitaryTOUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBB12114201F185D000DC061 /* Debug */,
+				CBB12115201F185D000DC061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CBB120DD201F185C000DC061 /* Project object */;
+}
