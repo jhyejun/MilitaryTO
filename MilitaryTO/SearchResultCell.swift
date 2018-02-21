@@ -12,13 +12,13 @@ class SearchResultCell: UITableViewCell {
     
     // UI
 
-    fileprivate let nameLabel = UILabel().then {
+    let nameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
-        $0.textColor = .black
-        $0.text = "hi"
+         $0.textColor = .black
+        //  $0.text = "hi"
     }
     
-    fileprivate let toLabel = UILabel().then {
+    let toLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
         $0.textColor = .red
         $0.text = "10"

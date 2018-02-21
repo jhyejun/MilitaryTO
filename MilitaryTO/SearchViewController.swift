@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 final class SearchViewController: UIViewController {
     
     // UI
+    
+    var shownCities = [String]()
+    let allCities = ["New York", "London", "Oslo", "Warsaw", "Berlin", "Praga"]
+    let disposeBag = DisposeBag()
     
     fileprivate let companySearchBar = UISearchBar().then {
         $0.backgroundColor = .black
@@ -50,6 +57,20 @@ final class SearchViewController: UIViewController {
             make.left.right.equalTo(self.companySearchBar)
             make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
         }
+        
+        self.companySearchBar
+            .rx.text
+            .orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            // .filter { !$0.isEmpty }
+            .subscribe(onNext: { [unowned self] query in
+                self.shownCities = self.allCities.filter { $0.hasPrefix(query) }
+                self.resultTableView.reloadData()
+                })
+            .disposed(by: self.disposeBag)
+        
+        
     }
     
 }
@@ -65,12 +86,13 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.shownCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! SearchResultCell
         cell.selectionStyle = .none
+        cell.textLabel?.text = self.shownCities[indexPath.row]
         
         return cell
     }
