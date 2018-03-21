@@ -131,11 +131,11 @@
 				CBB120E8201F185D000DC061 /* AppDelegate.swift */,
 				CBB120EA201F185D000DC061 /* ViewController.swift */,
 				CB173B572032C08500E5B861 /* SearchViewController.swift */,
+				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
 				CB173B55202D740500E5B861 /* LoginViewModel.swift */,
 				CBB120EF201F185D000DC061 /* Assets.xcassets */,
 				CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */,
 				CBB120F4201F185D000DC061 /* Info.plist */,
-				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
 			);
 			path = MilitaryTO;
 			sourceTree = "<group>";
