@@ -17,6 +17,9 @@
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
 		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
 		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
+		CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBAB69520724B0500CCF96A /* Main.storyboard */; };
+		CBBAB69B20730D8200CCF96A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBAB69A20730D8200CCF96A /* MainViewController.swift */; };
+		CBBAB69D20730D9A00CCF96A /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBAB69C20730D9A00CCF96A /* SearchTableViewController.swift */; };
 		E3894466935E45819807C4BC /* Pods_MilitaryTOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C8C577B7B3D4A162092BBE /* Pods_MilitaryTOTests.framework */; };
 		FEF1455259ECBD7CB552BA8B /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47102EC5B421620A775659AE /* Pods_MilitaryTOUITests.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilitaryTOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOUITests.swift; sourceTree = "<group>"; };
 		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBBAB69520724B0500CCF96A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CBBAB69A20730D8200CCF96A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CBBAB69C20730D9A00CCF96A /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D6B8711B7364516DCB58CC9E /* Pods-MilitaryTOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0C0EDB5FE67C2A7A0913CB3 /* Pods-MilitaryTOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOUITests/Pods-MilitaryTOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E5916F9D0E539F290E3A635E /* Pods-MilitaryTO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,12 +134,12 @@
 		CBB120E7201F185D000DC061 /* MilitaryTO */ = {
 			isa = PBXGroup;
 			children = (
+				CBBAB69920724CE000CCF96A /* Rx */,
 				CBB120E8201F185D000DC061 /* AppDelegate.swift */,
-				CBB120EA201F185D000DC061 /* ViewController.swift */,
-				CB173B572032C08500E5B861 /* SearchViewController.swift */,
-				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
-				CB173B55202D740500E5B861 /* LoginViewModel.swift */,
 				CBB120EF201F185D000DC061 /* Assets.xcassets */,
+				CBBAB69A20730D8200CCF96A /* MainViewController.swift */,
+				CBBAB69C20730D9A00CCF96A /* SearchTableViewController.swift */,
+				CBBAB69520724B0500CCF96A /* Main.storyboard */,
 				CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */,
 				CBB120F4201F185D000DC061 /* Info.plist */,
 			);
@@ -156,6 +162,17 @@
 				CBB1210A201F185D000DC061 /* Info.plist */,
 			);
 			path = MilitaryTOUITests;
+			sourceTree = "<group>";
+		};
+		CBBAB69920724CE000CCF96A /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				CBB120EA201F185D000DC061 /* ViewController.swift */,
+				CB173B572032C08500E5B861 /* SearchViewController.swift */,
+				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
+				CB173B55202D740500E5B861 /* LoginViewModel.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		E8DB00EFFF93B775AB86ABBF /* Pods */ = {
@@ -290,6 +307,7 @@
 			files = (
 				CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */,
 				CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */,
+				CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +508,8 @@
 				CBB120EB201F185D000DC061 /* ViewController.swift in Sources */,
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
 				CB173B582032C08500E5B861 /* SearchViewController.swift in Sources */,
+				CBBAB69D20730D9A00CCF96A /* SearchTableViewController.swift in Sources */,
+				CBBAB69B20730D8200CCF96A /* MainViewController.swift in Sources */,
 				CB173B56202D740500E5B861 /* LoginViewModel.swift in Sources */,
 				CB173B5A2032C93800E5B861 /* SearchResultCell.swift in Sources */,
 			);
