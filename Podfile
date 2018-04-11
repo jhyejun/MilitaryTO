@@ -11,6 +11,7 @@ target 'MilitaryTO' do
   pod 'RealmSwift'
   pod 'Then'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'CSV.swift', '~> 2.1.0'
 
   target 'MilitaryTOTests' do
     inherit! :search_paths
