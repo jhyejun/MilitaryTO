@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,35 +21,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-aq-TPs">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HZp-lu-Ufa">
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Shg-dU-LNU">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HZp-lu-Ufa" secondAttribute="trailing" id="2pM-7m-LsG"/>
-                            <constraint firstItem="8iQ-aq-TPs" firstAttribute="trailing" secondItem="Vyy-xQ-zZn" secondAttribute="trailing" id="81s-SH-MDa"/>
+                            <constraint firstItem="HZp-lu-Ufa" firstAttribute="top" secondItem="Shg-dU-LNU" secondAttribute="bottom" id="CNC-NF-Zbw"/>
+                            <constraint firstItem="Shg-dU-LNU" firstAttribute="leading" secondItem="Vyy-xQ-zZn" secondAttribute="leading" id="DzR-HL-ktU"/>
+                            <constraint firstItem="Shg-dU-LNU" firstAttribute="top" secondItem="il1-PQ-w5e" secondAttribute="bottom" id="eaU-qg-K7a"/>
                             <constraint firstItem="HZp-lu-Ufa" firstAttribute="leading" secondItem="Vyy-xQ-zZn" secondAttribute="leading" id="fah-0i-fFu"/>
                             <constraint firstItem="1Bm-sy-RD3" firstAttribute="top" secondItem="HZp-lu-Ufa" secondAttribute="bottom" id="lbR-rD-22J"/>
-                            <constraint firstItem="HZp-lu-Ufa" firstAttribute="top" secondItem="8iQ-aq-TPs" secondAttribute="bottom" id="rKg-kr-8J8"/>
-                            <constraint firstItem="8iQ-aq-TPs" firstAttribute="top" secondItem="il1-PQ-w5e" secondAttribute="bottom" id="whM-jf-vL0"/>
-                            <constraint firstItem="8iQ-aq-TPs" firstAttribute="leading" secondItem="Vyy-xQ-zZn" secondAttribute="leading" id="zHb-lv-vdc"/>
+                            <constraint firstAttribute="trailing" secondItem="Shg-dU-LNU" secondAttribute="trailing" id="uPL-5t-eW1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="8iQ-aq-TPs" id="YkR-SP-lHo"/>
-                        <outlet property="tableView" destination="HZp-lu-Ufa" id="kNW-vG-p9U"/>
-                        <segue destination="S1j-QM-JxO" kind="show" id="e62-ff-9L5"/>
+                        <outlet property="searchBar" destination="Shg-dU-LNU" id="a0E-IJ-W6u"/>
+                        <outlet property="tableView" destination="HZp-lu-Ufa" id="mW8-Qp-52I"/>
+                        <segue destination="S1j-QM-JxO" kind="show" identifier="goDetailViewController" id="e62-ff-9L5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ic-Th-ChI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-774"/>
+            <point key="canvasLocation" x="80.799999999999997" y="-774.06296851574223"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="RaS-as-6Xt">

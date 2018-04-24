@@ -40,6 +40,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="name" destination="kbh-bM-LBw" id="SFS-Yr-6P0"/>
+                <outlet property="toTotal" destination="PxK-sH-W8v" id="a9E-0F-XGI"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

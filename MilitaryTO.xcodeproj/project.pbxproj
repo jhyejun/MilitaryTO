@@ -8,14 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5D8D8CD434B713909967FEBA /* Pods_MilitaryTO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4120BFD06BC05A12A7084F /* Pods_MilitaryTO.framework */; };
-		CB173B56202D740500E5B861 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B55202D740500E5B861 /* LoginViewModel.swift */; };
-		CB173B582032C08500E5B861 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B572032C08500E5B861 /* SearchViewController.swift */; };
-		CB173B5A2032C93800E5B861 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB173B592032C93800E5B861 /* SearchResultCell.swift */; };
 		CB68E057207CCC9300A0E2C1 /* 2018_TO.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB68E056207CCC9300A0E2C1 /* 2018_TO.csv */; };
 		CB68E05C207CCE0000A0E2C1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68E05B207CCE0000A0E2C1 /* Model.swift */; };
 		CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68E05D207CD1A000A0E2C1 /* convert.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
-		CBB120EB201F185D000DC061 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120EA201F185D000DC061 /* ViewController.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
 		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
@@ -53,15 +49,11 @@
 		74C8C577B7B3D4A162092BBE /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9998607C7C5BDF15FE5F61 /* Pods-MilitaryTOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTOTests/Pods-MilitaryTOTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABA51D7E22E891FB5C0A1EAF /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
-		CB173B55202D740500E5B861 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		CB173B572032C08500E5B861 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		CB173B592032C93800E5B861 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		CB68E056207CCC9300A0E2C1 /* 2018_TO.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2018_TO.csv; sourceTree = "<group>"; };
 		CB68E05B207CCE0000A0E2C1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CB68E05D207CD1A000A0E2C1 /* convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = convert.swift; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBB120EA201F185D000DC061 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBB120F2201F185D000DC061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBB120F4201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,7 +146,6 @@
 		CBB120E7201F185D000DC061 /* MilitaryTO */ = {
 			isa = PBXGroup;
 			children = (
-				CBBAB69920724CE000CCF96A /* Rx */,
 				CBB120E8201F185D000DC061 /* AppDelegate.swift */,
 				CBB120EF201F185D000DC061 /* Assets.xcassets */,
 				CB68E058207CCCA900A0E2C1 /* Model */,
@@ -183,17 +174,6 @@
 				CBB1210A201F185D000DC061 /* Info.plist */,
 			);
 			path = MilitaryTOUITests;
-			sourceTree = "<group>";
-		};
-		CBBAB69920724CE000CCF96A /* Rx */ = {
-			isa = PBXGroup;
-			children = (
-				CBB120EA201F185D000DC061 /* ViewController.swift */,
-				CB173B572032C08500E5B861 /* SearchViewController.swift */,
-				CB173B592032C93800E5B861 /* SearchResultCell.swift */,
-				CB173B55202D740500E5B861 /* LoginViewModel.swift */,
-			);
-			path = Rx;
 			sourceTree = "<group>";
 		};
 		CBBAB6A22074F7EA00CCF96A /* View */ = {
@@ -549,14 +529,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB68E05C207CCE0000A0E2C1 /* Model.swift in Sources */,
-				CBB120EB201F185D000DC061 /* ViewController.swift in Sources */,
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
-				CB173B582032C08500E5B861 /* SearchViewController.swift in Sources */,
 				CBBAB69B20730D8200CCF96A /* MainViewController.swift in Sources */,
 				CBBAB6A02074F78B00CCF96A /* SearchTableViewCell.swift in Sources */,
-				CB173B56202D740500E5B861 /* LoginViewModel.swift in Sources */,
 				CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */,
-				CB173B5A2032C93800E5B861 /* SearchResultCell.swift in Sources */,
 				CBBAB6A5207500A900CCF96A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
