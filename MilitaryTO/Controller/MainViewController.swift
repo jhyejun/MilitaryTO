@@ -22,23 +22,20 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if objects.isEmpty {
-            convert()
-        }
-        
-        else {
-            for object in objects {
-                self.objectsArray.append(object)
-                self.shownObjects.append(object)
-            }
-        }
-        
-        self.tableView.reloadData()
-        
         self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
+        
+        if objects.isEmpty {
+            convert(result: { result in
+                self.setTableData()
+            })
+        }
+            
+        else {
+            self.setTableData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +62,15 @@ class MainViewController: UIViewController {
                 viewController.local = shownObjects[indexPath.row].local
             }
         }
+    }
+    
+    func setTableData() {
+        for object in objects {
+            self.objectsArray.append(object)
+            self.shownObjects.append(object)
+        }
+        
+        self.tableView.reloadData()
     }
     
 }
