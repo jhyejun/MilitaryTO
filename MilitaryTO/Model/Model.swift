@@ -12,7 +12,7 @@ import RealmSwift
 final class TOData: Object {
     @objc dynamic var idx = ""
     @objc dynamic var sector = ""
-    @objc dynamic var sacale = ""
+    @objc dynamic var scale = ""
     @objc dynamic var name = ""
     @objc dynamic var address = ""
     @objc dynamic var tel = ""

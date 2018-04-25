@@ -41,12 +41,38 @@ class MainViewController: UIViewController {
         self.tableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goDetailViewController" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let viewController = segue.destination as! DetailViewController
+                
+                viewController.sector = shownObjects[indexPath.row].sector
+                viewController.scale = shownObjects[indexPath.row].scale
+                viewController.name = shownObjects[indexPath.row].name
+                viewController.address = shownObjects[indexPath.row].address
+                viewController.tel = shownObjects[indexPath.row].tel
+                viewController.mainProduct = shownObjects[indexPath.row].mainProduct
+                viewController.selectionYear = shownObjects[indexPath.row].selectionYear
+                viewController.total = shownObjects[indexPath.row].total
+                viewController.before98Three = shownObjects[indexPath.row].before98Three
+                viewController.before98Two = shownObjects[indexPath.row].before98Two
+                viewController.at99Three = shownObjects[indexPath.row].at99Three
+                viewController.reason = shownObjects[indexPath.row].reason
+                viewController.local = shownObjects[indexPath.row].local
+            }
+        }
+    }
+    
 }
 
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "goDetailViewController", sender: nil)
     }
     
 }
