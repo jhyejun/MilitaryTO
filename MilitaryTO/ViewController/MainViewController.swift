@@ -78,7 +78,13 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goDetailViewController", sender: nil)
+        self.performSegue(withIdentifier: "goDetailViewController", sender: nil)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !self.tableView.isDecelerating {
+            self.view.endEditing(true)
+        }
     }
     
 }
@@ -118,8 +124,8 @@ extension MainViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
     
 }
