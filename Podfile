@@ -7,8 +7,8 @@ target 'MilitaryTO' do
   inhibit_all_warnings!
 
   # Pods for MilitaryTO
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  # pod 'RxSwift'
+  # pod 'RxCocoa'
   pod 'RealmSwift'
   pod 'Then'
   pod 'SnapKit', '~> 4.0.0'
