@@ -1,6 +1,0 @@
-framework module Pods_MilitaryTO {
-  umbrella header "Pods-MilitaryTO-umbrella.h"
-
-  export *
-  module * { export * }
-}

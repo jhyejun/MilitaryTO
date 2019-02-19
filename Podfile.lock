@@ -24,7 +24,7 @@ DEPENDENCIES:
   - Then
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - CSV.swift
     - Realm
     - RealmSwift
@@ -48,4 +48,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a55e53bb407ad1c2a5b6079f8c47aae23a6ecfea
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0
