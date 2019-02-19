@@ -5,13 +5,22 @@ PODS:
   - Realm/Headers (3.11.1)
   - RealmSwift (3.11.1):
     - Realm (= 3.11.1)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
   - SnapKit (4.0.1)
+  - SwiftLint (0.29.0)
   - Then (2.4.0)
 
 DEPENDENCIES:
   - CSV.swift (~> 2.1.0)
   - RealmSwift
+  - RxCocoa
+  - RxSwift
   - SnapKit (~> 4.0.0)
+  - SwiftLint
   - Then
 
 SPEC REPOS:
@@ -19,16 +28,24 @@ SPEC REPOS:
     - CSV.swift
     - Realm
     - RealmSwift
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
     - SnapKit
+    - SwiftLint
     - Then
 
 SPEC CHECKSUMS:
   CSV.swift: a24fb11c17875523783fe963592762ff163ef8ea
   Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
   RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftLint: d4e7443d93e2bbe868dc302e6c7ac30b469d6a14
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 2f94af6d5cb11e06b46c5feb61f33b7b73860a1b
+PODFILE CHECKSUM: a55e53bb407ad1c2a5b6079f8c47aae23a6ecfea
 
 COCOAPODS: 1.5.0

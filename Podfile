@@ -7,12 +7,14 @@ target 'MilitaryTO' do
   inhibit_all_warnings!
 
   # Pods for MilitaryTO
-  # pod 'RxSwift'
-  # pod 'RxCocoa'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'RealmSwift'
   pod 'Then'
   pod 'SnapKit', '~> 4.0.0'
   pod 'CSV.swift', '~> 2.1.0'
+  
+  pod 'SwiftLint'
 
   target 'MilitaryTOTests' do
     inherit! :search_paths
