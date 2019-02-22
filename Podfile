@@ -7,6 +7,10 @@ target 'MilitaryTO' do
   inhibit_all_warnings!
 
   # Pods for MilitaryTO
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'FontAwesomeKit', '~> 2.2.0'
+  # pod 'TransitionButton'
+  
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RealmSwift'
@@ -15,6 +19,11 @@ target 'MilitaryTO' do
   pod 'CSV.swift', '~> 2.1.0'
   
   pod 'SwiftLint'
+  
+  # pod 'iRate'
+  
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'MilitaryTOTests' do
     inherit! :search_paths
