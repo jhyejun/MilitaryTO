@@ -95,6 +95,7 @@ PODS:
   - SnapKit (4.0.1)
   - SwiftLint (0.30.1)
   - Then (2.4.0)
+  - TransitionButton (0.5.2)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
@@ -108,6 +109,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.0.0)
   - SwiftLint
   - Then
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -131,6 +133,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftLint
     - Then
+    - TransitionButton
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -163,7 +166,8 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: 25de60bc10f6bdd694474331e9ac8342f97bd6fd
+PODFILE CHECKSUM: dcaf4a3eee492ec020d1340134a0e283817f5571
 
 COCOAPODS: 1.5.0

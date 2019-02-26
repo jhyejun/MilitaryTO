@@ -9,7 +9,7 @@ target 'MilitaryTO' do
   # Pods for MilitaryTO
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'FontAwesomeKit', '~> 2.2.0'
-  # pod 'TransitionButton'
+  pod 'TransitionButton'
   
   pod 'RxSwift'
   pod 'RxCocoa'
