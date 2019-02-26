@@ -7,21 +7,33 @@
 //
 
 import UIKit
+import TransitionButton
+import Firebase
+import FirebaseAnalytics
+
+enum MilitaryServiceKind: String {
+    case Industry
+    case Professional
+}
 
 class ChooseViewController: UIViewController {
-    private let industryButton: UIButton = UIButton().then {
+    private let industryButton: TransitionButton = TransitionButton().then {
         $0.setTitle("산업기능요원", for: .normal)
         $0.backgroundColor = UIColor.flatBlue
     }
-    private let professionalButton: UIButton = UIButton().then {
+    private let professionalButton: TransitionButton = TransitionButton().then {
         $0.setTitle("전문연구요원", for: .normal)
         $0.backgroundColor = UIColor.flatRed
     }
+//    private var ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.flatGreen
+        self.view.backgroundColor = .flatWhite
+        
+        industryButton.addTarget(self, action: #selector(presentList(_:)), for: .touchUpInside)
+        professionalButton.addTarget(self, action: #selector(presentList(_:)), for: .touchUpInside)
         
         self.view.addSubview(industryButton)
         self.view.addSubview(professionalButton)
@@ -38,9 +50,18 @@ class ChooseViewController: UIViewController {
         }
         
         professionalButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.industryButton).offset(100)
             make.centerX.equalTo(self.industryButton)
+            make.centerY.equalToSuperview().offset(100)
             make.width.height.equalTo(self.industryButton)
+        }
+    }
+    
+    @objc func presentList(_ sender: TransitionButton) {
+        sender.startAnimation()
+        
+        sender.stopAnimation(animationStyle: .expand) {
+            let vc = ListTableViewController()
+            self.navigationController?.pushViewController(vc, animated: false)
         }
     }
 }

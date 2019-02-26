@@ -12,12 +12,12 @@ func DEBUG_LOG(_ msg: Any, file: String = #file, function: String = #function, l
     #if DEBUG
         let fileName = file.split(separator: "/").last ?? ""
         let functionName = function.split(separator: "(").first ?? ""
-        print("👻 [\(fileName)] \(functionName)((\(line)) : \(msg)")
+        print("👻 [\(fileName)] \(functionName)(\(line)) : \(msg)")
     #endif
 }
 
 func ERROR_LOG(_ msg: Any, file: String = #file, function: String = #function, line: Int = #line) {
     let fileName = file.split(separator: "/").last ?? ""
     let functionName = function.split(separator: "(").first ?? ""
-    print("😡 [\(fileName)] \(functionName)((\(line)) : \(msg)")
+    print("😡 [\(fileName)] \(functionName)(\(line)) : \(msg)")
 }

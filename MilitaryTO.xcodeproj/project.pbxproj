@@ -16,6 +16,8 @@
 		CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68E05D207CD1A000A0E2C1 /* convert.swift */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
 		CB693544221D8D8200AABC61 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Utility.swift */; };
+		CB702C3D22256C8B00C03747 /* Industry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3C22256C8B00C03747 /* Industry.swift */; };
+		CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3E2225707500C03747 /* ListTableViewController.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -60,6 +62,8 @@
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		CB693543221D8D8200AABC61 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilitaryTO-Bridging-Header.h"; sourceTree = "<group>"; };
+		CB702C3C22256C8B00C03747 /* Industry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Industry.swift; sourceTree = "<group>"; };
+		CB702C3E2225707500C03747 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,14 +173,16 @@
 				CBB120E8201F185D000DC061 /* AppDelegate.swift */,
 				CBB120EF201F185D000DC061 /* Assets.xcassets */,
 				CB68E058207CCCA900A0E2C1 /* Model */,
-				CBBAB6A22074F7EA00CCF96A /* View */,
 				CBBAB6A32074F7FD00CCF96A /* ViewController */,
+				CBBAB6A22074F7EA00CCF96A /* View */,
 				CBBAB69520724B0500CCF96A /* Main.storyboard */,
 				CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */,
 				CBB120F4201F185D000DC061 /* Info.plist */,
 				CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */,
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
+				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
 				CB693543221D8D8200AABC61 /* Utility.swift */,
+				CB702C3C22256C8B00C03747 /* Industry.swift */,
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
 			);
 			path = MilitaryTO;
@@ -480,11 +486,13 @@
 				CB68E05C207CCE0000A0E2C1 /* Model.swift in Sources */,
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
 				CBBAB69B20730D8200CCF96A /* MainViewController.swift in Sources */,
+				CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */,
 				CBBAB6A02074F78B00CCF96A /* SearchTableViewCell.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Utility.swift in Sources */,
 				CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CBBAB6A5207500A900CCF96A /* DetailViewController.swift in Sources */,
+				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
