@@ -23,6 +23,7 @@
 		CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C4D222D4DD300C03747 /* UIColor+ext.swift */; };
 		CB702C50222D512600C03747 /* HJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C4F222D512600C03747 /* HJTableView.swift */; };
 		CB702C57222D5EA700C03747 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C56222D5EA700C03747 /* Global.swift */; };
+		CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C5D222D8CF100C03747 /* FirebaseManager.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -74,6 +75,7 @@
 		CB702C4D222D4DD300C03747 /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
 		CB702C4F222D512600C03747 /* HJTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTableView.swift; sourceTree = "<group>"; };
 		CB702C56222D5EA700C03747 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		CB702C5D222D8CF100C03747 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				CB702C56222D5EA700C03747 /* Global.swift */,
 				CB693543221D8D8200AABC61 /* Utility.swift */,
 				CB702C3C22256C8B00C03747 /* Industry.swift */,
+				CB702C5D222D8CF100C03747 /* FirebaseManager.swift */,
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
 				CB702C47222D484600C03747 /* HJ */,
 				CB702C44222D473300C03747 /* Extension */,
@@ -524,6 +527,7 @@
 				CB693544221D8D8200AABC61 /* Utility.swift in Sources */,
 				CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
+				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
 				CBBAB6A5207500A900CCF96A /* DetailViewController.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,

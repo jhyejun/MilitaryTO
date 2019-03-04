@@ -10,8 +10,8 @@ import UIKit
 import FirebaseDatabase
 
 enum MilitaryServiceKind: String {
-    case industry
-    case professional
+    case Industry
+    case Professional
 }
 
 class ChooseViewController: HJViewController {
@@ -70,7 +70,7 @@ class ChooseViewController: HJViewController {
                 if databaseVersion > myUserDefaults.integer(forKey: "database_version") {
                     myUserDefaults.set(databaseVersion, forKey: "database_version")
                 } else {
-                    self.presentList(sender.titleLabel?.text, .industry)
+                    self.presentList(sender.titleLabel?.text, .Industry)
                 }
             }
         }) { [weak self] (error) in
@@ -79,7 +79,7 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
-        presentList(sender.titleLabel?.text, .professional)
+        presentList(sender.titleLabel?.text, .Professional)
     }
     
     private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
