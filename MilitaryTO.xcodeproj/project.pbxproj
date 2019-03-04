@@ -18,6 +18,10 @@
 		CB693544221D8D8200AABC61 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Utility.swift */; };
 		CB702C3D22256C8B00C03747 /* Industry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3C22256C8B00C03747 /* Industry.swift */; };
 		CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3E2225707500C03747 /* ListTableViewController.swift */; };
+		CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C42222D46D600C03747 /* UIView+ext.swift */; };
+		CB702C46222D484200C03747 /* HJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C45222D484200C03747 /* HJViewController.swift */; };
+		CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C4D222D4DD300C03747 /* UIColor+ext.swift */; };
+		CB702C50222D512600C03747 /* HJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C4F222D512600C03747 /* HJTableView.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -64,6 +68,10 @@
 		CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilitaryTO-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB702C3C22256C8B00C03747 /* Industry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Industry.swift; sourceTree = "<group>"; };
 		CB702C3E2225707500C03747 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		CB702C42222D46D600C03747 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ext.swift"; sourceTree = "<group>"; };
+		CB702C45222D484200C03747 /* HJViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJViewController.swift; sourceTree = "<group>"; };
+		CB702C4D222D4DD300C03747 /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
+		CB702C4F222D512600C03747 /* HJTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTableView.swift; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +153,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CB702C44222D473300C03747 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CB702C42222D46D600C03747 /* UIView+ext.swift */,
+				CB702C4D222D4DD300C03747 /* UIColor+ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CB702C47222D484600C03747 /* HJ */ = {
+			isa = PBXGroup;
+			children = (
+				CB702C45222D484200C03747 /* HJViewController.swift */,
+				CB702C4F222D512600C03747 /* HJTableView.swift */,
+			);
+			path = HJ;
+			sourceTree = "<group>";
+		};
 		CBB120DC201F185C000DC061 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +210,8 @@
 				CB693543221D8D8200AABC61 /* Utility.swift */,
 				CB702C3C22256C8B00C03747 /* Industry.swift */,
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
+				CB702C47222D484600C03747 /* HJ */,
+				CB702C44222D473300C03747 /* Extension */,
 			);
 			path = MilitaryTO;
 			sourceTree = "<group>";
@@ -419,7 +447,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -436,7 +463,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -485,12 +511,16 @@
 			files = (
 				CB68E05C207CCE0000A0E2C1 /* Model.swift in Sources */,
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
+				CB702C46222D484200C03747 /* HJViewController.swift in Sources */,
 				CBBAB69B20730D8200CCF96A /* MainViewController.swift in Sources */,
 				CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */,
+				CB702C50222D512600C03747 /* HJTableView.swift in Sources */,
 				CBBAB6A02074F78B00CCF96A /* SearchTableViewCell.swift in Sources */,
+				CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Utility.swift in Sources */,
 				CB68E05E207CD1A000A0E2C1 /* convert.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
+				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
 				CBBAB6A5207500A900CCF96A /* DetailViewController.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 			);

@@ -8,8 +8,24 @@
 
 import UIKit
 
-class ListTableViewController: UIViewController {
+class ListTableViewController: HJViewController {
+    private let tableView: HJTableView = HJTableView().then {
+        $0.separatorStyle = .none
+    }
+
+    init(_ title: String? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.navigationItem.title = title
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(tableView)
     }
 }

@@ -7,41 +7,45 @@
 //
 
 import UIKit
-import TransitionButton
-import Firebase
-import FirebaseAnalytics
+import FirebaseDatabase
 
 enum MilitaryServiceKind: String {
-    case Industry
-    case Professional
+    case industry
+    case professional
 }
 
-class ChooseViewController: UIViewController {
-    private let industryButton: TransitionButton = TransitionButton().then {
+class ChooseViewController: HJViewController {
+    private let industryButton: UIButton = UIButton().then {
         $0.setTitle("산업기능요원", for: .normal)
         $0.backgroundColor = UIColor.flatBlue
+        $0.setCornerRadius(10)
     }
-    private let professionalButton: TransitionButton = TransitionButton().then {
+    private let professionalButton: UIButton = UIButton().then {
         $0.setTitle("전문연구요원", for: .normal)
         $0.backgroundColor = UIColor.flatRed
+        $0.setCornerRadius(10)
     }
-//    private var ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .flatWhite
-        
-        industryButton.addTarget(self, action: #selector(presentList(_:)), for: .touchUpInside)
-        professionalButton.addTarget(self, action: #selector(presentList(_:)), for: .touchUpInside)
-        
         self.view.addSubview(industryButton)
         self.view.addSubview(professionalButton)
         
-        self.setConstraints()
+        industryButton.addTarget(self, action: #selector(updateIndustryData(_:)), for: .touchUpInside)
+        professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
+        
+        setConstraints()
     }
     
-    func setConstraints() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func setConstraints() {
         industryButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-100)
@@ -56,12 +60,24 @@ class ChooseViewController: UIViewController {
         }
     }
     
-    @objc func presentList(_ sender: TransitionButton) {
-        sender.startAnimation()
+    @objc func updateIndustryData(_ sender: UIButton) {
+        let ref: DatabaseReference = Database.database().reference()
         
-        sender.stopAnimation(animationStyle: .expand) {
-            let vc = ListTableViewController()
-            self.navigationController?.pushViewController(vc, animated: false)
+        ref.child("version").observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as? [String: Any]
+            
+            
         }
+        
+        presentList(sender.titleLabel?.text, .industry)
+    }
+    
+    @objc func updateProfessionalData(_ sender: UIButton) {
+        presentList(sender.titleLabel?.text, .professional)
+    }
+    
+    private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
+        let vc = ListTableViewController(title)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
