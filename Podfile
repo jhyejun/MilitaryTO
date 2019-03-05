@@ -10,12 +10,13 @@ target 'MilitaryTO' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'FontAwesomeKit', '~> 2.2.0'
   
+  pod 'SnapKit', '~> 4.0.0'
+  pod 'Then'
   pod 'RxSwift'
   pod 'RxCocoa'
+  
   pod 'RealmSwift'
-  pod 'Then'
-  pod 'SnapKit', '~> 4.0.0'
-  pod 'CSV.swift', '~> 2.1.0'
+  pod 'ObjectMapper'
   
   pod 'SwiftLint'
   

@@ -61,21 +61,7 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateIndustryData(_ sender: UIButton) {
-        let ref: DatabaseReference = Database.database().reference()
         
-        ref.child("version").observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
-            guard let self = self, let data = snapshot.value as? [String: Any] else { return }
-            
-            if let databaseVersion = data["database_current_version"] as? Int {
-                if databaseVersion > myUserDefaults.integer(forKey: "database_version") {
-                    myUserDefaults.set(databaseVersion, forKey: "database_version")
-                } else {
-                    self.presentList(sender.titleLabel?.text, .Industry)
-                }
-            }
-        }) { [weak self] (error) in
-            guard let self = self else { return }
-        }
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
