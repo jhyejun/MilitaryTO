@@ -33,6 +33,7 @@ class ChooseViewController: HJViewController {
         self.view.backgroundColor = .flatWhite
         self.view.addSubview(industryButton)
         self.view.addSubview(professionalButton)
+        self.view.addSubview(indicator)
         
         industryButton.addTarget(self, action: #selector(updateIndustryData(_:)), for: .touchUpInside)
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
@@ -61,25 +62,33 @@ class ChooseViewController: HJViewController {
             make.centerY.equalToSuperview().offset(100)
             make.width.height.equalTo(self.industryButton)
         }
+        
+        indicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
     }
     
     @objc func updateIndustryData(_ sender: UIButton) {
+        startAnimating()
         firebaseManager().getVersionData { [weak self] (data) in
             guard let self = self, let data = data else { return }
             
             self.syncDatabase(.Industry, data) { [weak self] result in
                 guard let self = self else { return }
+                self.stopAnimating()
                 
                 if result {
                     self.presentList(sender.titleLabel?.text, .Industry)
                 } else {
                     
                 }
+                
             }
         }
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
+        
         firebaseManager().getVersionData { [weak self] (data) in
             guard let self = self, let data = data else { return }
             

@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import NVActivityIndicatorView
 
 class HJViewController: UIViewController {
+    lazy var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballRotateChase, color: .flatGray, padding: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,5 +35,17 @@ class HJViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    func startAnimating() {
+        DispatchQueue.main.async {
+            self.indicator.startAnimating()
+        }
+    }
+    
+    func stopAnimating() {
+        DispatchQueue.main.async {
+            self.indicator.stopAnimating()
+        }
     }
 }

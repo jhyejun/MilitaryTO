@@ -81,6 +81,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
   - ObjectMapper (3.4.2)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
@@ -101,6 +104,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - FontAwesomeKit (~> 2.2.0)
+  - NVActivityIndicatorView
   - ObjectMapper
   - RealmSwift
   - RxCocoa
@@ -122,6 +126,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - NVActivityIndicatorView
     - ObjectMapper
     - Realm
     - RealmSwift
@@ -154,6 +159,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
@@ -164,6 +170,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 7983cdab848b81a06263c00cd6375a9de38cd313
+PODFILE CHECKSUM: 4a165f93fee6902e69ca393a4475462478e004f0
 
 COCOAPODS: 1.5.0
