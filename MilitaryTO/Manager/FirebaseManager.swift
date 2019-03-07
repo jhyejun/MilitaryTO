@@ -17,10 +17,9 @@ enum FirebaseChild: String {
 }
 
 enum FirebaseDatabaseVersion: String, CaseIterable {
-    case database_current_version
-    case database_old_version
-    case app_current_version
-    case app_old_version
+    case industry_database_version
+    case professional_database_version
+    case app_version
     case app_update_message
 }
 
@@ -32,51 +31,49 @@ class FirebaseManager {
         self.ref = Database.database().reference()
     }
     
-    func getVersionData(success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
+    func getVersionData(completion: @escaping ([String: Any]?) -> Void) {
         ref?.child(FirebaseChild.version.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String: String] else { return }
-            FirebaseDatabaseVersion.allCases.forEach {
-                if $0 == .database_current_version {
-                    
-                }
-                
-                let test = data[$0.rawValue]
-            }
-            
-//            guard let self = self, let data = snapshot.value as? [String: Any] else { return }
-//
-//            if let databaseVersion = data["database_current_version"] as? Int {
-//                if databaseVersion > myUserDefaults.integer(forKey: "database_version") {
-//                    myUserDefaults.set(databaseVersion, forKey: "database_version")
-//                } else {
-//                    self.presentList(sender.titleLabel?.text, .Industry)
-//                }
-//            }
-            
+            guard let data = snapshot.value as? [String: Any] else { return }
+            completion(data)
         }, withCancel: { (error) in
             ERROR_LOG(error.localizedDescription)
-            failure?()
+            completion(nil)
         })
     }
     
-    func getIndustryData(success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
+    func getIndustryData(completion: @escaping ([[String: Any]]?) -> Void) {
         ref?.child(FirebaseChild.industry.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let data = snapshot.value as? [[String: Any]] else { return }
-            
-            data.forEach {
-                if let object = Mapper<IndustryRealm>().map(JSON: $0) {
-                    databaseManager().write(object)
-                }
-            }
-            
-            success?()
+//            databaseManager().industryObjectWrite(data)
+            completion(data)
         }, withCancel: { (error) in
             ERROR_LOG(error.localizedDescription)
-            failure?()
+            completion(nil)
         })
     }
 }
 
 func firebaseManager() -> FirebaseManager {
     return FirebaseManager.shared
+}
+
+extension FirebaseManager {
+    func isNeedToUpdateDatabaseVersion(_ version: Float) -> Bool {
+        if version > myUserDefaults.float(forKey: "industry_database_version") {
+            myUserDefaults.set(version, forKey: "industry_database_version")
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func updateDatabaseVersion(_ data: [String: Any]) {
+        FirebaseDatabaseVersion.allCases.forEach {
+            if let floatValue = data[$0.rawValue] as? Float {
+                myUserDefaults.set(floatValue, forKey: $0.rawValue)
+            } else if let stringValue = data[$0.rawValue] as? String {
+                myUserDefaults.set(stringValue, forKey: $0.rawValue)
+            }
+        }
+    }
 }

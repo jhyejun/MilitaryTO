@@ -9,13 +9,3 @@
 import Foundation
 
 let myUserDefaults = UserDefaults.standard
-
-func compareDatabaseVersion(_ newValue: Int) -> Bool {
-    let result = newValue > myUserDefaults.integer(forKey: "database_version")
-    
-    if result {
-        myUserDefaults.set(newValue, forKey: "database_version")
-    }
-    
-    return result
-}

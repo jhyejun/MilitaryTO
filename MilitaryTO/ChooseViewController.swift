@@ -37,6 +37,8 @@ class ChooseViewController: HJViewController {
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
         
         setConstraints()
+        
+        databaseManager().deleteAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,10 +63,18 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateIndustryData(_ sender: UIButton) {
-        if let industryData = databaseManager().read(IndustryRealm.self), industryData.isNotEmpty {
-            presentList(sender.titleLabel?.text, .Industry)
-        } else {
-            firebaseManager().getIndustryData()
+        firebaseManager().getVersionData { [weak self] (data) in
+            guard let self = self, let data = data else { return }
+            
+            if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Float {
+                if firebaseManager().isNeedToUpdateDatabaseVersion(version) {
+                    firebaseManager().updateDatabaseVersion(data)
+                }
+            } else {
+                firebaseManager().updateDatabaseVersion(data)
+            }
+            
+            self.presentList(sender.titleLabel?.text, .Industry)
         }
     }
     

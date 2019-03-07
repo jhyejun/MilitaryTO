@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class DatabaseManager {
     static let shared = DatabaseManager()
@@ -37,11 +38,64 @@ class DatabaseManager {
                 realm.add(object)
             }
         } catch {
-            ERROR_LOG("Failed realm write")
+            ERROR_LOG("Failed realm write object")
+        }
+    }
+    
+    func write(_ objects: [Object]) {
+        guard let realm = self.realm else {
+            ERROR_LOG("realm is nil")
+            return
+        }
+        
+        do {
+            for object in objects {
+                try realm.write {
+                    realm.add(object)
+                }
+            }
+        } catch {
+            ERROR_LOG("Failed realm write objects")
+        }
+    }
+    
+    func delete(_ object: Object) {
+        guard let realm = self.realm else {
+            ERROR_LOG("realm is nil")
+            return
+        }
+        
+        do {
+            try realm.write {
+                realm.delete(object)
+            }
+        } catch {
+            ERROR_LOG("Failed realm delete")
+        }
+    }
+    
+    func deleteAll() {
+        guard let realm = self.realm else {
+            ERROR_LOG("realm is nil")
+            return
+        }
+        
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            ERROR_LOG("Failed realm deleteAll")
         }
     }
 }
 
 func databaseManager() -> DatabaseManager {
     return DatabaseManager.shared
+}
+
+extension DatabaseManager {
+    func industryObjectWrite(_ data: [[String: Any]]) {
+        let _ = data.map { Mapper<IndustryRealm>().map(JSON: $0) }.compactMap { $0 }.map { databaseManager().write($0) }
+    }
 }
