@@ -12,7 +12,7 @@
 		7C95A4B03A07561D785E3A10 /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */; };
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
-		CB693544221D8D8200AABC61 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Utility.swift */; };
+		CB693544221D8D8200AABC61 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Log.swift */; };
 		CB702C3D22256C8B00C03747 /* Industry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3C22256C8B00C03747 /* Industry.swift */; };
 		CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3E2225707500C03747 /* ListTableViewController.swift */; };
 		CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C42222D46D600C03747 /* UIView+ext.swift */; };
@@ -22,6 +22,7 @@
 		CB702C57222D5EA700C03747 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C56222D5EA700C03747 /* Global.swift */; };
 		CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C5D222D8CF100C03747 /* FirebaseManager.swift */; };
 		CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C66222EC3B600C03747 /* DatabaseManager.swift */; };
+		CB9003F2223104070091F351 /* Collection+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9003F1223104070091F351 /* Collection+ext.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -57,7 +58,7 @@
 		B91ED81332E011094196975B /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
-		CB693543221D8D8200AABC61 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		CB693543221D8D8200AABC61 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilitaryTO-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB702C3C22256C8B00C03747 /* Industry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Industry.swift; sourceTree = "<group>"; };
 		CB702C3E2225707500C03747 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		CB702C56222D5EA700C03747 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CB702C5D222D8CF100C03747 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CB702C66222EC3B600C03747 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		CB9003F1223104070091F351 /* Collection+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ext.swift"; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				CB702C42222D46D600C03747 /* UIView+ext.swift */,
 				CB702C4D222D4DD300C03747 /* UIColor+ext.swift */,
+				CB9003F1223104070091F351 /* Collection+ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -168,6 +171,22 @@
 				CB702C66222EC3B600C03747 /* DatabaseManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		CB9003EF223100C90091F351 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CB693543221D8D8200AABC61 /* Log.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		CB9003F0223100E30091F351 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				CB702C56222D5EA700C03747 /* Global.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		CBB120DC201F185C000DC061 = {
@@ -204,8 +223,8 @@
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
-				CB702C56222D5EA700C03747 /* Global.swift */,
-				CB693543221D8D8200AABC61 /* Utility.swift */,
+				CB9003F0223100E30091F351 /* Global */,
+				CB9003EF223100C90091F351 /* Util */,
 				CB702C64222EB47600C03747 /* Model */,
 				CB702C65222EB48200C03747 /* Manager */,
 				CB702C47222D484600C03747 /* HJ */,
@@ -413,7 +432,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesomeKit/FontAwesomeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -446,7 +465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CBB12116201F188F000DC061 /* ShellScript */ = {
@@ -493,10 +512,11 @@
 				CB702C50222D512600C03747 /* HJTableView.swift in Sources */,
 				CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */,
 				CB702C57222D5EA700C03747 /* Global.swift in Sources */,
-				CB693544221D8D8200AABC61 /* Utility.swift in Sources */,
+				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
+				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 			);

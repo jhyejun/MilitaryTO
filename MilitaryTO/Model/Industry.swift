@@ -51,19 +51,40 @@ class IndustryRealm: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        idx <- map["연번"]
-        kind <- map["업종"]
-        scale <- map["기업규모"]
-        name <- map["업체명"]
-        location <- map["소재지"]
-        phoneNumber <- map["전화번호"]
-        mainSubject <- map["주생산품목"]
-        selectionYear <- map["선정년도"]
-        totalTO <- map["배정인원(현역)-특성화고·마이스터고 졸업생 계"]
-        beforeThreeConventionTO <- map["99년생 이전(3자 협약)"]
-        beforeTwoConventionTO <- map["99년생 이전(2자 협약)"]
-        threeConventionTO <- map["00년생 (3자 협약)"]
-        isLimit <- map["배정제한여부"]
-        region <- map["해당지방병무청"]
+        idx <- map[IndustryKey.idx.keyString]
+        kind <- map[IndustryKey.kind.keyString]
+        scale <- map[IndustryKey.scale.keyString]
+        name <- map[IndustryKey.name.keyString]
+        location <- map[IndustryKey.location.keyString]
+        phoneNumber <- map[IndustryKey.phoneNumber.keyString]
+        mainSubject <- map[IndustryKey.mainSubject.keyString]
+        selectionYear <- map[IndustryKey.selectionYear.keyString]
+        totalTO <- map[IndustryKey.totalTO.keyString]
+        beforeThreeConventionTO <- map[IndustryKey.beforeThreeConventionTO.keyString]
+        beforeTwoConventionTO <- map[IndustryKey.beforeTwoConventionTO.keyString]
+        threeConventionTO <- map[IndustryKey.threeConventionTO.keyString]
+        isLimit <- map[IndustryKey.isLimit.keyString]
+        region <- map[IndustryKey.region.keyString]
+    }
+}
+
+enum IndustryKey: String {
+    case idx = "연번"
+    case kind = "업종"
+    case scale = "기업규모"
+    case name = "업체명"
+    case location = "소재지"
+    case phoneNumber = "전화번호"
+    case mainSubject = "주생산품목"
+    case selectionYear = "선정년도"
+    case totalTO = "배정인원(현역)-특성화고·마이스터고 졸업생 계"
+    case beforeThreeConventionTO = "99년생 이전(3자 협약)"
+    case beforeTwoConventionTO = "99년생 이전(2자 협약)"
+    case threeConventionTO = "00년생 (3자 협약)"
+    case isLimit = "배정제한여부"
+    case region = "해당지방병무청"
+    
+    var keyString: String {
+        return self.rawValue
     }
 }

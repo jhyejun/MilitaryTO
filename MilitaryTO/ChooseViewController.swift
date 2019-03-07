@@ -61,7 +61,11 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateIndustryData(_ sender: UIButton) {
-        
+        if let industryData = databaseManager().read(IndustryRealm.self), industryData.isNotEmpty {
+            presentList(sender.titleLabel?.text, .Industry)
+        } else {
+            firebaseManager().getIndustryData()
+        }
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {

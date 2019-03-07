@@ -17,7 +17,7 @@ class DatabaseManager {
         realm = try? Realm()
     }
     
-    func read<T: Object>() -> Results<T>? {
+    func read<T: Object>(_ type: T.Type) -> Results<T>? {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return nil
@@ -32,8 +32,12 @@ class DatabaseManager {
             return
         }
         
-        try? realm.write {
-            realm.add(object)
+        do {
+            try realm.write {
+                realm.add(object)
+            }
+        } catch {
+            ERROR_LOG("Failed realm write")
         }
     }
 }
