@@ -96,6 +96,10 @@ func databaseManager() -> DatabaseManager {
 
 extension DatabaseManager {
     func industryObjectWrite(_ data: [[String: Any]]) {
-        let _ = data.map { Mapper<IndustryRealm>().map(JSON: $0) }.compactMap { $0 }.map { databaseManager().write($0) }
+        data.map { Mapper<Industry>().map(JSON: $0) }.compactMap { $0 }.forEach { databaseManager().write($0) }
+    }
+    
+    func professionalObjectWrite(_ data: [[String: Any]]) {
+        data.map { Mapper<Professional>().map(JSON: $0) }.compactMap { $0 }.forEach { databaseManager().write($0) }
     }
 }

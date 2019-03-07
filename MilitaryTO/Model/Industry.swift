@@ -9,24 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct Industry {
-    var idx: Int?
-    var kind: String?
-    var scale: String?
-    var name: String?
-    var location: String?
-    var phoneNumber: String?
-    var mainSubject: String?
-    var selectionYear: String?
-    var totalTO: Int?
-    var beforeThreeConventionTO: Int?
-    var beforeTwoConventionTO: Int?
-    var threeConventionTO: Int?
-    var isLimit: Bool?
-    var region: String?
-}
-
-class IndustryRealm: Object, Mappable {
+class Industry: Object, Mappable {
     required convenience init?(map: Map) {
         self.init()
     }

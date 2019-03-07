@@ -22,6 +22,7 @@
 		CB702C57222D5EA700C03747 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C56222D5EA700C03747 /* Global.swift */; };
 		CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C5D222D8CF100C03747 /* FirebaseManager.swift */; };
 		CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C66222EC3B600C03747 /* DatabaseManager.swift */; };
+		CB702C6922313E7900C03747 /* Professional.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C6822313E7900C03747 /* Professional.swift */; };
 		CB9003F2223104070091F351 /* Collection+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9003F1223104070091F351 /* Collection+ext.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		CB702C56222D5EA700C03747 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CB702C5D222D8CF100C03747 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CB702C66222EC3B600C03747 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		CB702C6822313E7900C03747 /* Professional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professional.swift; sourceTree = "<group>"; };
 		CB9003F1223104070091F351 /* Collection+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ext.swift"; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				CB702C3C22256C8B00C03747 /* Industry.swift */,
+				CB702C6822313E7900C03747 /* Professional.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,7 +435,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesomeKit/FontAwesomeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -465,7 +468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CBB12116201F188F000DC061 /* ShellScript */ = {
@@ -514,6 +517,7 @@
 				CB702C57222D5EA700C03747 /* Global.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
+				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,

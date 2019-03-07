@@ -12,11 +12,19 @@ class ListTableViewController: HJViewController {
     private let tableView: HJTableView = HJTableView().then {
         $0.separatorStyle = .none
     }
+    private var data: Results<Object>?
 
-    init(_ title: String? = nil) {
+    init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
         self.navigationItem.title = title
+        
+        switch kind {
+        case .Industry:
+            databaseManager().read(Industry.self)
+        case .Professional:
+            databaseManager().read(Professional.self)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

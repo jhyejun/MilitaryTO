@@ -23,6 +23,7 @@ class ChooseViewController: HJViewController {
     private let professionalButton: UIButton = UIButton().then {
         $0.setTitle("전문연구요원", for: .normal)
         $0.backgroundColor = UIColor.flatRed
+        $0.isEnabled = false
         $0.setCornerRadius(10)
     }
     
@@ -66,24 +67,56 @@ class ChooseViewController: HJViewController {
         firebaseManager().getVersionData { [weak self] (data) in
             guard let self = self, let data = data else { return }
             
-            if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Float {
-                if firebaseManager().isNeedToUpdateDatabaseVersion(version) {
-                    firebaseManager().updateDatabaseVersion(data)
+            self.syncDatabase(.Industry, data) { [weak self] result in
+                guard let self = self else { return }
+                
+                if result {
+                    self.presentList(sender.titleLabel?.text, .Industry)
+                } else {
+                    
                 }
-            } else {
-                firebaseManager().updateDatabaseVersion(data)
             }
-            
-            self.presentList(sender.titleLabel?.text, .Industry)
         }
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
-        presentList(sender.titleLabel?.text, .Professional)
+        firebaseManager().getVersionData { [weak self] (data) in
+            guard let self = self, let data = data else { return }
+            
+            self.syncDatabase(.Professional, data) { [weak self] result in
+                guard let self = self else { return }
+                
+                if result {
+                    self.presentList(sender.titleLabel?.text, .Professional)
+                } else {
+                    
+                }
+            }
+        }
+    }
+    
+    private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
+        var key: String = ""
+        
+        switch kind {
+        case .Industry:
+            key = FirebaseDatabaseVersion.industry_database_version.rawValue
+            
+        case .Professional:
+            key = FirebaseDatabaseVersion.professional_database_version.rawValue
+        }
+        
+        if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Float {
+            if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) {
+                firebaseManager().updateDatabase(kind, data, completion)
+            }
+        } else {
+            firebaseManager().updateDatabase(kind, data, completion)
+        }
     }
     
     private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
-        let vc = ListTableViewController(title)
+        let vc = ListTableViewController(title, kind)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
