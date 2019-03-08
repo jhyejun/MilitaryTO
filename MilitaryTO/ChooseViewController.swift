@@ -30,7 +30,7 @@ class ChooseViewController: HJViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .flatWhite
+        self.view.backgroundColor = .white
         self.view.addSubview(industryButton)
         self.view.addSubview(professionalButton)
         self.view.addSubview(indicator)

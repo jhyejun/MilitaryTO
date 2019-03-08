@@ -10,7 +10,10 @@ import Foundation
 import NVActivityIndicatorView
 
 class HJViewController: UIViewController {
-    lazy var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballRotateChase, color: .flatGray, padding: 0)
+    lazy var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: UIScreen.main.bounds,
+                                                                          type: .ballRotateChase,
+                                                                          color: .flatYellow,
+                                                                          padding: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()

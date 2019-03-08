@@ -114,7 +114,7 @@ DEPENDENCIES:
   - Then
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -172,4 +172,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4a165f93fee6902e69ca393a4475462478e004f0
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

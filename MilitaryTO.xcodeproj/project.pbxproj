@@ -435,7 +435,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesomeKit/FontAwesomeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -470,7 +470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CBB12116201F188F000DC061 /* ShellScript */ = {

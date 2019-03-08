@@ -33,7 +33,10 @@ class FirebaseManager {
     
     func getVersionData(completion: @escaping ([String: Any]?) -> Void) {
         ref?.child(FirebaseChild.version.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String: Any] else { return }
+            guard let data = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
             completion(data)
         }, withCancel: { (error) in
             ERROR_LOG(error.localizedDescription)
