@@ -31,35 +31,9 @@ class FirebaseManager {
         self.ref = Database.database().reference()
     }
     
-    func getVersionData(completion: @escaping ([String: Any]?) -> Void) {
-        ref?.child(FirebaseChild.version.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String: Any] else {
-                completion(nil)
-                return
-            }
-            completion(data)
-        }, withCancel: { (error) in
-            ERROR_LOG(error.localizedDescription)
-            completion(nil)
-        })
-    }
-    
-    func getIndustryData(completion: @escaping ([[String: Any]]?) -> Void) {
-        ref?.child(FirebaseChild.industry.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String: Any]] else {
-                completion(nil)
-                return
-            }
-            completion(data)
-        }, withCancel: { (error) in
-            ERROR_LOG(error.localizedDescription)
-            completion(nil)
-        })
-    }
-    
-    func getProfessionalData(completion: @escaping ([[String: Any]]?) -> Void) {
-        ref?.child(FirebaseChild.professional.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String: Any]] else {
+    func request<T>(child: String, completion: @escaping (T?) -> Void) {
+        ref?.child(child).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? T else {
                 completion(nil)
                 return
             }
@@ -96,7 +70,7 @@ extension FirebaseManager {
         
         switch kind {
         case .Industry:
-            getIndustryData { (data) in
+            request(child: FirebaseChild.industry.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)
                     return
@@ -105,7 +79,7 @@ extension FirebaseManager {
                 completion(true)
             }
         case .Professional:
-            getProfessionalData { (data) in
+            request(child: FirebaseChild.professional.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)
                     return

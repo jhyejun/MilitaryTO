@@ -70,7 +70,7 @@ class ChooseViewController: HJViewController {
     
     @objc func updateIndustryData(_ sender: UIButton) {
         startAnimating()
-        firebaseManager().getVersionData { [weak self] (data) in
+        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
             guard let self = self, let data = data else { return }
             
             self.syncDatabase(.Industry, data) { [weak self] result in
@@ -89,7 +89,7 @@ class ChooseViewController: HJViewController {
     
     @objc func updateProfessionalData(_ sender: UIButton) {
         
-        firebaseManager().getVersionData { [weak self] (data) in
+        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
             guard let self = self, let data = data else { return }
             
             self.syncDatabase(.Professional, data) { [weak self] result in
