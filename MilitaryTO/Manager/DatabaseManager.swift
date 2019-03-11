@@ -74,6 +74,22 @@ class DatabaseManager {
         }
     }
     
+    private func delete<T: Object>(_ type: T.Type) {
+        guard let realm = self.realm else {
+            ERROR_LOG("realm is nil")
+            return
+        }
+        
+        if let object = read(T.self) {
+            try? realm.write {
+                realm.delete(object)
+            }
+            DEBUG_LOG("delete success")
+        } else {
+            DEBUG_LOG("object is nil")
+        }
+    }
+    
     func deleteAll() {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
@@ -101,9 +117,17 @@ extension DatabaseManager {
             .forEach { databaseManager().write($0) }
     }
     
+    func industryObjectDelete() {
+        delete(Industry.self)
+    }
+    
     func professionalObjectWrite(_ data: [[String: Any]]) {
         data.map { Mapper<Professional>().map(JSON: $0) }
             .compactMap { $0 }
             .forEach { databaseManager().write($0) }
+    }
+    
+    func professionalObjectDelete() {
+        delete(Professional.self)
     }
 }

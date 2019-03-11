@@ -70,6 +70,7 @@ extension FirebaseManager {
         
         switch kind {
         case .Industry:
+            databaseManager().industryObjectDelete()
             request(child: FirebaseChild.industry.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)
@@ -79,6 +80,7 @@ extension FirebaseManager {
                 completion(true)
             }
         case .Professional:
+            databaseManager().professionalObjectDelete()
             request(child: FirebaseChild.professional.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)

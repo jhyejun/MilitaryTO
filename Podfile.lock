@@ -90,6 +90,7 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
+  - Reveal-SDK (21)
   - RxAtomic (4.4.1)
   - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - ObjectMapper
   - RealmSwift
+  - Reveal-SDK
   - RxCocoa
   - RxSwift
   - SnapKit (~> 4.0.0)
@@ -130,6 +132,7 @@ SPEC REPOS:
     - ObjectMapper
     - Realm
     - RealmSwift
+    - Reveal-SDK
     - RxAtomic
     - RxCocoa
     - RxSwift
@@ -163,6 +166,7 @@ SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Reveal-SDK: 3523e0eb7c562811c51bb71da6e523a6373702c8
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
@@ -170,6 +174,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 4a165f93fee6902e69ca393a4475462478e004f0
+PODFILE CHECKSUM: 7caf793bd116aa6ff47e6de06a5d7c06e992e018
 
 COCOAPODS: 1.6.1
