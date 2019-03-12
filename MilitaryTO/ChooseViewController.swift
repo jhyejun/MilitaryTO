@@ -22,7 +22,6 @@ class ChooseViewController: HJViewController {
         $0.setCornerRadius(10)
     }
     private let professionalButton: UIButton = UIButton().then {
-        $0.isEnabled = false
         $0.setTitle(MilitaryServiceKind.Professional.rawValue, for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.setBorder(color: .flatBlue, width: 0.5)
@@ -75,7 +74,7 @@ class ChooseViewController: HJViewController {
                 if result {
                     self.presentList(sender.titleLabel?.text, .Industry)
                 } else {
-                    
+                    self.presentFailAlert()
                 }
                 
             }
@@ -83,21 +82,24 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
-        startAnimating()
-        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
-            guard let self = self, let data = data else { return }
-            
-            self.syncDatabase(.Professional, data) { [weak self] result in
-                guard let self = self else { return }
-                self.stopAnimating()
-                
-                if result {
-                    self.presentList(sender.titleLabel?.text, .Professional)
-                } else {
-                    
-                }
-            }
-        }
+        let alert = AlertBuilder(title: "알림", message: "전문연구요원은\n데이터가 준비되어 있지 않습니다.\n추후 업데이트 예정입니다.").addOk()
+        alert.present(parent: self, animated: true, completion: nil)
+        
+//        startAnimating()
+//        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
+//            guard let self = self, let data = data else { return }
+//
+//            self.syncDatabase(.Professional, data) { [weak self] result in
+//                guard let self = self else { return }
+//                self.stopAnimating()
+//
+//                if result {
+//                    self.presentList(sender.titleLabel?.text, .Professional)
+//                } else {
+//                    self.presentFailAlert()
+//                }
+//            }
+//        }
     }
     
     private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
@@ -114,10 +116,17 @@ class ChooseViewController: HJViewController {
         if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
             if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) {
                 firebaseManager().updateDatabase(kind, data, completion)
+            } else {
+                completion(true)
             }
         } else {
             firebaseManager().updateDatabase(kind, data, completion)
         }
+    }
+    
+    private func presentFailAlert() {
+        let alert = AlertBuilder(title: "알림", message: "데이터 업데이트를 실패하였습니다.").addOk()
+        alert.present(parent: self, animated: true, completion: nil)
     }
     
     private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
