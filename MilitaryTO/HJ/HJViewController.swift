@@ -10,10 +10,13 @@ import Foundation
 import NVActivityIndicatorView
 
 class HJViewController: UIViewController {
-    lazy var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: UIScreen.main.bounds,
-                                                                          type: .ballRotateChase,
-                                                                          color: .flatYellow,
-                                                                          padding: 0)
+    private var indicatorBackgroundView: UIView = UIView(frame: UIScreen.main.bounds).then {
+        $0.backgroundColor = .rgba(3, 3, 3, 0.6)
+    }
+    private var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(origin: .zero, size: .zero)).then {
+        $0.type = .ballPulseSync
+        $0.color = .flatYellow
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,14 @@ class HJViewController: UIViewController {
     
     func startAnimating() {
         DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            
+            self.indicatorBackgroundView.addSubview(self.indicator)
+            self.indicator.snp.makeConstraints({ (make) in
+                make.center.equalToSuperview()
+                make.width.height.equalTo(50)
+            })
+            window.addSubview(self.indicatorBackgroundView)
             self.indicator.startAnimating()
         }
     }
@@ -49,6 +60,7 @@ class HJViewController: UIViewController {
     func stopAnimating() {
         DispatchQueue.main.async {
             self.indicator.stopAnimating()
+            self.indicatorBackgroundView.removeFromSuperview()
         }
     }
 }

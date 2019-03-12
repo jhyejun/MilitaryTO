@@ -50,8 +50,8 @@ func firebaseManager() -> FirebaseManager {
 }
 
 extension FirebaseManager {
-    func isNeedToUpdateDatabaseVersion(_ version: Float, _ key: String) -> Bool {
-        if version > myUserDefaults.float(forKey: key) {
+    func isNeedToUpdateDatabaseVersion(_ version: Int, _ key: String) -> Bool {
+        if version > myUserDefaults.integer(forKey: key) {
             myUserDefaults.set(version, forKey: key)
             return true
         } else {
@@ -70,6 +70,7 @@ extension FirebaseManager {
         
         switch kind {
         case .Industry:
+            databaseManager().industryObjectDelete()
             request(child: FirebaseChild.industry.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)
@@ -79,6 +80,7 @@ extension FirebaseManager {
                 completion(true)
             }
         case .Professional:
+            databaseManager().professionalObjectDelete()
             request(child: FirebaseChild.professional.rawValue) { (data: [[String: Any]]?) in
                 guard let data = data else {
                     completion(false)

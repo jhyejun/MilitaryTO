@@ -10,20 +10,22 @@ import UIKit
 import FirebaseDatabase
 
 enum MilitaryServiceKind: String {
-    case Industry
-    case Professional
+    case Industry = "산업기능요원"
+    case Professional = "전문연구요원"
 }
 
 class ChooseViewController: HJViewController {
     private let industryButton: UIButton = UIButton().then {
-        $0.setTitle("산업기능요원", for: .normal)
-        $0.backgroundColor = UIColor.flatBlue
+        $0.setTitle(MilitaryServiceKind.Industry.rawValue, for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.setBorder(color: .flatRed, width: 0.5)
         $0.setCornerRadius(10)
     }
     private let professionalButton: UIButton = UIButton().then {
-        $0.setTitle("전문연구요원", for: .normal)
-        $0.backgroundColor = UIColor.flatRed
         $0.isEnabled = false
+        $0.setTitle(MilitaryServiceKind.Professional.rawValue, for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.setBorder(color: .flatBlue, width: 0.5)
         $0.setCornerRadius(10)
     }
     
@@ -33,14 +35,11 @@ class ChooseViewController: HJViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(industryButton)
         self.view.addSubview(professionalButton)
-        self.view.addSubview(indicator)
         
         industryButton.addTarget(self, action: #selector(updateIndustryData(_:)), for: .touchUpInside)
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
         
         setConstraints()
-        
-        databaseManager().deleteAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,10 +60,6 @@ class ChooseViewController: HJViewController {
             make.centerX.equalTo(self.industryButton)
             make.centerY.equalToSuperview().offset(100)
             make.width.height.equalTo(self.industryButton)
-        }
-        
-        indicator.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
         }
     }
     
@@ -88,12 +83,13 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateProfessionalData(_ sender: UIButton) {
-        
+        startAnimating()
         firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
             guard let self = self, let data = data else { return }
             
             self.syncDatabase(.Professional, data) { [weak self] result in
                 guard let self = self else { return }
+                self.stopAnimating()
                 
                 if result {
                     self.presentList(sender.titleLabel?.text, .Professional)
@@ -115,7 +111,7 @@ class ChooseViewController: HJViewController {
             key = FirebaseDatabaseVersion.professional_database_version.rawValue
         }
         
-        if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Float {
+        if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
             if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) {
                 firebaseManager().updateDatabase(kind, data, completion)
             }
