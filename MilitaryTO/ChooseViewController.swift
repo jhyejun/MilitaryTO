@@ -40,8 +40,6 @@ class ChooseViewController: HJViewController {
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
         
         setConstraints()
-        
-        databaseManager().deleteAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +111,7 @@ class ChooseViewController: HJViewController {
             key = FirebaseDatabaseVersion.professional_database_version.rawValue
         }
         
-        if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Float {
+        if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
             if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) {
                 firebaseManager().updateDatabase(kind, data, completion)
             }

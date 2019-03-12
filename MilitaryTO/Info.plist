@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>201903119</string>
+	<string>201903129</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -42,6 +42,6 @@
 	<key>buildCount</key>
 	<string>9</string>
 	<key>buildDay</key>
-	<string>20190311</string>
+	<string>20190312</string>
 </dict>
 </plist>

@@ -50,8 +50,8 @@ func firebaseManager() -> FirebaseManager {
 }
 
 extension FirebaseManager {
-    func isNeedToUpdateDatabaseVersion(_ version: Float, _ key: String) -> Bool {
-        if version > myUserDefaults.float(forKey: key) {
+    func isNeedToUpdateDatabaseVersion(_ version: Int, _ key: String) -> Bool {
+        if version > myUserDefaults.integer(forKey: key) {
             myUserDefaults.set(version, forKey: key)
             return true
         } else {

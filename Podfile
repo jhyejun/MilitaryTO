@@ -21,7 +21,7 @@ target 'MilitaryTO' do
   pod 'ObjectMapper'
   
   pod 'SwiftLint'
-  pod 'Reveal-SDK', :configurations => ['Debug']
+  # pod 'Reveal-SDK', :configurations => ['Debug']
   
   # pod 'iRate'
   
