@@ -8,23 +8,18 @@
 
 import UIKit
 
-class ListTableViewController: HJViewController {
+class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate, UITableViewDataSource {
     private let tableView: HJTableView = HJTableView().then {
         $0.separatorStyle = .none
     }
-    private var data: Results<Object>?
+    
+    private var data: Results<T>?
 
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
         self.navigationItem.title = title
-        
-        switch kind {
-        case .Industry:
-            databaseManager().read(Industry.self)
-        case .Professional:
-            databaseManager().read(Professional.self)
-        }
+        data = databaseManager().read(T.self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +29,21 @@ class ListTableViewController: HJViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
         self.view.addSubview(tableView)
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell(style: .default, reuseIdentifier: "TEST")
     }
 }

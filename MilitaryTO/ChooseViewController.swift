@@ -130,7 +130,13 @@ class ChooseViewController: HJViewController {
     }
     
     private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
-        let vc = ListTableViewController(title, kind)
-        self.navigationController?.pushViewController(vc, animated: true)
+        switch kind {
+        case .Industry:
+            let vc = ListTableViewController<Industry>(title, kind)
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .Professional:
+            let vc = ListTableViewController<Professional>(title, kind)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
