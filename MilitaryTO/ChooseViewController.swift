@@ -27,17 +27,20 @@ class ChooseViewController: HJViewController {
         $0.setBorder(color: .flatBlue, width: 0.5)
         $0.setCornerRadius(10)
     }
+    private let settingButton: UIButton = UIButton().then {
+        $0.setImage(UIImage(imageLiteralResourceName: "icon-setting"), for: .normal)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        self.view.addSubview(industryButton)
-        self.view.addSubview(professionalButton)
         
         industryButton.addTarget(self, action: #selector(updateIndustryData(_:)), for: .touchUpInside)
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(didTappedSettingButton(_:)), for: .touchUpInside)
         
+        addSubViews()
         setConstraints()
     }
     
@@ -45,6 +48,12 @@ class ChooseViewController: HJViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func addSubViews() {
+        self.view.addSubview(industryButton)
+        self.view.addSubview(professionalButton)
+        self.view.addSubview(settingButton)
     }
     
     private func setConstraints() {
@@ -59,6 +68,11 @@ class ChooseViewController: HJViewController {
             make.centerX.equalTo(self.industryButton)
             make.centerY.equalToSuperview().offset(100)
             make.width.height.equalTo(self.industryButton)
+        }
+        
+        settingButton.snp.makeConstraints { (make) in
+            make.topMargin.trailing.equalToSuperview().inset(30)
+            make.width.height.equalTo(30)
         }
     }
     
@@ -100,6 +114,11 @@ class ChooseViewController: HJViewController {
 //                }
 //            }
 //        }
+    }
+    
+    @objc func didTappedSettingButton(_ sender: UIBarButtonItem) {
+        let vc = SettingViewController("설정")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {

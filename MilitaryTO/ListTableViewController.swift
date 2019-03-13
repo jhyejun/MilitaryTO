@@ -34,7 +34,7 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
         self.view.addSubview(tableView)
     }
     
-    
+    // TableView Delegate & DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

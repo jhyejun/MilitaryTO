@@ -27,7 +27,9 @@ class HJViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.isHidden = false
+        
         self.tabBarController?.tabBar.isHidden = false
     }
     
