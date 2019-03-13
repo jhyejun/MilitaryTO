@@ -11,6 +11,8 @@
 		2108299EC29DB906A1A2E3FE /* Pods_MilitaryTO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F741200264281FE0E44FA5 /* Pods_MilitaryTO.framework */; };
 		7C95A4B03A07561D785E3A10 /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */; };
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
+		CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E731B22380376000E5E0B /* AlertBuilder.swift */; };
+		CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E732922380431000E5E0B /* UIViewController+ext.swift */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
 		CB693544221D8D8200AABC61 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Log.swift */; };
 		CB702C3D22256C8B00C03747 /* Industry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3C22256C8B00C03747 /* Industry.swift */; };
@@ -58,6 +60,8 @@
 		6F926C8C037009A516BA3796 /* Pods-MilitaryTO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.debug.xcconfig"; sourceTree = "<group>"; };
 		B91ED81332E011094196975B /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB3E731B22380376000E5E0B /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		CB3E732922380431000E5E0B /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		CB693543221D8D8200AABC61 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilitaryTO-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		CB702C44222D473300C03747 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CB3E732922380431000E5E0B /* UIViewController+ext.swift */,
 				CB702C42222D46D600C03747 /* UIView+ext.swift */,
 				CB702C4D222D4DD300C03747 /* UIColor+ext.swift */,
 				CB9003F1223104070091F351 /* Collection+ext.swift */,
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CB693543221D8D8200AABC61 /* Log.swift */,
+				CB3E731B22380376000E5E0B /* AlertBuilder.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -520,10 +526,12 @@
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
+				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
+				CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
