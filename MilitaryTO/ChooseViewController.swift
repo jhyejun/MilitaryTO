@@ -77,12 +77,12 @@ class ChooseViewController: HJViewController {
     }
     
     @objc func updateIndustryData(_ sender: UIButton) {
-        startAnimating()
-        
         firebaseManager().detectConnectionState { [weak self] result in
             guard let self = self else { return }
             
             if result {
+                self.startAnimating()
+                
                 firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
                     guard let self = self, let data = data else { return }
                     
@@ -98,8 +98,6 @@ class ChooseViewController: HJViewController {
                     }
                 }
             } else {
-                self.stopAnimating()
-                
                 if databaseManager().isNotEmpty(Industry.self) {
                     self.presentList(sender.titleLabel?.text, .Industry)
                 } else {
