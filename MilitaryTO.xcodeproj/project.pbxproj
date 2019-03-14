@@ -26,6 +26,9 @@
 		CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C66222EC3B600C03747 /* DatabaseManager.swift */; };
 		CB702C6922313E7900C03747 /* Professional.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C6822313E7900C03747 /* Professional.swift */; };
 		CB9003F2223104070091F351 /* Collection+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9003F1223104070091F351 /* Collection+ext.swift */; };
+		CBAAFDAC223AC55600C1D928 /* HJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */; };
+		CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */; };
+		CBAAFDB5223AC9C100C1D928 /* NSObject+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -77,6 +80,9 @@
 		CB702C66222EC3B600C03747 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CB702C6822313E7900C03747 /* Professional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professional.swift; sourceTree = "<group>"; };
 		CB9003F1223104070091F351 /* Collection+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ext.swift"; sourceTree = "<group>"; };
+		CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTableViewCell.swift; sourceTree = "<group>"; };
+		CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ext.swift"; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				CB702C42222D46D600C03747 /* UIView+ext.swift */,
 				CB702C4D222D4DD300C03747 /* UIColor+ext.swift */,
 				CB9003F1223104070091F351 /* Collection+ext.swift */,
+				CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 			children = (
 				CB702C45222D484200C03747 /* HJViewController.swift */,
 				CB702C4F222D512600C03747 /* HJTableView.swift */,
+				CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */,
 			);
 			path = HJ;
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
 				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
+				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
 				CB9003F0223100E30091F351 /* Global */,
 				CB9003EF223100C90091F351 /* Util */,
 				CB702C64222EB47600C03747 /* Model */,
@@ -521,16 +530,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
+				CBAAFDB5223AC9C100C1D928 /* NSObject+ext.swift in Sources */,
 				CB702C46222D484200C03747 /* HJViewController.swift in Sources */,
 				CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */,
 				CB702C50222D512600C03747 /* HJTableView.swift in Sources */,
 				CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */,
 				CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */,
 				CB702C57222D5EA700C03747 /* Global.swift in Sources */,
+				CBAAFDAC223AC55600C1D928 /* HJTableViewCell.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
+				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
