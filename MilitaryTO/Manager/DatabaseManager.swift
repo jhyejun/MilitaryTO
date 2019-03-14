@@ -51,7 +51,7 @@ class DatabaseManager {
         do {
             for object in objects {
                 try realm.write {
-                    realm.add(object)
+                    realm.add(object, update: true)
                 }
             }
         } catch {
@@ -100,6 +100,7 @@ class DatabaseManager {
             try realm.write {
                 realm.deleteAll()
             }
+            DEBUG_LOG("delete success")
         } catch {
             ERROR_LOG("Failed realm deleteAll")
         }

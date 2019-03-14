@@ -33,13 +33,13 @@ class FirebaseManager {
     }
     
     func detectConnectionState(completion: @escaping (Bool) -> Void) {
-        Database.database().reference(withPath: ".info/connected").observe(.value, with: { snapshot in
+        Database.database().reference(withPath: ".info/connected").observeSingleEvent(of: .value) { snapshot in
             if (snapshot.value as? Bool ?? false) == true {
                 completion(true)
             } else {
                 completion(false)
             }
-        })
+        }
     }
     
     func request<T>(child: String, completion: @escaping (T?) -> Void) {
