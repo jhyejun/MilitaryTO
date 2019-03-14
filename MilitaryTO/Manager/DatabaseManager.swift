@@ -51,7 +51,7 @@ class DatabaseManager {
         do {
             for object in objects {
                 try realm.write {
-                    realm.add(object)
+                    realm.add(object, update: true)
                 }
             }
         } catch {
@@ -100,9 +100,22 @@ class DatabaseManager {
             try realm.write {
                 realm.deleteAll()
             }
+            DEBUG_LOG("delete success")
         } catch {
             ERROR_LOG("Failed realm deleteAll")
         }
+    }
+    
+    func isEmpty<T: Object>(_ type: T.Type) -> Bool {
+        if let data = read(T.self), data.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isNotEmpty<T: Object>(_ type: T.Type) -> Bool {
+        return !isEmpty(T.self)
     }
 }
 

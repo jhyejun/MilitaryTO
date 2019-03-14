@@ -25,10 +25,21 @@ enum FirebaseDatabaseVersion: String, CaseIterable {
 
 class FirebaseManager {
     static let shared = FirebaseManager()
+    
     private var ref: DatabaseReference? = nil
     
     func initialize() {
         self.ref = Database.database().reference()
+    }
+    
+    func detectConnectionState(completion: @escaping (Bool) -> Void) {
+        Database.database().reference(withPath: ".info/connected").observeSingleEvent(of: .value) { snapshot in
+            if (snapshot.value as? Bool ?? false) == true {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
     
     func request<T>(child: String, completion: @escaping (T?) -> Void) {
@@ -61,8 +72,12 @@ extension FirebaseManager {
     
     func updateDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
         FirebaseDatabaseVersion.allCases.forEach {
-            if let floatValue = data[$0.rawValue] as? Float {
-                myUserDefaults.set(floatValue, forKey: $0.rawValue)
+            if let intValue = data[$0.rawValue] as? Int {
+                if kind == .Industry && $0 == .industry_database_version {
+                    myUserDefaults.set(intValue, forKey: $0.rawValue)
+                } else if kind == .Professional && $0 == .professional_database_version {
+                    myUserDefaults.set(intValue, forKey: $0.rawValue)
+                }
             } else if let stringValue = data[$0.rawValue] as? String {
                 myUserDefaults.set(stringValue, forKey: $0.rawValue)
             }
