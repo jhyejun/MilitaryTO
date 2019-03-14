@@ -78,19 +78,33 @@ class ChooseViewController: HJViewController {
     
     @objc func updateIndustryData(_ sender: UIButton) {
         startAnimating()
-        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
-            guard let self = self, let data = data else { return }
+        
+        firebaseManager().detectConnectionState { [weak self] result in
+            guard let self = self else { return }
             
-            self.syncDatabase(.Industry, data) { [weak self] result in
-                guard let self = self else { return }
+            if result {
+                firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
+                    guard let self = self, let data = data else { return }
+                    
+                    self.syncDatabase(.Industry, data) { [weak self] result in
+                        guard let self = self else { return }
+                        self.stopAnimating()
+                        
+                        if result {
+                            self.presentList(sender.titleLabel?.text, .Industry)
+                        } else {
+                            self.presentUpdateFailAlert()
+                        }
+                    }
+                }
+            } else {
                 self.stopAnimating()
                 
-                if result {
+                if databaseManager().isNotEmpty(Industry.self) {
                     self.presentList(sender.titleLabel?.text, .Industry)
                 } else {
-                    self.presentFailAlert()
+                    self.presentDisconnectAlert()
                 }
-                
             }
         }
     }
@@ -123,17 +137,20 @@ class ChooseViewController: HJViewController {
     
     private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
         var key: String = ""
+        var databaseIsEmpty: Bool = false
         
         switch kind {
         case .Industry:
             key = FirebaseDatabaseVersion.industry_database_version.rawValue
+            databaseIsEmpty = databaseManager().isEmpty(Industry.self)
             
         case .Professional:
             key = FirebaseDatabaseVersion.professional_database_version.rawValue
+            databaseIsEmpty = databaseManager().isEmpty(Professional.self)
         }
         
         if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
-            if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) {
+            if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) || databaseIsEmpty {
                 firebaseManager().updateDatabase(kind, data, completion)
             } else {
                 completion(true)
@@ -143,7 +160,12 @@ class ChooseViewController: HJViewController {
         }
     }
     
-    private func presentFailAlert() {
+    private func presentDisconnectAlert() {
+        let alert = AlertBuilder(title: "알림", message: "인터넷 연결이 되어있지 않아\n데이터를 받아올 수 없습니다.").addOk()
+        alert.present(parent: self, animated: true, completion: nil)
+    }
+    
+    private func presentUpdateFailAlert() {
         let alert = AlertBuilder(title: "알림", message: "데이터 업데이트를 실패하였습니다.").addOk()
         alert.present(parent: self, animated: true, completion: nil)
     }

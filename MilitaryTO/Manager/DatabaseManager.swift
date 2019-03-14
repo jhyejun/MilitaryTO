@@ -104,6 +104,18 @@ class DatabaseManager {
             ERROR_LOG("Failed realm deleteAll")
         }
     }
+    
+    func isEmpty<T: Object>(_ type: T.Type) -> Bool {
+        if let data = read(T.self), data.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isNotEmpty<T: Object>(_ type: T.Type) -> Bool {
+        return !isEmpty(T.self)
+    }
 }
 
 func databaseManager() -> DatabaseManager {
