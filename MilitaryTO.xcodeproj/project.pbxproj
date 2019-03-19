@@ -29,6 +29,7 @@
 		CBAAFDAC223AC55600C1D928 /* HJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */; };
 		CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */; };
 		CBAAFDB5223AC9C100C1D928 /* NSObject+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */; };
+		CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */; };
 		CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120E8201F185D000DC061 /* AppDelegate.swift */; };
 		CBB120F0201F185D000DC061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB120EF201F185D000DC061 /* Assets.xcassets */; };
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
@@ -83,6 +84,7 @@
 		CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HJTableViewCell.swift; sourceTree = "<group>"; };
 		CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ext.swift"; sourceTree = "<group>"; };
+		CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		CBB120E5201F185D000DC061 /* MilitaryTO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilitaryTO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB120E8201F185D000DC061 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB120EF201F185D000DC061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
+				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
 				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
 				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
 				CB9003F0223100E30091F351 /* Global */,
@@ -543,6 +546,7 @@
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
+				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
