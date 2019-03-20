@@ -14,19 +14,27 @@ target 'MilitaryTO' do
   pod 'Then'
   pod 'NVActivityIndicatorView'
   
+  
   pod 'RxSwift'
   pod 'RxCocoa'
   
   pod 'RealmSwift'
-  pod 'ObjectMapper'
-  
-  pod 'SwiftLint'
-  # pod 'Reveal-SDK', :configurations => ['Debug']
-  
-  # pod 'iRate'
   
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  
+  
+  pod 'SwiftLint'
+  pod 'ObjectMapper'
+  
+  
+  pod 'Carte'
+  pod 'iRate'
+  
+  post_install do |installer|
+    pods_dir = File.dirname(installer.pods_project.path)
+    at_exit { `ruby #{pods_dir}/Carte/Sources/Carte/carte.rb configure` }
+  end
 
   target 'MilitaryTOTests' do
     inherit! :search_paths

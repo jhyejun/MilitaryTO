@@ -84,9 +84,9 @@ class DatabaseManager {
             try? realm.write {
                 realm.delete(object)
             }
-            DEBUG_LOG("delete success")
+            DEBUG_LOG("\(T.className()) delete success")
         } else {
-            DEBUG_LOG("object is nil")
+            DEBUG_LOG("\(T.className()) object is nil")
         }
     }
     

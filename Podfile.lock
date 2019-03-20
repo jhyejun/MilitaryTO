@@ -1,4 +1,5 @@
 PODS:
+  - Carte (2.1.6)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -75,6 +76,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
+  - iRate (1.12.2)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -100,10 +102,12 @@ PODS:
   - Then (2.4.0)
 
 DEPENDENCIES:
+  - Carte
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Firebase/Core
   - Firebase/Database
   - FontAwesomeKit (~> 2.2.0)
+  - iRate
   - NVActivityIndicatorView
   - ObjectMapper
   - RealmSwift
@@ -115,6 +119,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Carte
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -124,6 +129,7 @@ SPEC REPOS:
     - FontAwesomeKit
     - GoogleAppMeasurement
     - GoogleUtilities
+    - iRate
     - leveldb-library
     - nanopb
     - NVActivityIndicatorView
@@ -147,6 +153,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
+  Carte: c8200bfb59b77336aa2f02e84cc4ac0fa820034d
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
   FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
@@ -157,6 +164,7 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
@@ -170,6 +178,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 1b9213ee1b2423d71907bc602ec97d1315691f3a
+PODFILE CHECKSUM: 00bc63c16d5a61e3b64ff5c95fb9c33f7a2889a8
 
 COCOAPODS: 1.6.1
