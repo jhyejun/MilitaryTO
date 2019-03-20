@@ -40,7 +40,7 @@ class ChooseViewController: HJViewController {
         professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(didTappedSettingButton(_:)), for: .touchUpInside)
         
-        addSubViews()
+        addSubViews(views: [industryButton, professionalButton, settingButton])
         setConstraints()
     }
     
@@ -50,13 +50,9 @@ class ChooseViewController: HJViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    private func addSubViews() {
-        self.view.addSubview(industryButton)
-        self.view.addSubview(professionalButton)
-        self.view.addSubview(settingButton)
-    }
-    
-    private func setConstraints() {
+    override func setConstraints() {
+        super.setConstraints()
+        
         industryButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-100)

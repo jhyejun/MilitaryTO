@@ -31,7 +31,17 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
         
         tableView.delegate = self
         tableView.dataSource = self
-        self.view.addSubview(tableView)
+        
+        addSubViews(views: [tableView])
+        setConstraints()
+    }
+    
+    override func setConstraints() {
+        super.setConstraints()
+        
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     // TableView Delegate & DataSource

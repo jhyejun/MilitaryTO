@@ -8,11 +8,21 @@
 
 import Foundation
 
-class HJTableViewCell: UITableViewCell {
+class HJTableViewCell: UITableViewCell, SetAutoLayout {
     init(resuseIdentifier: String) {
         super.init(style: .default, reuseIdentifier: resuseIdentifier)
         
         selectionStyle = .none
+    }
+    
+    func addSubViews(views: [UIView]) {
+        views.forEach {
+            self.contentView.addSubview($0)
+        }
+    }
+    
+    func setConstraints() {
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
