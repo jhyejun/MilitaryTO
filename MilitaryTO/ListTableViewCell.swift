@@ -13,6 +13,12 @@ class ListTableViewCell: HJTableViewCell {
     
     init() {
         super.init(resuseIdentifier: ListTableViewCell.REUSE_ID)
+        
+        setConstraints()
+    }
+    
+    override func setConstraints() {
+        super.setConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,7 +9,11 @@
 import Foundation
 import NVActivityIndicatorView
 
-class HJViewController: UIViewController {
+protocol SetAutoLayout {
+    func setConstraints()
+}
+
+class HJViewController: UIViewController, SetAutoLayout {
     private var indicatorLabel: UILabel = UILabel().then {
         $0.text = "데이터를 받아오는 중입니다 ....\n업데이트가 끝나기 전까지 기다려주세요!"
         $0.textColor = .white
@@ -53,6 +57,18 @@ class HJViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    func addSubViews(views: [UIView]) {
+        views.forEach {
+            self.view.addSubview($0)
+        }
+    }
+    
+    func setConstraints() {
+        
+    }
+    
+    
+    // Indicator
     func startAnimating() {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }

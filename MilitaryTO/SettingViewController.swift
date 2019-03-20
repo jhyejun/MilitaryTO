@@ -23,12 +23,22 @@ enum SettingList: String, CaseIterable {
             return false
         }
     }
+    
+    var descText: String? {
+        switch self {
+        case .app_version:
+            return myUserDefaults.string(forKey: FirebaseDatabaseVersion.app_version.rawValue)
+        default:
+            return nil
+        }
+    }
 }
 
 class SettingViewController: HJViewController {
     private let tableView: HJTableView = HJTableView().then {
         $0.separatorStyle = .none
     }
+    private let items: [SettingList] = SettingList.allCases
     
     init(_ title: String) {
         super.init(nibName: nil, bundle: nil)
@@ -46,7 +56,13 @@ class SettingViewController: HJViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.view.addSubview(tableView)
+        addSubViews(views: [tableView])
+        setConstraints()
+    }
+    
+    override func setConstraints() {
+        super.setConstraints()
+        
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -55,24 +71,31 @@ class SettingViewController: HJViewController {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingList.allCases.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SettingTableViewCell()
-        cell.titleLabel.text = SettingList.allCases[indexPath.row].rawValue
+        cell.titleLabel.text = items[indexPath.row].rawValue
+        
+        if let text = items[indexPath.row].descText {
+            cell.descLabel.isHidden = false
+            cell.arrowImageView.isHidden = true
+            cell.descLabel.text = text
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if SettingList.allCases[indexPath.row].isClear {
+        if items[indexPath.row].isClear {
             let vc = AlertBuilder(title: "알림", message: "데이터가 초기화 됩니다.\n데이터를 초기화 하시겠습니까?")
             vc.addOk {
-                if SettingList.allCases[indexPath.row] == .clear_industry_database {
+                if self.items[indexPath.row] == .clear_industry_database {
                     databaseManager().industryObjectDelete()
                 } else {
                     databaseManager().professionalObjectDelete()
@@ -81,7 +104,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             vc.addCancel()
             
             self.present(builder: vc)
-        } else if SettingList.allCases[indexPath.row] == .opensource_license {
+        } else if items[indexPath.row] == .opensource_license {
             let vc = CarteViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
