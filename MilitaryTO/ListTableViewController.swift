@@ -14,12 +14,14 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
     }
     
     private var data: [T]? = []
+    private var kind: MilitaryServiceKind?
 
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
         self.navigationItem.title = title
-        data = databaseManager().read(T.self)?.compactMap { $0 as T }
+        self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
+        self.kind = kind
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,7 +56,7 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ListTableViewCell<T>(data: data?[indexPath.row])
+        let cell = ListTableViewCell<T>(data: data?[indexPath.row], kind: kind)
         cell.updateCell()
         
         return cell
