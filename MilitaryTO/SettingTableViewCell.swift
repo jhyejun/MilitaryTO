@@ -8,32 +8,32 @@
 
 import Foundation
 
-class SettingTableViewCell: HJTableViewCell {
-    static let REUSE_ID: String = SettingTableViewCell.className
-    
-    let titleLabel: UILabel = UILabel().then {
+class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
+    private let titleLabel: UILabel = UILabel().then {
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
     }
-    let descLabel: UILabel = UILabel().then {
+    private let descLabel: UILabel = UILabel().then {
         $0.isHidden = true
         $0.textColor = .black
         $0.font = $0.font.withSize(17)
     }
-    let arrowImageView: UIImageView = UIImageView().then {
+    private let arrowImageView: UIImageView = UIImageView().then {
         $0.image = #imageLiteral(resourceName: "icon-arrow.png")
     }
     
-    init() {
-        super.init(resuseIdentifier: SettingTableViewCell.REUSE_ID)
+    private var data: SettingList
+    
+    init(data: SettingList) {
+        self.data = data
+        
+        super.init(resuseIdentifier: SettingTableViewCell.className)
         
         addSubViews(views: [titleLabel, descLabel, arrowImageView])
         setConstraints()
     }
     
-    override func setConstraints() {
-        super.setConstraints()
-        
+    func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(30)
@@ -48,6 +48,16 @@ class SettingTableViewCell: HJTableViewCell {
             make.centerY.equalTo(self.descLabel)
             make.trailing.equalTo(self.descLabel)
             make.width.height.equalTo(15)
+        }
+    }
+    
+    func updateCell() {
+        titleLabel.text = data.rawValue
+        
+        if let text = data.descText {
+            descLabel.isHidden = false
+            arrowImageView.isHidden = true
+            descLabel.text = text
         }
     }
     

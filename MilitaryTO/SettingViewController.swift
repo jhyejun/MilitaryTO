@@ -75,14 +75,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = SettingTableViewCell()
-        cell.titleLabel.text = items[indexPath.row].rawValue
-        
-        if let text = items[indexPath.row].descText {
-            cell.descLabel.isHidden = false
-            cell.arrowImageView.isHidden = true
-            cell.descLabel.text = text
-        }
+        let cell = SettingTableViewCell(data: items[indexPath.row])
+        cell.updateCell()
         
         return cell
     }

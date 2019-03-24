@@ -8,7 +8,11 @@
 
 import Foundation
 
-class HJTableViewCell: UITableViewCell, SetAutoLayout {
+protocol UpdatableTableViewCell {
+    func updateCell()
+}
+
+class HJTableViewCell: UITableViewCell {
     init(resuseIdentifier: String) {
         super.init(style: .default, reuseIdentifier: resuseIdentifier)
         
@@ -19,10 +23,6 @@ class HJTableViewCell: UITableViewCell, SetAutoLayout {
         views.forEach {
             self.contentView.addSubview($0)
         }
-    }
-    
-    func setConstraints() {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
