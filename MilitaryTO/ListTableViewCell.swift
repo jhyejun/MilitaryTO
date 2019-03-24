@@ -8,20 +8,35 @@
 
 import Foundation
 
-class ListTableViewCell: HJTableViewCell {
-    static let REUSE_ID: String = ListTableViewCell.className
+class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
+    private let titleLabel: UILabel = UILabel().then {
+        $0.textColor = .flatBlack
+        $0.font = $0.font.withSize(17)
+    }
     
-    init() {
-        super.init(resuseIdentifier: ListTableViewCell.REUSE_ID)
+    private var data: T?
+    
+    init(data: T?) {
+        super.init(resuseIdentifier: ListTableViewCell.className)
         
+        self.data = data
+        
+        addSubViews(views: [titleLabel])
         setConstraints()
     }
     
-    override func setConstraints() {
-        super.setConstraints()
+    func setConstraints() {
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(30)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateCell() {
+        
     }
 }

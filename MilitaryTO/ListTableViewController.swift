@@ -13,13 +13,13 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
         $0.separatorStyle = .none
     }
     
-    private var data: Results<T>?
+    private var data: [T]? = []
 
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
         self.navigationItem.title = title
-        data = databaseManager().read(T.self)
+        data = databaseManager().read(T.self)?.compactMap { $0 as T }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,6 +54,9 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell(style: .default, reuseIdentifier: "TEST")
+        let cell = ListTableViewCell<T>(data: data?[indexPath.row])
+        cell.updateCell()
+        
+        return cell
     }
 }
