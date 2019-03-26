@@ -15,11 +15,13 @@ class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, Set
     }
     
     private var data: T?
+    private var kind: MilitaryServiceKind?
     
-    init(data: T?) {
+    init(data: T?, kind: MilitaryServiceKind?) {
         super.init(resuseIdentifier: ListTableViewCell.className)
         
         self.data = data
+        self.kind = kind
         
         addSubViews(views: [titleLabel])
         setConstraints()
@@ -37,6 +39,15 @@ class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, Set
     }
     
     func updateCell() {
+        guard let safeKind = kind else { return }
         
+        switch safeKind {
+        case .Industry:
+            guard let industryData = data as? Industry else { return }
+            titleLabel.text = industryData.name
+        case .Professional:
+            guard let professionalData = data as? Professional else { return }
+            titleLabel.text = professionalData.className
+        }
     }
 }
