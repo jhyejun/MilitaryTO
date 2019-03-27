@@ -100,7 +100,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             self.present(builder: vc)
         } else if items[indexPath.row] == .opensource_license {
             let vc = CarteViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.push(viewController: vc)
         }
     }
 }

@@ -30,7 +30,7 @@ class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, Set
     func setConstraints() {
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(30)
+            make.leading.equalToSuperview().inset(10)
         }
     }
     

@@ -9,6 +9,10 @@
 import Foundation
 
 extension UIViewController {
+    func push(viewController vc: UIViewController, animated: Bool = true) {
+        self.navigationController?.pushViewController(vc, animated: animated)
+    }
+    
     func present(builder: AlertBuilder, animated: Bool = true, completion: (() -> Void)? = nil) {
         present(builder.controller, animated: animated, completion: completion)
     }
