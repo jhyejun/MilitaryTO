@@ -37,6 +37,7 @@
 		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
 		CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBAB69520724B0500CCF96A /* Main.storyboard */; };
 		CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FC7224B65610000D701 /* UITextField+ext.swift */; };
+		CBC46FCC224B74020000D701 /* Military.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FCB224B74020000D701 /* Military.swift */; };
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBBAB69520724B0500CCF96A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CBC46FC7224B65610000D701 /* UITextField+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
+		CBC46FCB224B74020000D701 /* Military.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Military.swift; sourceTree = "<group>"; };
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 		CB702C64222EB47600C03747 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBC46FCB224B74020000D701 /* Military.swift */,
 				CB702C3C22256C8B00C03747 /* Industry.swift */,
 				CB702C6822313E7900C03747 /* Professional.swift */,
 			);
@@ -606,6 +609,7 @@
 				CB702C57222D5EA700C03747 /* Global.swift in Sources */,
 				CBAAFDAC223AC55600C1D928 /* HJTableViewCell.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
+				CBC46FCC224B74020000D701 /* Military.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,

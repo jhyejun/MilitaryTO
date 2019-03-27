@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate, UITableViewDataSource {
+class ListTableViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource {
     private let searchTextField: UITextField = UITextField().then {
         $0.placeholder = "업체명 검색"
         $0.setLeftPadding(10)
@@ -25,9 +25,17 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
         $0.separatorStyle = .none
     }
+    private let emptyLabel: UILabel = UILabel().then {
+        $0.text = "검색 결과가 없습니다."
+        $0.textColor = .flatBlack
+        $0.font = $0.font.withSize(20)
+        $0.isHidden = true
+    }
     
     private var data: [T]?
     private var kind: MilitaryServiceKind?
+    
+    private let disposeBag: DisposeBag = DisposeBag()
 
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
@@ -44,10 +52,12 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        addSubViews(views: [searchTextField, filterButton, tableView])
+        addSubViews(views: [searchTextField, filterButton, tableView, emptyLabel])
         setConstraints()
     }
     
@@ -71,14 +81,26 @@ class ListTableViewController<T: Object>: HJViewController, UITableViewDelegate,
             make.top.equalTo(searchTextField.snp.bottom)
             make.leading.trailing.bottomMargin.equalToSuperview()
         }
+        
+        emptyLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(tableView)
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        DEBUG_LOG(searchTextField)
-        DEBUG_LOG(filterButton)
+    @objc func textFieldEditingChanged(_ sender: UITextField) {
+        sender.rx.text
+            .orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter { $0.isNotEmpty }
+            .subscribe { [weak self] eventString in
+                guard let self = self, let text = eventString.element else { return }
+                self.data = self.data?.filter { $0.name?.contains(text) ?? false }
+                self.tableView.reloadData()
+            }
+            .disposed(by: disposeBag)
     }
+    
     
     // TableView Delegate & DataSource
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
+class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
     private let titleLabel: UILabel = UILabel().then {
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
@@ -43,11 +43,9 @@ class ListTableViewCell<T: Object>: HJTableViewCell, UpdatableTableViewCell, Set
         
         switch safeKind {
         case .Industry:
-            guard let industryData = data as? Industry else { return }
-            titleLabel.text = industryData.name
+            titleLabel.text = data?.name
         case .Professional:
-            guard let professionalData = data as? Professional else { return }
-            titleLabel.text = professionalData.className
+            titleLabel.text = data?.className
         }
     }
 }

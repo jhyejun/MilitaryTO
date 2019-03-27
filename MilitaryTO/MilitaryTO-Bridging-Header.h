@@ -4,6 +4,9 @@
 
 // 각 개별 파일별로 import 안 하고 전역에서 사용할 수 있도록
 @import Then;
+@import RxSwift;
+@import RxCocoa;
+
 @import SnapKit;
 @import ChameleonFramework;
 
