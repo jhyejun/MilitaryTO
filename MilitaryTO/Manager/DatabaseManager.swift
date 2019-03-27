@@ -27,6 +27,10 @@ class DatabaseManager {
         return realm.objects(T.self)
     }
     
+    func read<T: Military>(_ type: T.Type, query: NSPredicate) -> Results<T>? {
+        return read(type)?.filter(query)
+    }
+    
     func write(_ object: Military) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")

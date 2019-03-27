@@ -11,6 +11,7 @@ import UIKit
 class ListTableViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource {
     private let searchTextField: UITextField = UITextField().then {
         $0.placeholder = "업체명 검색"
+        $0.font = $0.font?.withSize(15)
         $0.setLeftPadding(10)
         $0.setCornerRadius(5)
         $0.setBorder(color: .flatGray, width: 0.5)
@@ -52,6 +53,9 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
+        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
+        
         searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         
         tableView.delegate = self
@@ -83,7 +87,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         }
         
         emptyLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(tableView)
+            make.centerX.equalTo(tableView)
+            make.centerY.equalToSuperview().multipliedBy(0.7)
         }
     }
     
@@ -92,13 +97,23 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             .orEmpty
             .debounce(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .filter { $0.isNotEmpty }
+            .filter {
+                if $0.isEmpty {
+                    self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
+                    self.tableView.reloadData()
+                }
+                return $0.isNotEmpty
+            }
             .subscribe { [weak self] eventString in
-                guard let self = self, let text = eventString.element else { return }
-                self.data = self.data?.filter { $0.name?.contains(text) ?? false }
+                guard let self = self, let name = eventString.element else { return }
+                self.data = databaseManager().read(T.self, query: NSPredicate(format: "name CONTAINS[c] %@", name))?.compactMap { $0 as T }
                 self.tableView.reloadData()
             }
             .disposed(by: disposeBag)
+    }
+    
+    @objc func textFieldEndEditing(_ sender: UITapGestureRecognizer) {
+        searchTextField.endEditing(true)
     }
     
     
@@ -108,6 +123,11 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let data = self.data {
+            tableView.isHidden = data.isEmpty
+            emptyLabel.isHidden = data.isNotEmpty
+        }
+
         return data?.count ?? 0
     }
     
