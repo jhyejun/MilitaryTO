@@ -18,7 +18,7 @@ class DatabaseManager {
         realm = try? Realm()
     }
     
-    func read<T: Object>(_ type: T.Type) -> Results<T>? {
+    func read<T: Military>(_ type: T.Type) -> Results<T>? {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return nil
@@ -27,7 +27,11 @@ class DatabaseManager {
         return realm.objects(T.self)
     }
     
-    func write(_ object: Object) {
+    func read<T: Military>(_ type: T.Type, query: NSPredicate) -> Results<T>? {
+        return read(type)?.filter(query)
+    }
+    
+    func write(_ object: Military) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
@@ -42,7 +46,7 @@ class DatabaseManager {
         }
     }
     
-    func write(_ objects: [Object]) {
+    func write(_ objects: [Military]) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
@@ -59,7 +63,7 @@ class DatabaseManager {
         }
     }
     
-    func delete(_ object: Object) {
+    func delete(_ object: Military) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
@@ -74,7 +78,7 @@ class DatabaseManager {
         }
     }
     
-    private func delete<T: Object>(_ type: T.Type) {
+    private func delete<T: Military>(_ type: T.Type) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
@@ -106,15 +110,15 @@ class DatabaseManager {
         }
     }
     
-    func isEmpty<T: Object>(_ type: T.Type) -> Bool {
-        if let data = read(T.self), data.isEmpty {
-            return true
-        } else {
+    func isEmpty<T: Military>(_ type: T.Type) -> Bool {
+        if let data = read(T.self), data.isNotEmpty {
             return false
+        } else {
+            return true
         }
     }
     
-    func isNotEmpty<T: Object>(_ type: T.Type) -> Bool {
+    func isNotEmpty<T: Military>(_ type: T.Type) -> Bool {
         return !isEmpty(T.self)
     }
 }

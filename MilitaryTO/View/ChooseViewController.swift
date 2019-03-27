@@ -126,7 +126,7 @@ class ChooseViewController: HJViewController {
     
     @objc func didTappedSettingButton(_ sender: UIBarButtonItem) {
         let vc = SettingViewController("설정")
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.push(viewController: vc)
     }
     
     private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
@@ -168,10 +168,10 @@ class ChooseViewController: HJViewController {
         switch kind {
         case .Industry:
             let vc = ListTableViewController<Industry>(title, kind)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.push(viewController: vc)
         case .Professional:
             let vc = ListTableViewController<Professional>(title, kind)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.push(viewController: vc)
         }
     }
 }

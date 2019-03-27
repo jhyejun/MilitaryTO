@@ -9,12 +9,10 @@
 import Foundation
 import ObjectMapper
 
-class Professional: Object, Mappable {
+class Professional: Military, Mappable {
     required convenience init?(map: Map) {
         self.init()
     }
-    
-    @objc dynamic var idx: Int = 0
     
     override static func primaryKey() -> String? {
         return "idx"

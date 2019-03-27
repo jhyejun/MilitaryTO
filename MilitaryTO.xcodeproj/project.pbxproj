@@ -36,6 +36,8 @@
 		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
 		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
 		CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBAB69520724B0500CCF96A /* Main.storyboard */; };
+		CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FC7224B65610000D701 /* UITextField+ext.swift */; };
+		CBC46FCC224B74020000D701 /* Military.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FCB224B74020000D701 /* Military.swift */; };
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOUITests.swift; sourceTree = "<group>"; };
 		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBBAB69520724B0500CCF96A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CBC46FC7224B65610000D701 /* UITextField+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
+		CBC46FCB224B74020000D701 /* Military.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Military.swift; sourceTree = "<group>"; };
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,8 +160,9 @@
 		CB702C44222D473300C03747 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CB3E732922380431000E5E0B /* UIViewController+ext.swift */,
 				CB702C42222D46D600C03747 /* UIView+ext.swift */,
+				CB3E732922380431000E5E0B /* UIViewController+ext.swift */,
+				CBC46FC7224B65610000D701 /* UITextField+ext.swift */,
 				CB702C4D222D4DD300C03747 /* UIColor+ext.swift */,
 				CB9003F1223104070091F351 /* Collection+ext.swift */,
 				CBAAFDB4223AC9C100C1D928 /* NSObject+ext.swift */,
@@ -178,6 +183,7 @@
 		CB702C64222EB47600C03747 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBC46FCB224B74020000D701 /* Military.swift */,
 				CB702C3C22256C8B00C03747 /* Industry.swift */,
 				CB702C6822313E7900C03747 /* Professional.swift */,
 			);
@@ -242,11 +248,7 @@
 				CBB120F4201F185D000DC061 /* Info.plist */,
 				CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */,
 				CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */,
-				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
-				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
-				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
-				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
-				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
+				CBC46FC0224B47220000D701 /* View */,
 				CB9003F0223100E30091F351 /* Global */,
 				CB9003EF223100C90091F351 /* Util */,
 				CB702C64222EB47600C03747 /* Model */,
@@ -273,6 +275,26 @@
 				CBB1210A201F185D000DC061 /* Info.plist */,
 			);
 			path = MilitaryTOUITests;
+			sourceTree = "<group>";
+		};
+		CBC46FC0224B47220000D701 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBC46FC1224B473D0000D701 /* Cell */,
+				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
+				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
+				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBC46FC1224B473D0000D701 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
+				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,14 +479,18 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
 			name = "[Carte] Post Script";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post";
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post\n";
 			showEnvVarsInLog = 0;
 		};
 		B4DB8A5F7F96924FE6FD9864 /* [CP] Embed Pods Frameworks */ = {
@@ -526,21 +552,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbuildDay=$(/usr/libexec/PlistBuddy -c \"Print buildDay\" \"$INFOPLIST_FILE\")\nbuildCount=$(/usr/libexec/PlistBuddy -c \"Print buildCount\" \"$INFOPLIST_FILE\")\ntoday=$(date +%Y%m%d)\n\nif [ x$buildDay == x ]; then\nbuildDay=${today}\nbuildCount=1\nbuildNumber=${buildDay}${buildCount}\n\n/usr/libexec/PlistBuddy -c \"Add :buildDay string $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Add :buildCount string $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelif [ $buildDay != $today ]; then\nbuildDay=${today}\nbuildCount=1\nbuildNumber=${buildDay}${buildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelse\nbuildCount=$(($buildCount + 1))\nbuildNumber=${buildDay}${buildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nfi\n";
+			shellScript = "#!/bin/bash\nbuildDay=$(/usr/libexec/PlistBuddy -c \"Print buildDay\" \"$INFOPLIST_FILE\")\nbuildCount=$(/usr/libexec/PlistBuddy -c \"Print buildCount\" \"$INFOPLIST_FILE\")\ntoday=$(date +%Y%m%d)\n\nif [ x$buildDay == x ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Add :buildDay string $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Add :buildCount string $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelif [ $buildDay != $today ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelse\nbuildCount=$(($buildCount + 1))\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nfi\n";
 		};
 		E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
 			name = "[Carte] Pre Script";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre";
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre\n";
 			showEnvVarsInLog = 0;
 		};
 		EB448AB724F1E1A1831BA45A /* [CP] Check Pods Manifest.lock */ = {
@@ -569,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBB120E9201F185D000DC061 /* AppDelegate.swift in Sources */,
+				CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */,
 				CBAAFDB5223AC9C100C1D928 /* NSObject+ext.swift in Sources */,
 				CB702C46222D484200C03747 /* HJViewController.swift in Sources */,
 				CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */,
@@ -578,6 +609,7 @@
 				CB702C57222D5EA700C03747 /* Global.swift in Sources */,
 				CBAAFDAC223AC55600C1D928 /* HJTableViewCell.swift in Sources */,
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
+				CBC46FCC224B74020000D701 /* Military.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
