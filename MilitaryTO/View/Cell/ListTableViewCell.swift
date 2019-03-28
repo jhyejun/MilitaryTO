@@ -9,7 +9,19 @@
 import Foundation
 
 class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
-    private let titleLabel: UILabel = UILabel().then {
+    private let nameLabel: UILabel = UILabel().then {
+        $0.backgroundColor = .black
+        $0.textColor = .flatBlack
+        $0.font = $0.font.withSize(17)
+    }
+    private let totalTOLabel: UILabel = UILabel().then {
+        $0.backgroundColor = .red
+        $0.textColor = .flatBlack
+        $0.font = $0.font.withSize(17)
+    }
+    private let arrowLabel: UILabel = UILabel().then {
+        $0.backgroundColor = .blue
+        $0.text = ">"
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
     }
@@ -23,14 +35,26 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         self.data = data
         self.kind = kind
         
-        addSubViews(views: [titleLabel])
+        addSubViews(views: [nameLabel, totalTOLabel, arrowLabel])
         setConstraints()
     }
     
     func setConstraints() {
-        titleLabel.snp.makeConstraints { (make) in
+        nameLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(10)
+        }
+        
+        totalTOLabel.setContentHuggingPriority(.init(800), for: .horizontal)
+        totalTOLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(nameLabel)
+            make.leading.equalTo(nameLabel.snp.trailing).offset(10)
+        }
+        
+        arrowLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(totalTOLabel)
+            make.leading.equalTo(totalTOLabel.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().inset(20)
         }
     }
     
@@ -43,9 +67,12 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         
         switch safeKind {
         case .Industry:
-            titleLabel.text = data?.name
+            guard let data = self.data as? Industry else { return }
+//            nameLabel.text = data.name
+            nameLabel.text = "TESTccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            totalTOLabel.text = String(data.totalTO)
         case .Professional:
-            titleLabel.text = data?.className
+            nameLabel.text = data?.name
         }
     }
 }
