@@ -25,6 +25,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     private let tableView: HJTableView = HJTableView().then {
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
         $0.separatorStyle = .singleLine
+        $0.tableFooterView = UIView()
     }
     private let emptyLabel: UILabel = UILabel().then {
         $0.text = "검색 결과가 없습니다."

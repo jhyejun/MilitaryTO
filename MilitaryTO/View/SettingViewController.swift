@@ -37,6 +37,7 @@ enum SettingList: String, CaseIterable {
 class SettingViewController: HJViewController {
     private let tableView: HJTableView = HJTableView().then {
         $0.separatorStyle = .singleLine
+        $0.tableFooterView = UIView()
     }
     private let items: [SettingList] = SettingList.allCases
     

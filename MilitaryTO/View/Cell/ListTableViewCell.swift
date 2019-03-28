@@ -13,6 +13,14 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
     }
+    private let kindLabel: UILabel = UILabel().then {
+        $0.textColor = .darkGray
+        $0.font = $0.font.withSize(15)
+    }
+    private let locationLabel: UILabel = UILabel().then {
+        $0.textColor = .darkGray
+        $0.font = $0.font.withSize(15)
+    }
     private let totalTOLabel: UILabel = UILabel().then {
         $0.textColor = .darkGray
         $0.font = $0.font.withSize(15)
@@ -30,18 +38,28 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         separatorInset = .zero
         accessoryType = .disclosureIndicator
         
-        addSubViews(views: [nameLabel, totalTOLabel])
+        addSubViews(views: [nameLabel, kindLabel, locationLabel, totalTOLabel])
         setConstraints()
     }
     
     func setConstraints() {
         nameLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalToSuperview().inset(10)
+            make.top.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        kindLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(6)
+            make.leading.trailing.equalTo(nameLabel)
+        }
+        
+        locationLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(kindLabel.snp.bottom).offset(3)
+            make.leading.trailing.equalTo(kindLabel)
         }
         
         totalTOLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(6)
-            make.leading.trailing.equalTo(nameLabel)
+            make.top.equalTo(locationLabel.snp.bottom).offset(3)
+            make.leading.trailing.equalTo(locationLabel)
             make.bottom.equalToSuperview().inset(10)
         }
     }
@@ -56,10 +74,15 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         switch safeKind {
         case .Industry:
             guard let data = self.data as? Industry else { return }
-            nameLabel.text = data.name
+            nameLabel.text = data.name ?? ""
+            kindLabel.text = "업종 : \(data.kind ?? "알 수 없음")"
+            locationLabel.text = "소재지 : \(data.location ?? "알 수 없음")"
             totalTOLabel.text = "총 배정인원(현역) : \(String(data.totalTO))"
         case .Professional:
             nameLabel.text = data?.name
+            kindLabel.text = "업종 : \(data?.kind ?? "알 수 없음")"
+            locationLabel.text = "소재지 : \(data?.location ?? "알 수 없음")"
+            totalTOLabel.isHidden = true
         }
     }
 }
