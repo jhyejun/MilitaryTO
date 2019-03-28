@@ -24,7 +24,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     private let tableView: HJTableView = HJTableView().then {
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
-        $0.separatorStyle = .none
+        $0.separatorStyle = .singleLine
     }
     private let emptyLabel: UILabel = UILabel().then {
         $0.text = "검색 결과가 없습니다."
@@ -132,7 +132,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 90.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

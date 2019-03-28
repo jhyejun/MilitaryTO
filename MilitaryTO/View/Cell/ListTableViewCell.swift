@@ -10,20 +10,12 @@ import Foundation
 
 class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
     private let nameLabel: UILabel = UILabel().then {
-        $0.backgroundColor = .black
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
     }
     private let totalTOLabel: UILabel = UILabel().then {
-        $0.backgroundColor = .red
-        $0.textColor = .flatBlack
-        $0.font = $0.font.withSize(17)
-    }
-    private let arrowLabel: UILabel = UILabel().then {
-        $0.backgroundColor = .blue
-        $0.text = ">"
-        $0.textColor = .flatBlack
-        $0.font = $0.font.withSize(17)
+        $0.textColor = .darkGray
+        $0.font = $0.font.withSize(15)
     }
     
     private var data: T?
@@ -35,26 +27,22 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         self.data = data
         self.kind = kind
         
-        addSubViews(views: [nameLabel, totalTOLabel, arrowLabel])
+        separatorInset = .zero
+        accessoryType = .disclosureIndicator
+        
+        addSubViews(views: [nameLabel, totalTOLabel])
         setConstraints()
     }
     
     func setConstraints() {
         nameLabel.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(10)
+            make.top.leading.equalToSuperview().inset(10)
         }
         
-        totalTOLabel.setContentHuggingPriority(.init(800), for: .horizontal)
         totalTOLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(nameLabel)
-            make.leading.equalTo(nameLabel.snp.trailing).offset(10)
-        }
-        
-        arrowLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(totalTOLabel)
-            make.leading.equalTo(totalTOLabel.snp.trailing).offset(10)
-            make.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(6)
+            make.leading.trailing.equalTo(nameLabel)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
@@ -68,9 +56,8 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         switch safeKind {
         case .Industry:
             guard let data = self.data as? Industry else { return }
-//            nameLabel.text = data.name
-            nameLabel.text = "TESTccccccccccccccccccccccccccccccccccccccccccccccccccc"
-            totalTOLabel.text = String(data.totalTO)
+            nameLabel.text = data.name
+            totalTOLabel.text = "총 배정인원(현역) : \(String(data.totalTO))"
         case .Professional:
             nameLabel.text = data?.name
         }
