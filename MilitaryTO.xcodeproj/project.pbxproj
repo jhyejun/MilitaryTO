@@ -35,6 +35,7 @@
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
 		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
 		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
+		CBB1CD84224D450F00892778 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB1CD83224D450F00892778 /* DetailViewController.swift */; };
 		CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBAB69520724B0500CCF96A /* Main.storyboard */; };
 		CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FC7224B65610000D701 /* UITextField+ext.swift */; };
 		CBC46FCC224B74020000D701 /* Military.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FCB224B74020000D701 /* Military.swift */; };
@@ -98,6 +99,7 @@
 		CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilitaryTOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOUITests.swift; sourceTree = "<group>"; };
 		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBB1CD83224D450F00892778 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = MilitaryTO/View/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		CBBAB69520724B0500CCF96A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CBC46FC7224B65610000D701 /* UITextField+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
 		CBC46FCB224B74020000D701 /* Military.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Military.swift; sourceTree = "<group>"; };
@@ -281,9 +283,10 @@
 			isa = PBXGroup;
 			children = (
 				CBC46FC1224B473D0000D701 /* Cell */,
-				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
 				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
+				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
+				CBB1CD83224D450F00892778 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,18 +375,18 @@
 				TargetAttributes = {
 					CBB120E4201F185D000DC061 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Manual;
 					};
 					CBB120F8201F185D000DC061 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CBB120E4201F185D000DC061;
 					};
 					CBB12103201F185D000DC061 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CBB120E4201F185D000DC061;
 					};
@@ -613,6 +616,7 @@
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
+				CBB1CD84224D450F00892778 /* DetailViewController.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
@@ -785,17 +789,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7XZYKQ99YK;
 				INFOPLIST_FILE = MilitaryTO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jhyejun.MilitaryTO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "MilitaryTO Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "MilitaryTO/MilitaryTO-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -806,17 +810,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7XZYKQ99YK;
 				INFOPLIST_FILE = MilitaryTO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jhyejun.MilitaryTO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "MilitaryTO Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "MilitaryTO/MilitaryTO-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -833,7 +837,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilitaryTO.app/MilitaryTO";
 			};
@@ -851,7 +855,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MilitaryTO.app/MilitaryTO";
 			};
@@ -868,7 +872,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MilitaryTO;
 			};
@@ -885,7 +889,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hyejun.MilitaryTOUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MilitaryTO;
 			};

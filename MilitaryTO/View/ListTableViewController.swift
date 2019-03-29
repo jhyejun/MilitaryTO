@@ -24,7 +24,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         $0.setBorder(color: .flatForestGreenDark, width: 0.5)
     }
     private let tableView: HJTableView = HJTableView().then {
-        $0.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: -8)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
         $0.separatorStyle = .singleLine
         $0.tableFooterView = UIView()
     }
@@ -55,8 +55,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
-        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
+//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
+//        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
         
         searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         
@@ -84,7 +84,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchTextField.snp.bottom).offset(8)
+            make.top.equalTo(searchTextField.snp.bottom)
             make.leading.trailing.bottomMargin.equalToSuperview()
         }
         
@@ -143,5 +143,10 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         cell.updateCell()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController(data?[indexPath.row])
+        push(viewController: vc)
     }
 }
