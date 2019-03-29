@@ -36,7 +36,8 @@ enum SettingList: String, CaseIterable {
 
 class SettingViewController: HJViewController {
     private let tableView: HJTableView = HJTableView().then {
-        $0.separatorStyle = .none
+        $0.separatorStyle = .singleLine
+        $0.tableFooterView = UIView()
     }
     private let items: [SettingList] = SettingList.allCases
     
@@ -81,8 +82,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

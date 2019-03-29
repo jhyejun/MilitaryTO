@@ -12,10 +12,40 @@ import ObjectMapper
 class DatabaseManager {
     static let shared = DatabaseManager()
 
+    private var version: UInt64 = 1
     private var realm: Realm? = nil
     
     func initialize() {
+        var config = Realm.Configuration.defaultConfiguration
+        config.schemaVersion = version
+        config.migrationBlock = { [weak self] (migration, oldSchemaVersion) in
+            guard let self = self else { return }
+            
+            if oldSchemaVersion < self.version {
+                self.deleteRealm()
+            }
+        }
+        Realm.Configuration.defaultConfiguration = config
+        
         realm = try? Realm()
+    }
+    
+    private func deleteRealm() {
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        let realmURLs = [
+            realmURL,
+            realmURL.appendingPathExtension("lock"),
+            realmURL.appendingPathExtension("note"),
+            realmURL.appendingPathExtension("management")
+        ]
+        
+        for url in realmURLs {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                // handle error
+            }
+        }
     }
     
     func read<T: Military>(_ type: T.Type) -> Results<T>? {

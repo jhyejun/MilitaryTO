@@ -18,13 +18,15 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     private let filterButton: UIButton = UIButton().then {
         $0.setTitle("필터", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(15)
+        $0.setTitleColor(.flatBlack, for: .normal)
         $0.setCornerRadius(5)
-        $0.backgroundColor = .rgb(0, 122, 255)
+        $0.setBorder(color: .flatForestGreenDark, width: 0.5)
     }
     private let tableView: HJTableView = HJTableView().then {
-        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
-        $0.separatorStyle = .none
+        $0.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: -8)
+        $0.separatorStyle = .singleLine
+        $0.tableFooterView = UIView()
     }
     private let emptyLabel: UILabel = UILabel().then {
         $0.text = "검색 결과가 없습니다."
@@ -82,7 +84,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchTextField.snp.bottom)
+            make.top.equalTo(searchTextField.snp.bottom).offset(8)
             make.leading.trailing.bottomMargin.equalToSuperview()
         }
         
@@ -97,18 +99,19 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             .orEmpty
             .debounce(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .filter {
-                if $0.isEmpty {
+            .do(onNext: { (name) in
+                if name.isEmpty {
                     self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
                     self.tableView.reloadData()
                 }
-                return $0.isNotEmpty
-            }
-            .subscribe { [weak self] eventString in
-                guard let self = self, let name = eventString.element else { return }
+            })
+            .filter { $0.isNotEmpty }
+            .subscribe(onNext: { [weak self] (name) in
+                guard let self = self else { return }
+                
                 self.data = databaseManager().read(T.self, query: NSPredicate(format: "name CONTAINS[c] %@", name))?.compactMap { $0 as T }
                 self.tableView.reloadData()
-            }
+            })
             .disposed(by: disposeBag)
     }
     
@@ -132,7 +135,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 90.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

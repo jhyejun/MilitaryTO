@@ -18,9 +18,6 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
         $0.textColor = .black
         $0.font = $0.font.withSize(17)
     }
-    private let arrowImageView: UIImageView = UIImageView().then {
-        $0.image = #imageLiteral(resourceName: "icon-arrow.png")
-    }
     
     private var data: SettingList
     
@@ -29,7 +26,10 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
         
         super.init(resuseIdentifier: SettingTableViewCell.className)
         
-        addSubViews(views: [titleLabel, descLabel, arrowImageView])
+        separatorInset = .zero
+        accessoryType = .disclosureIndicator
+        
+        addSubViews(views: [titleLabel, descLabel])
         setConstraints()
     }
     
@@ -43,12 +43,6 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
             make.centerY.equalTo(self.titleLabel)
             make.trailing.equalToSuperview().inset(30)
         }
-        
-        arrowImageView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.descLabel)
-            make.trailing.equalTo(self.descLabel)
-            make.width.height.equalTo(15)
-        }
     }
     
     func updateCell() {
@@ -56,7 +50,7 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
         
         if let text = data.descText {
             descLabel.isHidden = false
-            arrowImageView.isHidden = true
+            accessoryType = .none
             descLabel.text = text
         }
     }
