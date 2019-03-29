@@ -18,9 +18,10 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     private let filterButton: UIButton = UIButton().then {
         $0.setTitle("필터", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(15)
+        $0.setTitleColor(.flatBlack, for: .normal)
         $0.setCornerRadius(5)
-        $0.backgroundColor = .rgb(0, 122, 255)
+        $0.setBorder(color: .flatForestGreenDark, width: 0.5)
     }
     private let tableView: HJTableView = HJTableView().then {
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
