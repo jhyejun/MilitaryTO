@@ -36,12 +36,12 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
     func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(30)
+            make.leading.equalToSuperview().inset(10)
         }
         
         descLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.titleLabel)
-            make.trailing.equalToSuperview().inset(30)
+            make.trailingMargin.equalToSuperview().inset(10)
         }
     }
     
