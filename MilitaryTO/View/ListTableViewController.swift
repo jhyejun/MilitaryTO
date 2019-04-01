@@ -35,6 +35,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         $0.isHidden = true
     }
     
+    private var navigationTitle: String?
     private var data: [T]?
     private var kind: MilitaryServiceKind?
     
@@ -43,7 +44,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
-        self.navigationItem.title = title
+        self.navigationTitle = title
         self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
         self.kind = kind
     }
@@ -55,16 +56,20 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
-//        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
-        
         searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        filterButton.addTarget(self, action: #selector(touchedFilterButton(_:)), for: .touchUpInside)
         
         tableView.delegate = self
         tableView.dataSource = self
         
         addSubViews(views: [searchTextField, filterButton, tableView, emptyLabel])
         setConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = navigationTitle
     }
     
     override func setConstraints() {
@@ -115,8 +120,9 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             .disposed(by: disposeBag)
     }
     
-    @objc func textFieldEndEditing(_ sender: UITapGestureRecognizer) {
-        searchTextField.endEditing(true)
+    @objc func touchedFilterButton(_ sender: UIButton) {
+        let vc = FilterViewController()
+        push(viewController: vc)
     }
     
     
@@ -147,6 +153,11 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController(data?[indexPath.row])
+        searchTextField.endEditing(true)
         push(viewController: vc)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchTextField.endEditing(true)
     }
 }

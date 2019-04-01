@@ -40,6 +40,7 @@
 		CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FC7224B65610000D701 /* UITextField+ext.swift */; };
 		CBC46FCC224B74020000D701 /* Military.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FCB224B74020000D701 /* Military.swift */; };
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
+		CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA641F225272CB00288FD5 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		CBC46FC7224B65610000D701 /* UITextField+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
 		CBC46FCB224B74020000D701 /* Military.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Military.swift; sourceTree = "<group>"; };
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CBFA641F225272CB00288FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
 				CBB1CD83224D450F00892778 /* DetailViewController.swift */,
+				CBFA641F225272CB00288FD5 /* FilterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
+				CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
