@@ -346,6 +346,7 @@
 				6F09AC68488332B30709BADD /* [Carte] Post Script */,
 				CBB12116201F188F000DC061 /* ShellScript */,
 				B4DB8A5F7F96924FE6FD9864 /* [CP] Embed Pods Frameworks */,
+				CBFA642122538BAA00288FD5 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -587,6 +588,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildDay=$(/usr/libexec/PlistBuddy -c \"Print buildDay\" \"$INFOPLIST_FILE\")\nbuildCount=$(/usr/libexec/PlistBuddy -c \"Print buildCount\" \"$INFOPLIST_FILE\")\ntoday=$(date +%Y%m%d)\n\nif [ x$buildDay == x ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Add :buildDay string $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Add :buildCount string $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelif [ $buildDay != $today ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelse\nbuildCount=$(($buildCount + 1))\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nfi\n";
+		};
+		CBFA642122538BAA00288FD5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a486f53c4b40fd1d45a1d3c70a54705258d3be6e a90a43b616dda6a308fcd2ba9eec940e80bd6d6eafb50a30dfb053f49a89b0ee\n";
 		};
 		E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */ = {
 			isa = PBXShellScriptBuildPhase;
