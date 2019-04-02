@@ -72,6 +72,12 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         navigationItem.title = navigationTitle
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchTextField.endEditing(true)
+    }
+    
     override func setConstraints() {
         super.setConstraints()
         
@@ -90,7 +96,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(searchTextField.snp.bottom)
-            make.leading.trailing.bottomMargin.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottomMargin.equalToSuperview()
         }
         
         emptyLabel.snp.makeConstraints { (make) in
@@ -121,8 +128,13 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     @objc func touchedFilterButton(_ sender: UIButton) {
-        let vc = FilterViewController()
-        push(viewController: vc)
+        if T.self as? Industry.Type != nil {
+            let vc = IndustryFilterViewController()
+            push(viewController: vc)
+        } else if T.self as? Professional.Type != nil {
+            let vc = ProfessionalFilterViewController()
+            push(viewController: vc)
+        }
     }
     
     
@@ -152,9 +164,13 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController(data?[indexPath.row])
-        searchTextField.endEditing(true)
-        push(viewController: vc)
+        if let data = data?[indexPath.row] as? Industry {
+            let vc = IndustryDetailViewController(data)
+            push(viewController: vc)
+        } else if let data = data?[indexPath.row] as? Professional {
+            let vc = ProfessionalDetailViewController(data)
+            push(viewController: vc)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

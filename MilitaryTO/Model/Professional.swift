@@ -30,7 +30,7 @@ enum ProfessionalKey: String, CaseIterable {
         return self.rawValue
     }
     
-    static var cases: [IndustryKey] {
+    static var cases: [ProfessionalKey] {
         return allCases
     }
 }
