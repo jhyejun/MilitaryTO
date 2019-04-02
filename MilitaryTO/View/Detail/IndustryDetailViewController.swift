@@ -9,6 +9,10 @@
 import Foundation
 
 class IndustryDetailViewController: DetailViewController {
+    private let stackView: UIStackView = UIStackView().then {
+        $0.axis = .vertical
+    }
+    
     private var data: Industry?
     
     init(_ data: Industry) {
@@ -23,5 +27,19 @@ class IndustryDetailViewController: DetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nameLabel: UILabel = UILabel().then {
+            $0.text = data?.name
+            $0.textColor = .flatBlack
+            $0.font = $0.font.withSize(20)
+        }
+        
+        stackView.addArrangedSubview(nameLabel)
+        IndustryKey.cases.forEach { key in
+            let view = UIView()
+            let descriptionLabel = UILabel().then {
+                $0.text = key.keyString
+            }
+        }
     }
 }

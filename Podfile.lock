@@ -35,27 +35,6 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
-  - FontAwesomeKit (2.2.1):
-    - FontAwesomeKit/Core (= 2.2.1)
-    - FontAwesomeKit/FontAwesome (= 2.2.1)
-    - FontAwesomeKit/FoundationIcons (= 2.2.1)
-    - FontAwesomeKit/IonIcons (= 2.2.1)
-    - FontAwesomeKit/Material (= 2.2.1)
-    - FontAwesomeKit/Octicons (= 2.2.1)
-    - FontAwesomeKit/Zocial (= 2.2.1)
-  - FontAwesomeKit/Core (2.2.1)
-  - FontAwesomeKit/FontAwesome (2.2.1):
-    - FontAwesomeKit/Core
-  - FontAwesomeKit/FoundationIcons (2.2.1):
-    - FontAwesomeKit/Core
-  - FontAwesomeKit/IonIcons (2.2.1):
-    - FontAwesomeKit/Core
-  - FontAwesomeKit/Material (2.2.1):
-    - FontAwesomeKit/Core
-  - FontAwesomeKit/Octicons (2.2.1):
-    - FontAwesomeKit/Core
-  - FontAwesomeKit/Zocial (2.2.1):
-    - FontAwesomeKit/Core
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -112,7 +91,6 @@ DEPENDENCIES:
   - Fabric
   - Firebase/Core
   - Firebase/Database
-  - FontAwesomeKit (~> 2.2.0)
   - iRate
   - NVActivityIndicatorView
   - ObjectMapper
@@ -134,7 +112,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
-    - FontAwesomeKit
     - GoogleAppMeasurement
     - GoogleUtilities
     - iRate
@@ -171,7 +148,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
   FirebaseDatabase: 2c15b0ea6f2c6eb5e57413f9d6340f1e50b81ae3
   FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
-  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
@@ -188,6 +164,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 8c9cb124f54c7e10f6f309e004627e2d498f485f
+PODFILE CHECKSUM: ae1b36f287632962851dd788d0bfc5657f2fea03
 
 COCOAPODS: 1.6.1

@@ -9,6 +9,23 @@
 import Foundation
 
 class IndustryFilterViewController: FilterViewController {
+    private let kindStackView: UIStackView = UIStackView().then {
+        $0.axis = .horizontal
+    }
+    
+    private var kindUniqueData: [String]?
+    private var locationUniqueData: [String]?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        kindUniqueData = industryDistinct(by: "kind")?.compactMap { $0.kind }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
