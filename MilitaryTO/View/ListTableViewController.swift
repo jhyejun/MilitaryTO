@@ -35,6 +35,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         $0.isHidden = true
     }
     
+    private var navigationTitle: String?
     private var data: [T]?
     private var kind: MilitaryServiceKind?
     
@@ -43,7 +44,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         super.init(nibName: nil, bundle: nil)
         
-        self.navigationItem.title = title
+        self.navigationTitle = title
         self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
         self.kind = kind
     }
@@ -55,16 +56,26 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
-//        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldEndEditing(_:))))
-        
         searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        filterButton.addTarget(self, action: #selector(touchedFilterButton(_:)), for: .touchUpInside)
         
         tableView.delegate = self
         tableView.dataSource = self
         
         addSubViews(views: [searchTextField, filterButton, tableView, emptyLabel])
         setConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = navigationTitle
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchTextField.endEditing(true)
     }
     
     override func setConstraints() {
@@ -85,7 +96,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(searchTextField.snp.bottom)
-            make.leading.trailing.bottomMargin.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottomMargin.equalToSuperview()
         }
         
         emptyLabel.snp.makeConstraints { (make) in
@@ -115,8 +127,14 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             .disposed(by: disposeBag)
     }
     
-    @objc func textFieldEndEditing(_ sender: UITapGestureRecognizer) {
-        searchTextField.endEditing(true)
+    @objc func touchedFilterButton(_ sender: UIButton) {
+        if T.self as? Industry.Type != nil {
+            let vc = IndustryFilterViewController()
+            push(viewController: vc)
+        } else if T.self as? Professional.Type != nil {
+            let vc = ProfessionalFilterViewController()
+            push(viewController: vc)
+        }
     }
     
     
@@ -146,7 +164,16 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController(data?[indexPath.row])
-        push(viewController: vc)
+        if let data = data?[indexPath.row] as? Industry {
+            let vc = IndustryDetailViewController(data)
+            push(viewController: vc)
+        } else if let data = data?[indexPath.row] as? Professional {
+            let vc = ProfessionalDetailViewController(data)
+            push(viewController: vc)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchTextField.endEditing(true)
     }
 }

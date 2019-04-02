@@ -41,7 +41,7 @@ class Industry: Military, Mappable {
     }
 }
 
-enum IndustryKey: String {
+enum IndustryKey: String, CaseIterable {
     case idx = "연번"
     case kind = "업종"
     case scale = "기업규모"
@@ -59,5 +59,9 @@ enum IndustryKey: String {
     
     var keyString: String {
         return self.rawValue
+    }
+    
+    static var cases: [IndustryKey] {
+        return allCases
     }
 }

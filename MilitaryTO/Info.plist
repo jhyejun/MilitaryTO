@@ -19,7 +19,21 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>20190330044</string>
+	<string>20190402017</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>a486f53c4b40fd1d45a1d3c70a54705258d3be6e</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -40,8 +54,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildCount</key>
-	<string>44</string>
+	<string>17</string>
 	<key>buildDay</key>
-	<string>20190330</string>
+	<string>20190402</string>
 </dict>
 </plist>

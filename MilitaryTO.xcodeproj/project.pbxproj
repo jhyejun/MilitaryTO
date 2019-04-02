@@ -35,11 +35,16 @@
 		CBB120F3201F185D000DC061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */; };
 		CBB120FE201F185D000DC061 /* MilitaryTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB120FD201F185D000DC061 /* MilitaryTOTests.swift */; };
 		CBB12109201F185D000DC061 /* MilitaryTOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */; };
-		CBB1CD84224D450F00892778 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB1CD83224D450F00892778 /* DetailViewController.swift */; };
 		CBBAB69620724B0500CCF96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBBAB69520724B0500CCF96A /* Main.storyboard */; };
 		CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FC7224B65610000D701 /* UITextField+ext.swift */; };
 		CBC46FCC224B74020000D701 /* Military.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC46FCB224B74020000D701 /* Military.swift */; };
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
+		CBEB73122252FB880040BF66 /* IndustryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB73112252FB880040BF66 /* IndustryDetailViewController.swift */; };
+		CBEB73142252FC810040BF66 /* ProfessionalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB73132252FC810040BF66 /* ProfessionalDetailViewController.swift */; };
+		CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB73162253010C0040BF66 /* DetailViewController.swift */; };
+		CBEB731A225301930040BF66 /* IndustryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB7319225301930040BF66 /* IndustryFilterViewController.swift */; };
+		CBEB731C225301C60040BF66 /* ProfessionalFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB731B225301C60040BF66 /* ProfessionalFilterViewController.swift */; };
+		CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA641F225272CB00288FD5 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,11 +104,16 @@
 		CBB12104201F185D000DC061 /* MilitaryTOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilitaryTOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB12108201F185D000DC061 /* MilitaryTOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryTOUITests.swift; sourceTree = "<group>"; };
 		CBB1210A201F185D000DC061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBB1CD83224D450F00892778 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = MilitaryTO/View/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		CBBAB69520724B0500CCF96A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CBC46FC7224B65610000D701 /* UITextField+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ext.swift"; sourceTree = "<group>"; };
 		CBC46FCB224B74020000D701 /* Military.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Military.swift; sourceTree = "<group>"; };
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CBEB73112252FB880040BF66 /* IndustryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustryDetailViewController.swift; sourceTree = "<group>"; };
+		CBEB73132252FC810040BF66 /* ProfessionalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalDetailViewController.swift; sourceTree = "<group>"; };
+		CBEB73162253010C0040BF66 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CBEB7319225301930040BF66 /* IndustryFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustryFilterViewController.swift; sourceTree = "<group>"; };
+		CBEB731B225301C60040BF66 /* ProfessionalFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalFilterViewController.swift; sourceTree = "<group>"; };
+		CBFA641F225272CB00288FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -283,10 +293,11 @@
 			isa = PBXGroup;
 			children = (
 				CBC46FC1224B473D0000D701 /* Cell */,
-				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
-				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
 				CB693541221D8CC100AABC61 /* ChooseViewController.swift */,
-				CBB1CD83224D450F00892778 /* DetailViewController.swift */,
+				CBDC166A2239689900DC4DF3 /* SettingViewController.swift */,
+				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
+				CBEB7318225301210040BF66 /* Filter */,
+				CBEB7315225300AC0040BF66 /* Detail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +309,26 @@
 				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CBEB7315225300AC0040BF66 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CBEB73162253010C0040BF66 /* DetailViewController.swift */,
+				CBEB73112252FB880040BF66 /* IndustryDetailViewController.swift */,
+				CBEB73132252FC810040BF66 /* ProfessionalDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CBEB7318225301210040BF66 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				CBFA641F225272CB00288FD5 /* FilterViewController.swift */,
+				CBEB7319225301930040BF66 /* IndustryFilterViewController.swift */,
+				CBEB731B225301C60040BF66 /* ProfessionalFilterViewController.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +346,7 @@
 				6F09AC68488332B30709BADD /* [Carte] Post Script */,
 				CBB12116201F188F000DC061 /* ShellScript */,
 				B4DB8A5F7F96924FE6FD9864 /* [CP] Embed Pods Frameworks */,
+				CBFA642122538BAA00288FD5 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -557,6 +589,24 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildDay=$(/usr/libexec/PlistBuddy -c \"Print buildDay\" \"$INFOPLIST_FILE\")\nbuildCount=$(/usr/libexec/PlistBuddy -c \"Print buildCount\" \"$INFOPLIST_FILE\")\ntoday=$(date +%Y%m%d)\n\nif [ x$buildDay == x ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Add :buildDay string $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Add :buildCount string $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelif [ $buildDay != $today ]; then\nbuildDay=${today}\nbuildCount=1\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nelse\nbuildCount=$(($buildCount + 1))\nprintf -v zeroPadBuildCount \"%03d\" $buildCount\nbuildNumber=${buildDay}${zeroPadBuildCount}\n\n/usr/libexec/PlistBuddy -c \"Set :buildDay $buildDay\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :buildCount $buildCount\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nfi\n";
 		};
+		CBFA642122538BAA00288FD5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a486f53c4b40fd1d45a1d3c70a54705258d3be6e a90a43b616dda6a308fcd2ba9eec940e80bd6d6eafb50a30dfb053f49a89b0ee\n";
+		};
 		E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -605,6 +655,7 @@
 				CBC46FC8224B65610000D701 /* UITextField+ext.swift in Sources */,
 				CBAAFDB5223AC9C100C1D928 /* NSObject+ext.swift in Sources */,
 				CB702C46222D484200C03747 /* HJViewController.swift in Sources */,
+				CBEB731A225301930040BF66 /* IndustryFilterViewController.swift in Sources */,
 				CB702C3F2225707500C03747 /* ListTableViewController.swift in Sources */,
 				CB702C50222D512600C03747 /* HJTableView.swift in Sources */,
 				CB702C4E222D4DD300C03747 /* UIColor+ext.swift in Sources */,
@@ -614,17 +665,21 @@
 				CB693544221D8D8200AABC61 /* Log.swift in Sources */,
 				CBC46FCC224B74020000D701 /* Military.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
+				CBEB731C225301C60040BF66 /* ProfessionalFilterViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
-				CBB1CD84224D450F00892778 /* DetailViewController.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
+				CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */,
+				CBEB73142252FC810040BF66 /* ProfessionalDetailViewController.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
 				CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
+				CBEB73122252FB880040BF66 /* IndustryDetailViewController.swift in Sources */,
+				CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,7 +854,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "MilitaryTO Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "MilitaryTO/MilitaryTO-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -820,7 +875,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "MilitaryTO Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "MilitaryTO/MilitaryTO-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

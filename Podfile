@@ -19,7 +19,6 @@ target 'MilitaryTO' do
   pod 'RxCocoa'
   
   pod 'RealmSwift'
-  
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   
@@ -30,6 +29,8 @@ target 'MilitaryTO' do
   
   pod 'Carte'
   pod 'iRate'
+  pod 'Fabric'
+  pod 'Crashlytics'
   
   post_install do |installer|
     pods_dir = File.dirname(installer.pods_project.path)

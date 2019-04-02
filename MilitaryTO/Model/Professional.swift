@@ -23,10 +23,14 @@ class Professional: Military, Mappable {
     }
 }
 
-enum ProfessionalKey: String {
+enum ProfessionalKey: String, CaseIterable {
     case idx = "연번"
     
     var keyString: String {
         return self.rawValue
+    }
+    
+    static var cases: [ProfessionalKey] {
+        return allCases
     }
 }

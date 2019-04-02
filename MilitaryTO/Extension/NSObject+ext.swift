@@ -16,4 +16,12 @@ extension NSObject {
     var className: String {
         return type(of: self).className
     }
+    
+    var propertyNames: [String] {
+        return Mirror(reflecting: self).children.compactMap { $0.label }
+    }
+    
+    var propertyValues: [Any] {
+        return Mirror(reflecting: self).children.compactMap { $0.value }
+    }
 }
