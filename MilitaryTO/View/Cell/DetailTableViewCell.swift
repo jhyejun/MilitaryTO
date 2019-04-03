@@ -10,10 +10,12 @@ import Foundation
 
 class DetailTableViewCell<T: Military, K>: HJTableViewCell, UpdatableTableViewCell, SetAutoLayout {
     private let keyLabel: UILabel = UILabel().then {
+        $0.numberOfLines = 0
         $0.textColor = .darkGray
         $0.font = $0.font.withSize(15)
     }
     private let valueLabel: UILabel = UILabel().then {
+        $0.numberOfLines = 0
         $0.textColor = .flatBlack
         $0.font = $0.font.withSize(17)
     }
@@ -41,12 +43,14 @@ class DetailTableViewCell<T: Military, K>: HJTableViewCell, UpdatableTableViewCe
     
     func setConstraints() {
         keyLabel.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview().inset(10)
+            make.top.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(10)
         }
         
         valueLabel.snp.makeConstraints { (make) in
             make.top.equalTo(keyLabel.snp.bottom).offset(6)
             make.leading.trailing.equalTo(keyLabel)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
@@ -54,9 +58,11 @@ class DetailTableViewCell<T: Military, K>: HJTableViewCell, UpdatableTableViewCe
         switch kind {
         case .Industry:
             guard let data = self.data as? Industry, let key = self.key as? IndustryKey else { return }
+            keyLabel.text = key.keyString
             valueLabel.text = data.toValue(key: key)
         case .Professional:
             guard let data = self.data as? Professional, let key = self.key as? ProfessionalKey else { return }
+            keyLabel.text = key.keyString
             valueLabel.text = data.toValue(key: key)
         }
     }

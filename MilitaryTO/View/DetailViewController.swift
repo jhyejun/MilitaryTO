@@ -49,6 +49,7 @@ class DetailViewController<T: Military>: HJViewController, UITableViewDelegate, 
         }
     }
     
+    
     // TableView Delegate & DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,9 +58,9 @@ class DetailViewController<T: Military>: HJViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch kind {
         case .Industry:
-            return IndustryKey.allCases.count
+            return IndustryKey.detailCases.count
         case .Professional:
-            return ProfessionalKey.allCases.count
+            return ProfessionalKey.detailCases.count
         }
     }
     
@@ -67,10 +68,38 @@ class DetailViewController<T: Military>: HJViewController, UITableViewDelegate, 
         return 50.0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = DetailTableViewCell<T, K>(key: IndustryKey, data: data, kind: kind)
-        cell.updateCell()
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let nameLabel = UILabel().then {
+            $0.text = data.name
+            $0.textColor = .flatBlack
+            $0.font = $0.font.withSize(28)
+        }
         
-        return cell
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview()
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch kind {
+        case .Industry:
+            let cell = DetailTableViewCell<T, IndustryKey>(key: IndustryKey.detailCases[indexPath.row], data: data, kind: kind)
+            cell.updateCell()
+            return cell
+        case .Professional:
+            let cell = DetailTableViewCell<T, ProfessionalKey>(key: ProfessionalKey.detailCases[indexPath.row], data: data, kind: kind)
+            cell.updateCell()
+            return cell
+        }
     }
 }

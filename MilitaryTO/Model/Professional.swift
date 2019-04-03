@@ -42,7 +42,7 @@ enum ProfessionalKey: String, CaseIterable {
         return self.rawValue
     }
     
-    static var cases: [ProfessionalKey] {
-        return allCases.filter { $0 != .idx }
+    static var detailCases: [ProfessionalKey] {
+        return allCases.filter { $0 != .idx && $0 != .name }
     }
 }

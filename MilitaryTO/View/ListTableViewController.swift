@@ -128,13 +128,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     @objc func touchedFilterButton(_ sender: UIButton) {
-        if T.self as? Industry.Type != nil {
-            let vc = IndustryFilterViewController()
-            push(viewController: vc)
-        } else if T.self as? Professional.Type != nil {
-            let vc = ProfessionalFilterViewController()
-            push(viewController: vc)
-        }
+        let vc = FilterViewController(kind: kind)
+        push(viewController: vc)
     }
     
     

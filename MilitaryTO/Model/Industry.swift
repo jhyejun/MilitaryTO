@@ -15,6 +15,12 @@ protocol KeyToValue {
     func toValue(key: T) -> String?
 }
 
+protocol CustomCase {
+    associatedtype T
+    
+    static var filterCase: [T] { get }
+}
+
 class Industry: Military, Mappable, KeyToValue {
     typealias T = IndustryKey
     
@@ -102,7 +108,11 @@ enum IndustryKey: String, CaseIterable {
         return self.rawValue
     }
     
-    static var cases: [IndustryKey] {
-        return allCases.filter { $0 != .idx }
+    static var filterCases: [IndustryKey] {
+        return allCases.filter { $0 == .idx || $0 == .location }
+    }
+    
+    static var detailCases: [IndustryKey] {
+        return allCases.filter { $0 != .idx && $0 != .name }
     }
 }
