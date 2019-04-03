@@ -37,16 +37,16 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     
     private var navigationTitle: String?
     private var data: [T]?
-    private var kind: MilitaryServiceKind?
+    private var kind: MilitaryServiceKind
     
     private let disposeBag: DisposeBag = DisposeBag()
 
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
-        super.init(nibName: nil, bundle: nil)
-        
         self.navigationTitle = title
         self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
         self.kind = kind
+        
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -128,13 +128,8 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     @objc func touchedFilterButton(_ sender: UIButton) {
-        if T.self as? Industry.Type != nil {
-            let vc = IndustryFilterViewController()
-            push(viewController: vc)
-        } else if T.self as? Professional.Type != nil {
-            let vc = ProfessionalFilterViewController()
-            push(viewController: vc)
-        }
+        let vc = FilterViewController(kind: kind)
+        push(viewController: vc)
     }
     
     
@@ -157,20 +152,30 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ListTableViewCell<T>(data: data?[indexPath.row], kind: kind)
-        cell.updateCell()
-        
-        return cell
+        if let data = data?[indexPath.row] {
+            let cell = ListTableViewCell<T>(data: data, kind: kind)
+            cell.updateCell()
+            
+            return cell
+        } else {
+            assertionFailure("ListTableViewController : data?[indexPath.row] is nil")
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let data = data?[indexPath.row] as? Industry {
-            let vc = IndustryDetailViewController(data)
-            push(viewController: vc)
-        } else if let data = data?[indexPath.row] as? Professional {
-            let vc = ProfessionalDetailViewController(data)
+        if let data = data?[indexPath.row] {
+            let vc = DetailViewController(data, kind)
             push(viewController: vc)
         }
+        
+//        if let data = data?[indexPath.row] as? Industry {
+//            let vc = IndustryDetailViewController(data)
+//            push(viewController: vc)
+//        } else if let data = data?[indexPath.row] as? Professional {
+//            let vc = ProfessionalDetailViewController(data)
+//            push(viewController: vc)
+//        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -31,7 +31,7 @@ enum SettingList: String, CaseIterable {
     var descText: String? {
         switch self {
         case .app_version:
-            return myUserDefaults.string(forKey: FirebaseDatabaseVersion.app_version.rawValue)
+            return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         default:
             return nil
         }

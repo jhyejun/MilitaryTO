@@ -48,10 +48,10 @@ class SettingTableViewCell: HJTableViewCell, UpdatableTableViewCell, SetAutoLayo
     func updateCell() {
         titleLabel.text = data.rawValue
         
-        if let text = data.descText {
+        if data == .app_version {
             descLabel.isHidden = false
             accessoryType = .none
-            descLabel.text = text
+            descLabel.text = data.descText
         }
     }
     
