@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfessionalDetailViewController: DetailViewController {
+class ProfessionalDetailViewController: HJViewController {
     private var data: Professional?
     
     init(_ data: Professional) {

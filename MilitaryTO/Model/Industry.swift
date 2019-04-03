@@ -9,7 +9,15 @@
 import Foundation
 import ObjectMapper
 
-class Industry: Military, Mappable {
+protocol KeyToValue {
+    associatedtype T
+    
+    func toValue(key: T) -> String?
+}
+
+class Industry: Military, Mappable, KeyToValue {
+    typealias T = IndustryKey
+    
     required convenience init?(map: Map) {
         self.init()
     }
@@ -39,6 +47,39 @@ class Industry: Military, Mappable {
         isLimit <- map[IndustryKey.isLimit.keyString]
         region <- map[IndustryKey.region.keyString]
     }
+    
+    func toValue(key: IndustryKey) -> String? {
+        switch key {
+        case .idx:
+            return String(self.idx)
+        case .kind:
+            return self.kind
+        case .scale:
+            return self.scale
+        case .name:
+            return self.name
+        case .location:
+            return self.location
+        case .phoneNumber:
+            return self.phoneNumber
+        case .mainSubject:
+            return self.mainSubject == "" ? "알 수 없음" : self.mainSubject
+        case .selectionYear:
+            return self.selectionYear
+        case .totalTO:
+            return String(self.totalTO) + "명"
+        case .beforeThreeConventionTO:
+            return String(self.beforeThreeConventionTO) + "명"
+        case .beforeTwoConventionTO:
+            return String(self.beforeTwoConventionTO) + "명"
+        case .threeConventionTO:
+            return String(self.threeConventionTO) + "명"
+        case .isLimit:
+            return self.isLimit == "" ? "배정제한 없음" : self.isLimit
+        case .region:
+            return self.region
+        }
+    }
 }
 
 enum IndustryKey: String, CaseIterable {
@@ -62,6 +103,6 @@ enum IndustryKey: String, CaseIterable {
     }
     
     static var cases: [IndustryKey] {
-        return allCases
+        return allCases.filter { $0 != .idx }
     }
 }

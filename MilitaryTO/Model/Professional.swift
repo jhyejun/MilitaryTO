@@ -9,7 +9,9 @@
 import Foundation
 import ObjectMapper
 
-class Professional: Military, Mappable {
+class Professional: Military, Mappable, KeyToValue {
+    typealias T = ProfessionalKey
+    
     required convenience init?(map: Map) {
         self.init()
     }
@@ -21,16 +23,26 @@ class Professional: Military, Mappable {
     func mapping(map: Map) {
         idx <- map[ProfessionalKey.idx.keyString]
     }
+    
+    func toValue(key: ProfessionalKey) -> String? {
+        switch key {
+        case .idx:
+            return String(self.idx)
+        case .name:
+            return self.name
+        }
+    }
 }
 
 enum ProfessionalKey: String, CaseIterable {
     case idx = "연번"
+    case name = "업체명"
     
     var keyString: String {
         return self.rawValue
     }
     
     static var cases: [ProfessionalKey] {
-        return allCases
+        return allCases.filter { $0 != .idx }
     }
 }

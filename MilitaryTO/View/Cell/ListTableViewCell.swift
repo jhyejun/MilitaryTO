@@ -26,14 +26,14 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
         $0.font = $0.font.withSize(15)
     }
     
-    private var data: T?
-    private var kind: MilitaryServiceKind?
+    private var data: T
+    private var kind: MilitaryServiceKind
     
-    init(data: T?, kind: MilitaryServiceKind?) {
-        super.init(resuseIdentifier: ListTableViewCell.className)
-        
+    init(data: T, kind: MilitaryServiceKind) {
         self.data = data
         self.kind = kind
+        
+        super.init(resuseIdentifier: ListTableViewCell.className)
         
         separatorInset = .zero
         accessoryType = .disclosureIndicator
@@ -69,9 +69,7 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
     }
     
     func updateCell() {
-        guard let safeKind = kind else { return }
-        
-        switch safeKind {
+        switch kind {
         case .Industry:
             guard let data = self.data as? Industry else { return }
             nameLabel.text = data.name ?? ""
@@ -79,9 +77,9 @@ class ListTableViewCell<T: Military>: HJTableViewCell, UpdatableTableViewCell, S
             locationLabel.text = "소재지 : \(data.location ?? "알 수 없음")"
             totalTOLabel.text = "총 배정인원(현역) : \(String(data.totalTO))"
         case .Professional:
-            nameLabel.text = data?.name
-            kindLabel.text = "업종 : \(data?.kind ?? "알 수 없음")"
-            locationLabel.text = "소재지 : \(data?.location ?? "알 수 없음")"
+            nameLabel.text = data.name
+            kindLabel.text = "업종 : \(data.kind ?? "알 수 없음")"
+            locationLabel.text = "소재지 : \(data.location ?? "알 수 없음")"
             totalTOLabel.isHidden = true
         }
     }

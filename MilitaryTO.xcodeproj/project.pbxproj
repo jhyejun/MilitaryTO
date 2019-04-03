@@ -13,6 +13,7 @@
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
 		CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E731B22380376000E5E0B /* AlertBuilder.swift */; };
 		CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E732922380431000E5E0B /* UIViewController+ext.swift */; };
+		CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
 		CB693544221D8D8200AABC61 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Log.swift */; };
 		CB702C3D22256C8B00C03747 /* Industry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB702C3C22256C8B00C03747 /* Industry.swift */; };
@@ -75,6 +76,7 @@
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3E731B22380376000E5E0B /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		CB3E732922380431000E5E0B /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		CB693543221D8D8200AABC61 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CB693545221D8F1000AABC61 /* MilitaryTO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MilitaryTO-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -305,8 +307,9 @@
 		CBC46FC1224B473D0000D701 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
 				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
+				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
+				CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -525,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post\n";
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post";
 			showEnvVarsInLog = 0;
 		};
 		B4DB8A5F7F96924FE6FD9864 /* [CP] Embed Pods Frameworks */ = {
@@ -621,7 +624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre\n";
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre";
 			showEnvVarsInLog = 0;
 		};
 		EB448AB724F1E1A1831BA45A /* [CP] Check Pods Manifest.lock */ = {
@@ -667,6 +670,7 @@
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
+				CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
 				CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */,
