@@ -19,7 +19,6 @@ enum FirebaseChild: String {
 enum FirebaseDatabaseVersion: String, CaseIterable {
     case industry_database_version
     case professional_database_version
-    case app_version
     case app_update_message
 }
 
