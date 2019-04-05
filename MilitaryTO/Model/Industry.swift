@@ -109,7 +109,11 @@ enum IndustryKey: String, CaseIterable {
     }
     
     static var filterCases: [IndustryKey] {
-        return allCases.filter { $0 == .idx || $0 == .location }
+        var list: [IndustryKey] = []
+        list.append(.kind)
+        list.append(.region)
+        list.append(.totalTO)
+        return list
     }
     
     static var detailCases: [IndustryKey] {

@@ -22,12 +22,16 @@ class Professional: Military, Mappable, KeyToValue {
     
     func mapping(map: Map) {
         idx <- map[ProfessionalKey.idx.keyString]
+        kind <- map[ProfessionalKey.kind.keyString]
+        name <- map[ProfessionalKey.name.keyString]
     }
     
     func toValue(key: ProfessionalKey) -> String? {
         switch key {
         case .idx:
             return String(self.idx)
+        case .kind:
+            return self.kind
         case .name:
             return self.name
         }
@@ -36,10 +40,17 @@ class Professional: Military, Mappable, KeyToValue {
 
 enum ProfessionalKey: String, CaseIterable {
     case idx = "연번"
+    case kind = "업종"
     case name = "업체명"
     
     var keyString: String {
         return self.rawValue
+    }
+    
+    static var filterCases: [ProfessionalKey] {
+        var list: [ProfessionalKey] = []
+        list.append(.kind)
+        return list
     }
     
     static var detailCases: [ProfessionalKey] {
