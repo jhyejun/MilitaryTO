@@ -70,15 +70,20 @@ class FilterViewController<T: Military>: HJViewController, UITableViewDelegate, 
     
     // TableView Delegate & DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        switch kind {
+        case .Industry:
+            return IndustryKey.filterCases.count
+        case .Professional:
+            return ProfessionalKey.filterCases.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch kind {
         case .Industry:
-            return IndustryKey.detailCases.count
+            return IndustryKey.filterCases.count
         case .Professional:
-            return ProfessionalKey.detailCases.count
+            return ProfessionalKey.filterCases.count
         }
     }
     
