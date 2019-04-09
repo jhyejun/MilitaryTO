@@ -10,6 +10,7 @@
 		0365717C11CF68C1F2384B30 /* Pods_MilitaryTOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */; };
 		2108299EC29DB906A1A2E3FE /* Pods_MilitaryTO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F741200264281FE0E44FA5 /* Pods_MilitaryTO.framework */; };
 		7C95A4B03A07561D785E3A10 /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */; };
+		CB213AEF22579179007E608A /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */; };
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
 		CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E731B22380376000E5E0B /* AlertBuilder.swift */; };
 		CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E732922380431000E5E0B /* UIViewController+ext.swift */; };
@@ -69,6 +70,7 @@
 		69F741200264281FE0E44FA5 /* Pods_MilitaryTO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F926C8C037009A516BA3796 /* Pods-MilitaryTO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.debug.xcconfig"; sourceTree = "<group>"; };
 		B91ED81332E011094196975B /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
+		CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3E731B22380376000E5E0B /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		CB3E732922380431000E5E0B /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
 				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
 				CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */,
+				CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
+				CB213AEF22579179007E608A /* FilterCollectionViewCell.swift in Sources */,
 				CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
