@@ -11,11 +11,14 @@ import Foundation
 class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .white
-        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .vertical
+        $0.minimumInteritemSpacing = 5
+        $0.minimumLineSpacing = 5
         $0.estimatedItemSize = CGSize(width: 40, height: 20)
+        $0.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
     }
     private let applyButton: UIButton = UIButton().then {
         $0.setTitle("적용하기", for: .normal)
@@ -26,7 +29,7 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         $0.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
-    private var data: [[String]] = [[]]
+    private var data: [[String]] = []
     private var dataDesc: [String] = []
     private var kind: MilitaryServiceKind
     
@@ -52,10 +55,10 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         
         navigationItem.title = "필터"
         
-        layout.minimumInteritemSpacing = 5
-        layout.footerReferenceSize = CGSize(width: 100, height: 100)
+        layout.headerReferenceSize = .zero
         
         collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.className)
+        collectionView.register(FilterCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FilterCollectionHeaderView.className)
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -82,21 +85,24 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     private func setIndustryData() {
         let kindList: [String] = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
         let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
-//        let totalTOList: [String] = databaseManager().read
-        
+        let totalTOList: [Int] = databaseManager().read(Industry.self)?.compactMap { $0.totalTO } ?? []
+
         data.append(kindList)
         dataDesc.append(IndustryKey.kind.keyString)
         data.append(regionList)
         dataDesc.append(IndustryKey.region.keyString)
+        data.append([String(totalTOList.max() ?? 0)])
+        dataDesc.append(IndustryKey.totalTO.keyString)
     }
     
     private func setProfessionalData() {
         let kindList: [String] = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
         let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
-//        let totalTOList: [String] = databaseManager().read
         
         data.append(kindList)
+        dataDesc.append(IndustryKey.kind.keyString)
         data.append(regionList)
+        dataDesc.append(IndustryKey.region.keyString)
     }
     
     private func dataDistinct(by: String) -> Results<T>? {
@@ -126,16 +132,9 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let headerView = UICollectionReusableView()
-            let label = UILabel().then {
-                $0.text = dataDesc[indexPath.section]
-            }
-            headerView.addSubview(label)
-            label.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().inset(20)
-                make.leading.trailing.bottom.equalToSuperview().inset(10)
-            }
-            return headerView
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FilterCollectionHeaderView.className, for: indexPath) as? FilterCollectionHeaderView
+            headerView?.update(title: dataDesc[indexPath.section])
+            return headerView ?? UICollectionReusableView()
         case UICollectionView.elementKindSectionFooter:
             let footerView = UICollectionReusableView()
             return footerView

@@ -43,6 +43,7 @@
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
 		CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB73162253010C0040BF66 /* DetailViewController.swift */; };
 		CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA641F225272CB00288FD5 /* FilterViewController.swift */; };
+		CBFD1A14225DDA0000116100 /* FilterCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CBEB73162253010C0040BF66 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CBFA641F225272CB00288FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -294,6 +296,7 @@
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
 				CBFA641F225272CB00288FD5 /* FilterViewController.swift */,
 				CBEB73162253010C0040BF66 /* DetailViewController.swift */,
+				CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				CBC46FCC224B74020000D701 /* Military.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
+				CBFD1A14225DDA0000116100 /* FilterCollectionHeaderView.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */,
