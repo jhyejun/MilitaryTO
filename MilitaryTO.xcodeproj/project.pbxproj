@@ -14,6 +14,7 @@
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
 		CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E731B22380376000E5E0B /* AlertBuilder.swift */; };
 		CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E732922380431000E5E0B /* UIViewController+ext.swift */; };
+		CB40D4D6225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */; };
 		CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
 		CB693544221D8D8200AABC61 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Log.swift */; };
@@ -75,6 +76,7 @@
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3E731B22380376000E5E0B /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		CB3E732922380431000E5E0B /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		CB40D4D5225E593F00CDA0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = MilitaryTO/Base.lproj/HJLeftAlignCollectionViewFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		CB693543221D8D8200AABC61 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				CB702C45222D484200C03747 /* HJViewController.swift */,
 				CB702C4F222D512600C03747 /* HJTableView.swift */,
 				CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */,
+				CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */,
 			);
 			path = HJ;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
+				CB40D4D6225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 				CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */,
@@ -693,6 +697,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB40D4D5225E593F00CDA0BB /* Base */,
+			);
+			name = HJLeftAlignCollectionViewFlowLayout.swift;
+			sourceTree = "<group>";
+		};
 		CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

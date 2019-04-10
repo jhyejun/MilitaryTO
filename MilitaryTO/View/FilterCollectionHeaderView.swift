@@ -12,7 +12,7 @@ class FilterCollectionHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = UILabel().then {
         $0.numberOfLines = 0
         $0.textColor = .darkGray
-        $0.font = $0.font.withSize(15)
+        $0.font = $0.font.withSize(17)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,8 +20,9 @@ class FilterCollectionHeaderView: UICollectionReusableView {
         addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(20)
-            make.leading.trailing.bottom.equalToSuperview().inset(10)
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview()
         }
     }
     

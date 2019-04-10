@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource {
+class ListTableViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate {
     private let searchTextField: UITextField = UITextField().then {
         $0.placeholder = "업체명 검색"
         $0.font = $0.font?.withSize(15)
@@ -129,6 +129,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     
     @objc func touchedFilterButton(_ sender: UIButton) {
         let vc = FilterViewController<T>(kind: kind)
+        vc.delegate = self
         push(viewController: vc)
     }
     
@@ -172,5 +173,22 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchTextField.endEditing(true)
+    }
+    
+    
+    func apply(filter: [String]) {
+        if filter.isNotEmpty {
+            data = databaseManager().read(T.self)?
+                .compactMap { $0 as T }
+                .filter {
+                    guard let kind = $0.kind else { return false }
+                    return filter.contains(kind)
+            }
+        } else {
+            data = databaseManager().read(T.self)?.compactMap { $0 as T }
+        }
+        
+        tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        tableView.reloadData()
     }
 }

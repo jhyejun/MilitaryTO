@@ -111,8 +111,8 @@ enum IndustryKey: String, CaseIterable {
     static var filterCases: [IndustryKey] {
         var list: [IndustryKey] = []
         list.append(.kind)
-        list.append(.region)
-        list.append(.totalTO)
+//        list.append(.region)
+//        list.append(.totalTO)
         return list
     }
     

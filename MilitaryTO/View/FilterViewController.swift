@@ -8,17 +8,21 @@
 
 import Foundation
 
-class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol FilterViewControllerDelegate {
+    func apply(filter: [String])
+}
+
+class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource, FilterCollectionViewCellDelegate {
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .white
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
-    private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
+    private let layout: UICollectionViewFlowLayout  = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .vertical
         $0.minimumInteritemSpacing = 5
         $0.minimumLineSpacing = 5
         $0.estimatedItemSize = CGSize(width: 40, height: 20)
-        $0.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
+        $0.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
     }
     private let applyButton: UIButton = UIButton().then {
         $0.setTitle("적용하기", for: .normal)
@@ -32,6 +36,10 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     private var data: [[String]] = []
     private var dataDesc: [String] = []
     private var kind: MilitaryServiceKind
+    
+    private var filterList: [String] = []
+    
+    var delegate: FilterViewControllerDelegate?
     
     init(kind: MilitaryServiceKind) {
         self.kind = kind
@@ -55,13 +63,15 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         
         navigationItem.title = "필터"
         
-        layout.headerReferenceSize = .zero
+        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         
         collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.className)
         collectionView.register(FilterCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FilterCollectionHeaderView.className)
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        applyButton.addTarget(self, action: #selector(didTouchedApplyButton(_:)), for: .touchUpInside)
         
         addSubViews(views: [collectionView, applyButton])
         setConstraints()
@@ -84,15 +94,15 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     
     private func setIndustryData() {
         let kindList: [String] = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
-        let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
-        let totalTOList: [Int] = databaseManager().read(Industry.self)?.compactMap { $0.totalTO } ?? []
+//        let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+//        let totalTOList: [Int] = databaseManager().read(Industry.self)?.compactMap { $0.totalTO } ?? []
 
         data.append(kindList)
         dataDesc.append(IndustryKey.kind.keyString)
-        data.append(regionList)
-        dataDesc.append(IndustryKey.region.keyString)
-        data.append([String(totalTOList.max() ?? 0)])
-        dataDesc.append(IndustryKey.totalTO.keyString)
+//        data.append(regionList)
+//        dataDesc.append(IndustryKey.region.keyString)
+//        data.append([String(totalTOList.max() ?? 0)])
+//        dataDesc.append(IndustryKey.totalTO.keyString)
     }
     
     private func setProfessionalData() {
@@ -109,6 +119,13 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         return databaseManager().read(T.self)?.distinct(by: [by])
     }
     
+    @objc private func didTouchedApplyButton(_ sender: UIButton) {
+        delegate?.apply(filter: filterList)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch kind {
         case .Industry:
@@ -118,15 +135,8 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data[section].count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell {
-            cell.updateStatus()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -146,7 +156,18 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.className, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
         cell.update(title: data[indexPath.section][indexPath.row])
+        cell.delegate = self
         
         return cell
+    }
+    
+    
+    
+    func didTouchedTitleButton(_ sender: UIButton) {
+        if let title = sender.currentTitle, sender.isSelected {
+            filterList.append(title)
+        } else {
+            filterList.removeAll { $0 == sender.currentTitle }
+        }
     }
 }
