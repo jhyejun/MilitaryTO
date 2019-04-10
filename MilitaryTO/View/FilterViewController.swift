@@ -10,12 +10,13 @@ import Foundation
 
 class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.allowsSelection = false
+        $0.backgroundColor = .white
+        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
     }
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .vertical
+        $0.estimatedItemSize = CGSize(width: 40, height: 20)
     }
-    
     private let applyButton: UIButton = UIButton().then {
         $0.setTitle("적용하기", for: .normal)
         $0.titleLabel?.font = $0.titleLabel?.font.withSize(20)
@@ -26,6 +27,7 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     }
     
     private var data: [[String]] = [[]]
+    private var dataDesc: [String] = []
     private var kind: MilitaryServiceKind
     
     init(kind: MilitaryServiceKind) {
@@ -49,6 +51,9 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         super.viewDidLoad()
         
         navigationItem.title = "필터"
+        
+        layout.minimumInteritemSpacing = 5
+        layout.footerReferenceSize = CGSize(width: 100, height: 100)
         
         collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.className)
         collectionView.setCollectionViewLayout(layout, animated: true)
@@ -80,7 +85,9 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
 //        let totalTOList: [String] = databaseManager().read
         
         data.append(kindList)
+        dataDesc.append(IndustryKey.kind.keyString)
         data.append(regionList)
+        dataDesc.append(IndustryKey.region.keyString)
     }
     
     private func setProfessionalData() {
@@ -107,18 +114,39 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch kind {
-//        case .Industry:
-//            return IndustryKey.filterCases.count
-//        case .Professional:
-//            return ProfessionalKey.filterCases.count
-//        }
         return data[section].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell {
+            cell.updateStatus()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = UICollectionReusableView()
+            let label = UILabel().then {
+                $0.text = dataDesc[indexPath.section]
+            }
+            headerView.addSubview(label)
+            label.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().inset(20)
+                make.leading.trailing.bottom.equalToSuperview().inset(10)
+            }
+            return headerView
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = UICollectionReusableView()
+            return footerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.className, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        cell.update(title: "TEST")
+        cell.update(title: data[indexPath.section][indexPath.row])
         
         return cell
     }

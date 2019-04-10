@@ -128,7 +128,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     
     @objc func touchedFilterButton(_ sender: UIButton) {
-        let vc = FilterViewController(kind: kind)
+        let vc = FilterViewController<T>(kind: kind)
         push(viewController: vc)
     }
     
@@ -168,14 +168,6 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             let vc = DetailViewController(data, kind)
             push(viewController: vc)
         }
-        
-//        if let data = data?[indexPath.row] as? Industry {
-//            let vc = IndustryDetailViewController(data)
-//            push(viewController: vc)
-//        } else if let data = data?[indexPath.row] as? Professional {
-//            let vc = ProfessionalDetailViewController(data)
-//            push(viewController: vc)
-//        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
