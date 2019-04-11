@@ -10,9 +10,11 @@
 		0365717C11CF68C1F2384B30 /* Pods_MilitaryTOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */; };
 		2108299EC29DB906A1A2E3FE /* Pods_MilitaryTO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F741200264281FE0E44FA5 /* Pods_MilitaryTO.framework */; };
 		7C95A4B03A07561D785E3A10 /* Pods_MilitaryTOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */; };
+		CB213AEF22579179007E608A /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */; };
 		CB25FF0D22202BC20076A85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */; };
 		CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E731B22380376000E5E0B /* AlertBuilder.swift */; };
 		CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E732922380431000E5E0B /* UIViewController+ext.swift */; };
+		CB40D4D6225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */; };
 		CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */; };
 		CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693541221D8CC100AABC61 /* ChooseViewController.swift */; };
 		CB693544221D8D8200AABC61 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB693543221D8D8200AABC61 /* Log.swift */; };
@@ -42,6 +44,7 @@
 		CBDC166B2239689900DC4DF3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC166A2239689900DC4DF3 /* SettingViewController.swift */; };
 		CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB73162253010C0040BF66 /* DetailViewController.swift */; };
 		CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA641F225272CB00288FD5 /* FilterViewController.swift */; };
+		CBFD1A14225DDA0000116100 /* FilterCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,9 +72,11 @@
 		69F741200264281FE0E44FA5 /* Pods_MilitaryTO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F926C8C037009A516BA3796 /* Pods-MilitaryTO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.debug.xcconfig"; sourceTree = "<group>"; };
 		B91ED81332E011094196975B /* Pods-MilitaryTO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilitaryTO.release.xcconfig"; path = "Pods/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO.release.xcconfig"; sourceTree = "<group>"; };
+		CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB25FF0C22202BC20076A85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3E731B22380376000E5E0B /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		CB3E732922380431000E5E0B /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		CB40D4D5225E593F00CDA0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = MilitaryTO/Base.lproj/HJLeftAlignCollectionViewFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		CB693541221D8CC100AABC61 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		CB693543221D8D8200AABC61 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		CBDC166A2239689900DC4DF3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CBEB73162253010C0040BF66 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CBFA641F225272CB00288FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F8FBC3B9EBFB57301E8107A1 /* Pods_MilitaryTOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE04254B715628E5D7E778B /* Pods_MilitaryTOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilitaryTOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -182,6 +188,7 @@
 				CB702C45222D484200C03747 /* HJViewController.swift */,
 				CB702C4F222D512600C03747 /* HJTableView.swift */,
 				CBAAFDAB223AC55600C1D928 /* HJTableViewCell.swift */,
+				CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */,
 			);
 			path = HJ;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 				CB702C3E2225707500C03747 /* ListTableViewController.swift */,
 				CBFA641F225272CB00288FD5 /* FilterViewController.swift */,
 				CBEB73162253010C0040BF66 /* DetailViewController.swift */,
+				CBFD1A13225DDA0000116100 /* FilterCollectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				CBAAFDAD223AC5CF00C1D928 /* SettingTableViewCell.swift */,
 				CBAAFDB6223BDA4300C1D928 /* ListTableViewCell.swift */,
 				CB45E8762254952A0063FCF8 /* DetailTableViewCell.swift */,
+				CB213AEE22579179007E608A /* FilterCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -510,6 +519,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MilitaryTO/Pods-MilitaryTO-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Carte/Carte.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -528,6 +538,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlignedCollectionViewFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Carte.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -638,15 +649,18 @@
 				CBC46FCC224B74020000D701 /* Military.swift in Sources */,
 				CB693542221D8CC100AABC61 /* ChooseViewController.swift in Sources */,
 				CB702C6922313E7900C03747 /* Professional.swift in Sources */,
+				CBFD1A14225DDA0000116100 /* FilterCollectionHeaderView.swift in Sources */,
 				CB3E731C22380376000E5E0B /* AlertBuilder.swift in Sources */,
 				CBAAFDAE223AC5CF00C1D928 /* SettingTableViewCell.swift in Sources */,
 				CB45E8772254952A0063FCF8 /* DetailTableViewCell.swift in Sources */,
 				CBAAFDB7223BDA4300C1D928 /* ListTableViewCell.swift in Sources */,
 				CB702C67222EC3B600C03747 /* DatabaseManager.swift in Sources */,
+				CB213AEF22579179007E608A /* FilterCollectionViewCell.swift in Sources */,
 				CBFA6420225272CB00288FD5 /* FilterViewController.swift in Sources */,
 				CB702C5E222D8CF100C03747 /* FirebaseManager.swift in Sources */,
 				CB9003F2223104070091F351 /* Collection+ext.swift in Sources */,
 				CB702C43222D46D600C03747 /* UIView+ext.swift in Sources */,
+				CB40D4D6225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CB3E732A22380431000E5E0B /* UIViewController+ext.swift in Sources */,
 				CB702C3D22256C8B00C03747 /* Industry.swift in Sources */,
 				CBEB73172253010C0040BF66 /* DetailViewController.swift in Sources */,
@@ -685,6 +699,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CB40D4D4225E593F00CDA0BB /* HJLeftAlignCollectionViewFlowLayout.swift */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB40D4D5225E593F00CDA0BB /* Base */,
+			);
+			name = HJLeftAlignCollectionViewFlowLayout.swift;
+			sourceTree = "<group>";
+		};
 		CBB120F1201F185D000DC061 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

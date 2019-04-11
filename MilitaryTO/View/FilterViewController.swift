@@ -7,12 +7,23 @@
 //
 
 import Foundation
+import AlignedCollectionViewFlowLayout
 
-class FilterViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource {
-    private let tableView: HJTableView = HJTableView().then {
-        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
-        $0.separatorStyle = .singleLine
-        $0.tableFooterView = UIView()
+protocol FilterViewControllerDelegate {
+    func apply(filter: [String: Set<String>])
+}
+
+class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource, FilterCollectionViewCellDelegate {
+    private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.backgroundColor = .white
+        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    private let layout: AlignedCollectionViewFlowLayout  = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center).then {
+        $0.scrollDirection = .vertical
+        $0.minimumInteritemSpacing = 5
+        $0.minimumLineSpacing = 5
+        $0.estimatedItemSize = CGSize(width: 40, height: 20)
+        $0.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
     }
     private let applyButton: UIButton = UIButton().then {
         $0.setTitle("적용하기", for: .normal)
@@ -23,13 +34,26 @@ class FilterViewController<T: Military>: HJViewController, UITableViewDelegate, 
         $0.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
-    private var data: [[String]]?
+    private var data: [[String]] = []
     private var kind: MilitaryServiceKind
+    private var filterList: [String: Set<String>]
     
-    init(kind: MilitaryServiceKind) {
+    private var filterKeyList: [Filter] = []
+    
+    var delegate: FilterViewControllerDelegate?
+    
+    init(kind: MilitaryServiceKind, filterList: [String: Set<String>]) {
         self.kind = kind
+        self.filterList = filterList
         
         super.init(nibName: nil, bundle: nil)
+        
+        switch kind {
+        case .Industry:
+            setIndustryData()
+        case .Professional:
+            setProfessionalData()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,89 +65,131 @@ class FilterViewController<T: Military>: HJViewController, UITableViewDelegate, 
         
         navigationItem.title = "필터"
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         
-        addSubViews(views: [tableView, applyButton])
+        collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.className)
+        collectionView.register(FilterCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FilterCollectionHeaderView.className)
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        applyButton.addTarget(self, action: #selector(didTouchedApplyButton(_:)), for: .touchUpInside)
+        
+        addSubViews(views: [collectionView, applyButton])
         setConstraints()
     }
     
     override func setConstraints() {
         super.setConstraints()
-        
-        tableView.snp.makeConstraints { (make) in
+
+        collectionView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
         }
         
         applyButton.snp.makeConstraints { (make) in
-            make.top.equalTo(tableView.snp.bottom)
-            make.leading.trailing.equalTo(tableView)
+            make.top.equalTo(collectionView.snp.bottom)
+            make.leading.trailing.equalTo(collectionView)
             make.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.1)
         }
     }
     
-    func dataDistinct(by: String) -> Results<T>? {
+    private func setIndustryData() {
+        IndustryKey.filter.allCases.forEach { key in
+            switch key {
+            case .kind:
+                let list = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            case .region:
+                let list = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            }
+        }
+    }
+    
+    private func setProfessionalData() {
+        ProfessionalKey.filter.allCases.forEach { key in
+            switch key {
+            case .kind:
+                let list = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            case .region:
+                let list = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            }
+        }
+    }
+    
+    private func dataDistinct(by: String) -> Results<T>? {
         return databaseManager().read(T.self)?.distinct(by: [by])
     }
     
+    @objc private func didTouchedApplyButton(_ sender: UIButton) {
+        delegate?.apply(filter: filterList)
+        navigationController?.popViewController(animated: true)
+    }
     
-    // TableView Delegate & DataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch kind {
         case .Industry:
-            return IndustryKey.filterCases.count
+            return IndustryKey.filter.allCases.count
         case .Professional:
-            return ProfessionalKey.filterCases.count
+            return ProfessionalKey.filter.allCases.count
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data[section].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case .Industry:
-            return IndustryKey.filterCases.count
-        case .Professional:
-            return ProfessionalKey.filterCases.count
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FilterCollectionHeaderView.className, for: indexPath) as? FilterCollectionHeaderView
+            headerView?.update(title: filterKeyList[indexPath.section].keyString)
+            return headerView ?? UICollectionReusableView()
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = UICollectionReusableView()
+            return footerView
+        default:
+            assert(false, "Unexpected element kind")
+            return UICollectionReusableView()
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.className, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
+        let title = data[indexPath.section][indexPath.row]
+        let filterKey = filterKeyList[indexPath.section].key
+        
+        cell.update(title: title,
+                    filterKey: filterKey,
+                    selected: filterList[filterKey]?.contains(title) ?? false)
+        cell.delegate = self
+        
+        return cell
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-    }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        let nameLabel = UILabel().then {
-//            $0.text = data.name
-//            $0.textColor = .flatBlack
-//            $0.font = $0.font.withSize(28)
-//        }
-//
-//        headerView.translatesAutoresizingMaskIntoConstraints = false
-//        headerView.addSubview(nameLabel)
-//        nameLabel.snp.makeConstraints { (make) in
-//            make.top.leading.trailing.equalToSuperview().inset(10)
-//            make.bottom.equalToSuperview()
-//        }
-//
-//        return headerView
-//    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        switch kind {
-//        case .Industry:
-//            let cell = DetailTableViewCell<T, IndustryKey>(key: IndustryKey.detailCases[indexPath.row], data: data, kind: kind)
-//            cell.updateCell()
-//            return cell
-//        case .Professional:
-//            let cell = DetailTableViewCell<T, ProfessionalKey>(key: ProfessionalKey.detailCases[indexPath.row], data: data, kind: kind)
-//            cell.updateCell()
-//            return cell
-//        }
-        return UITableViewCell()
+    func didTouchedTitleButton(_ sender: UIButton, _ filterKind: String) {
+        guard let title = sender.currentTitle else { return }
+        
+        if filterList[filterKind] == nil { filterList[filterKind] = Set<String>() }
+        
+        if sender.isSelected {
+            filterList[filterKind]?.insert(title)
+        } else {
+            filterList[filterKind]?.remove(title)
+            if filterList[filterKind]?.count == 0 {
+                filterList.removeValue(forKey: filterKind)
+            }
+        }
     }
 }

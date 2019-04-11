@@ -16,4 +16,15 @@ class HJTableView: UITableView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func reloadData() {
+        super.reloadData()
+        scrollTop()
+    }
+    
+    func scrollTop() {
+        if numberOfRows(inSection: 0) > 1 {
+            scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
 }

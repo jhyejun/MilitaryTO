@@ -13,6 +13,7 @@ target 'MilitaryTO' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'Then'
   pod 'NVActivityIndicatorView'
+  pod 'AlignedCollectionViewFlowLayout'
   
   
   pod 'RxSwift'
