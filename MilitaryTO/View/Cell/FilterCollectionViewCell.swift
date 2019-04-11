@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FilterCollectionViewCellDelegate {
-    func didTouchedTitleButton(_ sender: UIButton)
+    func didTouchedTitleButton(_ sender: UIButton, _ filterKind: String)
 }
 
 class FilterCollectionViewCell: UICollectionViewCell {
@@ -23,6 +23,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
         $0.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     }
     
+    private var filterKind: String?
     var delegate: FilterCollectionViewCellDelegate?
     
     override init(frame: CGRect) {
@@ -41,8 +42,9 @@ class FilterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(title: String) {
+    func update(title: String, filterKind: String) {
         titleButton.setTitle(title, for: .normal)
+        self.filterKind = filterKind
     }
     
     @objc private func touchedTitleButton(_ sender: UIButton) {
@@ -56,6 +58,6 @@ class FilterCollectionViewCell: UICollectionViewCell {
             titleButton.setBorder(color: .flatBlue, width: 0.5)
         }
         
-        delegate?.didTouchedTitleButton(sender)
+        delegate?.didTouchedTitleButton(sender, filterKind ?? "none")
     }
 }

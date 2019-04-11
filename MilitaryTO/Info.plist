@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>20190411041</string>
+	<string>20190411051</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -56,7 +56,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildCount</key>
-	<string>41</string>
+	<string>51</string>
 	<key>buildDay</key>
 	<string>20190411</string>
 </dict>

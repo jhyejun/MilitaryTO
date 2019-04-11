@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import AlignedCollectionViewFlowLayout
 
 protocol FilterViewControllerDelegate {
-    func apply(filter: [String])
+    func apply(filter: [String: Set<String>])
 }
 
 class FilterViewController<T: Military>: HJViewController, UICollectionViewDelegate, UICollectionViewDataSource, FilterCollectionViewCellDelegate {
@@ -17,7 +18,7 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         $0.backgroundColor = .white
         $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
-    private let layout: UICollectionViewFlowLayout  = UICollectionViewFlowLayout().then {
+    private let layout: AlignedCollectionViewFlowLayout  = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center).then {
         $0.scrollDirection = .vertical
         $0.minimumInteritemSpacing = 5
         $0.minimumLineSpacing = 5
@@ -34,10 +35,10 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     }
     
     private var data: [[String]] = []
-    private var dataDesc: [String] = []
     private var kind: MilitaryServiceKind
     
-    private var filterList: [String] = []
+    private var filterKeyList: [Filter] = []
+    private var filterList: [String: Set<String>] = [:]
     
     var delegate: FilterViewControllerDelegate?
     
@@ -93,26 +94,37 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     }
     
     private func setIndustryData() {
-        let kindList: [String] = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
-//        let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
-//        let totalTOList: [Int] = databaseManager().read(Industry.self)?.compactMap { $0.totalTO } ?? []
-
-        data.append(kindList)
-        dataDesc.append(IndustryKey.kind.keyString)
-//        data.append(regionList)
-//        dataDesc.append(IndustryKey.region.keyString)
-//        data.append([String(totalTOList.max() ?? 0)])
-//        dataDesc.append(IndustryKey.totalTO.keyString)
+        typealias K = IndustryKey.filter
+        
+        IndustryKey.filter.allCases.forEach { key in
+            switch key {
+            case .kind:
+                let list = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            case .region:
+                let list = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            }
+        }
     }
     
     private func setProfessionalData() {
-        let kindList: [String] = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
-        let regionList: [String] = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+        typealias K = ProfessionalKey.filter
         
-        data.append(kindList)
-        dataDesc.append(IndustryKey.kind.keyString)
-        data.append(regionList)
-        dataDesc.append(IndustryKey.region.keyString)
+        ProfessionalKey.filter.allCases.forEach { key in
+            switch key {
+            case .kind:
+                let list = dataDistinct(by: "kind")?.compactMap { $0.kind } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            case .region:
+                let list = dataDistinct(by: "region")?.compactMap { $0.region } ?? []
+                data.append(list)
+                filterKeyList.append(key)
+            }
+        }
     }
     
     private func dataDistinct(by: String) -> Results<T>? {
@@ -129,9 +141,9 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch kind {
         case .Industry:
-            return IndustryKey.filterCases.count
+            return IndustryKey.filter.allCases.count
         case .Professional:
-            return ProfessionalKey.filterCases.count
+            return ProfessionalKey.filter.allCases.count
         }
     }
     
@@ -143,19 +155,20 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FilterCollectionHeaderView.className, for: indexPath) as? FilterCollectionHeaderView
-            headerView?.update(title: dataDesc[indexPath.section])
+            headerView?.update(title: filterKeyList[indexPath.section].keyString)
             return headerView ?? UICollectionReusableView()
         case UICollectionView.elementKindSectionFooter:
             let footerView = UICollectionReusableView()
             return footerView
         default:
             assert(false, "Unexpected element kind")
+            return UICollectionReusableView()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.className, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        cell.update(title: data[indexPath.section][indexPath.row])
+        cell.update(title: data[indexPath.section][indexPath.row], filterKind: filterKeyList[indexPath.section].key)
         cell.delegate = self
         
         return cell
@@ -163,11 +176,13 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     
     
     
-    func didTouchedTitleButton(_ sender: UIButton) {
-        if let title = sender.currentTitle, sender.isSelected {
-            filterList.append(title)
+    func didTouchedTitleButton(_ sender: UIButton, _ filterKind: String) {
+        guard let title = sender.currentTitle else { return }
+        
+        if sender.isSelected {
+            filterList[filterKind]?.insert(title)
         } else {
-            filterList.removeAll { $0 == sender.currentTitle }
+            filterList[filterKind]?.remove(title)
         }
     }
 }

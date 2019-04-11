@@ -8,6 +8,17 @@
 
 import Foundation
 
+protocol KeyToValue {
+    associatedtype T
+    
+    func toValue(key: T) -> String?
+}
+
+protocol Filter {
+    var key: String { get }
+    var keyString: String { get }
+}
+
 class Military: Object {
     @objc dynamic var idx: Int = 0
     @objc dynamic var kind: String?

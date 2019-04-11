@@ -9,18 +9,6 @@
 import Foundation
 import ObjectMapper
 
-protocol KeyToValue {
-    associatedtype T
-    
-    func toValue(key: T) -> String?
-}
-
-protocol CustomCase {
-    associatedtype T
-    
-    static var filterCase: [T] { get }
-}
-
 class Industry: Military, Mappable, KeyToValue {
     typealias T = IndustryKey
     
@@ -104,16 +92,27 @@ enum IndustryKey: String, CaseIterable {
     case isLimit = "배정제한여부"
     case region = "해당지방병무청"
     
-    var keyString: String {
-        return self.rawValue
+    enum filter: String, CaseIterable, Filter {
+        case kind
+        case region
+//        case totalTO
+        
+        var key: String {
+            return self.rawValue
+        }
+        
+        var keyString: String {
+            switch self {
+            case .kind:
+                return IndustryKey.kind.keyString
+            case .region:
+                return IndustryKey.region.keyString
+            }
+        }
     }
     
-    static var filterCases: [IndustryKey] {
-        var list: [IndustryKey] = []
-        list.append(.kind)
-//        list.append(.region)
-//        list.append(.totalTO)
-        return list
+    var keyString: String {
+        return self.rawValue
     }
     
     static var detailCases: [IndustryKey] {
