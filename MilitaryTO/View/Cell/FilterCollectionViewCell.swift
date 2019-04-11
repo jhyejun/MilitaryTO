@@ -22,8 +22,17 @@ class FilterCollectionViewCell: UICollectionViewCell {
         $0.titleLabel?.font = $0.titleLabel?.font.withSize(15)
         $0.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     }
+    private var buttonIsSelected: Bool {
+        get {
+            return titleButton.isSelected
+        }
+        set {
+            titleButton.isSelected = newValue
+            updateTitleButton()
+        }
+    }
     
-    private var filterKind: String?
+    private var filterKey: String?
     var delegate: FilterCollectionViewCellDelegate?
     
     override init(frame: CGRect) {
@@ -42,22 +51,24 @@ class FilterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(title: String, filterKind: String) {
+    func update(title: String, filterKey: String, selected: Bool) {
         titleButton.setTitle(title, for: .normal)
-        self.filterKind = filterKind
+        buttonIsSelected = selected
+        self.filterKey = filterKey
     }
     
     @objc private func touchedTitleButton(_ sender: UIButton) {
-        titleButton.isSelected = !titleButton.isSelected
-        
-        if titleButton.isSelected {
+        buttonIsSelected = !titleButton.isSelected
+        delegate?.didTouchedTitleButton(sender, filterKey ?? "none")
+    }
+    
+    func updateTitleButton() {
+        if buttonIsSelected {
             titleButton.backgroundColor = .flatBlue
             titleButton.setBorder(color: .flatBlack, width: 0.5)
         } else {
             titleButton.backgroundColor = .white
             titleButton.setBorder(color: .flatBlue, width: 0.5)
         }
-        
-        delegate?.didTouchedTitleButton(sender, filterKind ?? "none")
     }
 }

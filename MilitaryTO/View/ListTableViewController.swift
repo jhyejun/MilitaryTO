@@ -18,13 +18,14 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
     private let filterButton: UIButton = UIButton().then {
         $0.setTitle("필터", for: .normal)
-        $0.titleLabel?.font = $0.titleLabel?.font.withSize(15)
         $0.setTitleColor(.flatBlack, for: .normal)
+        $0.setTitleColor(.flatWhite, for: .selected)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(15)
         $0.setCornerRadius(5)
         $0.setBorder(color: .flatForestGreenDark, width: 0.5)
     }
     private let tableView: HJTableView = HJTableView().then {
-        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         $0.separatorStyle = .singleLine
         $0.tableFooterView = UIView()
     }
@@ -71,6 +72,16 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         super.viewWillAppear(animated)
 
         navigationItem.title = navigationTitle
+        
+        filterButton.isSelected = filterList.isNotEmpty
+        
+        if filterButton.isSelected {
+            filterButton.backgroundColor = .flatForestGreenDark
+            filterButton.setBorder(color: .flatBlack, width: 0.5)
+        } else {
+            filterButton.backgroundColor = .white
+            filterButton.setBorder(color: .flatForestGreenDark, width: 0.5)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +108,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
 
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(searchTextField.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(8)
             make.bottomMargin.equalToSuperview()
         }
 
@@ -115,23 +126,69 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
             .do(onNext: { (name) in
                 if name.isEmpty {
                     self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
+                    self.dataFiltered()
                     self.tableView.reloadData()
                 }
             })
             .filter { $0.isNotEmpty }
             .subscribe(onNext: { [weak self] (name) in
                 guard let self = self else { return }
-
-                self.data = databaseManager().read(T.self, query: NSPredicate(format: "name CONTAINS[c] %@", name))?.compactMap { $0 as T }
+                
+                self.data = self.data?.filter { $0.name?.contains(name) ?? false }
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
 
     @objc func touchedFilterButton(_ sender: UIButton) {
-        let vc = FilterViewController<T>(kind: kind)
+        let vc = FilterViewController<T>(kind: kind, filterList: filterList)
         vc.delegate = self
         push(viewController: vc)
+    }
+    
+    private func dataFiltered() {
+        switch kind {
+        case .Industry:
+            filterList.forEach { key, value in
+                switch key {
+                case IndustryKey.filter.kind.key:
+                    data = data?.filter {
+                        guard let kind = $0.kind else { return false }
+                        return value.contains(kind)
+                    }
+                case IndustryKey.filter.region.key:
+                    data = data?.filter {
+                        guard let region = $0.region else { return false }
+                        return value.contains(region)
+                    }
+//                case .totalTO:
+//                    data = data?.filter {
+//                        guard let industry = $0 as? Industry,
+//                            let filterTO = Int(filterList[key.rawValue]?.first ?? "") else { return false }
+//                        return industry.totalTO >= filterTO
+//                    }
+                default:
+                    break
+                }
+            }
+        case .Professional:
+            filterList.forEach { key, value in
+                switch key {
+                case ProfessionalKey.filter.kind.key:
+                    data = data?.filter {
+                        guard let kind = $0.kind else { return false }
+                        return value.contains(kind)
+                    }
+                case ProfessionalKey.filter.region.key:
+                    data = data?.filter {
+                        guard let region = $0.region else { return false }
+                        return value.contains(region)
+                    }
+                default:
+                    break
+                }
+            }
+        }
     }
 
 
@@ -178,51 +235,19 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
 
 
     func apply(filter: [String: Set<String>]) {
-        DEBUG_LOG(filter)
-        guard filter.isNotEmpty, filterList != filter else { return }
-        data = databaseManager().read(T.self)?.compactMap { $0 as T }
-        
-        switch kind {
-        case .Industry:
-            IndustryKey.filter.allCases.forEach { key in
-                switch key {
-                case .kind:
-                    data = data?.filter {
-                        guard let kind = $0.kind else { return false }
-                        return filterList[key.rawValue]?.contains(kind) ?? false
-                    }
-                case .region:
-                    data = data?.filter {
-                        guard let region = $0.region else { return false }
-                        return filterList[key.rawValue]?.contains(region) ?? false
-                    }
-//                case .totalTO:
-//                    data = data?.filter {
-//                        guard let industry = $0 as? Industry,
-//                            let filterTO = Int(filterList[key.rawValue]?.first ?? "") else { return false }
-//                        return industry.totalTO >= filterTO
-//                    }
-                }
-            }
-        case .Professional:
-            ProfessionalKey.filter.allCases.forEach { key in
-                switch key {
-                case .kind:
-                    data = data?.filter {
-                        guard let kind = $0.kind else { return false }
-                        return filterList[key.rawValue]?.contains(kind) ?? false
-                    }
-                case .region:
-                    data = data?.filter {
-                        guard let region = $0.region else { return false }
-                        return filterList[key.rawValue]?.contains(region) ?? false
-                    }
-                }
-            }
+        guard filter.isNotEmpty, filter.values.isNotEmpty else {
+            filterList.removeAll()
+            data = databaseManager().read(T.self)?.compactMap { $0 as T }
+            tableView.reloadData()
+            tableView.scrollToRow(at: NSIndexPath(row: 0, section: 0) as IndexPath, at: .top, animated: false)
+            return
         }
-
+        guard filterList != filter else { return }
+        data = databaseManager().read(T.self)?.compactMap { $0 as T }
         filterList = filter
-        tableView.scrollToRow(at: NSIndexPath(row: 0, section: 0) as IndexPath, at: .top, animated: false)
+        
+        dataFiltered()
+        
         tableView.reloadData()
     }
 }

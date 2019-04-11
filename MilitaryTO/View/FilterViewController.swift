@@ -36,14 +36,15 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     
     private var data: [[String]] = []
     private var kind: MilitaryServiceKind
+    private var filterList: [String: Set<String>]
     
     private var filterKeyList: [Filter] = []
-    private var filterList: [String: Set<String>] = [:]
     
     var delegate: FilterViewControllerDelegate?
     
-    init(kind: MilitaryServiceKind) {
+    init(kind: MilitaryServiceKind, filterList: [String: Set<String>]) {
         self.kind = kind
+        self.filterList = filterList
         
         super.init(nibName: nil, bundle: nil)
         
@@ -94,8 +95,6 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     }
     
     private func setIndustryData() {
-        typealias K = IndustryKey.filter
-        
         IndustryKey.filter.allCases.forEach { key in
             switch key {
             case .kind:
@@ -111,8 +110,6 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     }
     
     private func setProfessionalData() {
-        typealias K = ProfessionalKey.filter
-        
         ProfessionalKey.filter.allCases.forEach { key in
             switch key {
             case .kind:
@@ -168,7 +165,12 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.className, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        cell.update(title: data[indexPath.section][indexPath.row], filterKind: filterKeyList[indexPath.section].key)
+        let title = data[indexPath.section][indexPath.row]
+        let filterKey = filterKeyList[indexPath.section].key
+        
+        cell.update(title: title,
+                    filterKey: filterKey,
+                    selected: filterList[filterKey]?.contains(title) ?? false)
         cell.delegate = self
         
         return cell
@@ -179,10 +181,15 @@ class FilterViewController<T: Military>: HJViewController, UICollectionViewDeleg
     func didTouchedTitleButton(_ sender: UIButton, _ filterKind: String) {
         guard let title = sender.currentTitle else { return }
         
+        if filterList[filterKind] == nil { filterList[filterKind] = Set<String>() }
+        
         if sender.isSelected {
             filterList[filterKind]?.insert(title)
         } else {
             filterList[filterKind]?.remove(title)
+            if filterList[filterKind]?.count == 0 {
+                filterList.removeValue(forKey: filterKind)
+            }
         }
     }
 }
