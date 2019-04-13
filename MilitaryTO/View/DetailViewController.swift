@@ -10,7 +10,8 @@ import Foundation
 
 class DetailViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource {
     private let tableView: HJTableView = HJTableView().then {
-        $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .singleLine
         $0.tableFooterView = UIView()
     }
@@ -45,7 +46,9 @@ class DetailViewController<T: Military>: HJViewController, UITableViewDelegate, 
         super.setConstraints()
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview()
         }
     }
     

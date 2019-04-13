@@ -63,15 +63,18 @@ class HJViewController: UIViewController, SetAutoLayout {
         }
     }
     
-    func setConstraints() {
-        
-    }
+    func setConstraints() { }
     
     
     // Indicator
     func startAnimating() {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
+            
+            window.addSubview(self.indicatorBackgroundView)
+            self.indicatorBackgroundView.snp.makeConstraints({ (make) in
+                make.edges.equalToSuperview()
+            })
             
             self.indicatorBackgroundView.addSubview(self.indicator)
             self.indicatorBackgroundView.addSubview(self.indicatorLabel)
@@ -83,7 +86,7 @@ class HJViewController: UIViewController, SetAutoLayout {
                 make.centerX.equalTo(self.indicator)
                 make.top.equalTo(self.indicator.snp.bottom).offset(30)
             })
-            window.addSubview(self.indicatorBackgroundView)
+            
             self.indicator.startAnimating()
         }
     }
