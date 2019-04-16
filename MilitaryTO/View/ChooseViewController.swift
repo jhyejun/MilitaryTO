@@ -36,9 +36,9 @@ class ChooseViewController: HJViewController {
         
         self.view.backgroundColor = .white
         
-        industryButton.addTarget(self, action: #selector(updateIndustryData(_:)), for: .touchUpInside)
-        professionalButton.addTarget(self, action: #selector(updateProfessionalData(_:)), for: .touchUpInside)
-        settingButton.addTarget(self, action: #selector(didTappedSettingButton(_:)), for: .touchUpInside)
+        industryButton.addTarget(self, action: #selector(didTouchedIndustryButton(_:)), for: .touchUpInside)
+        professionalButton.addTarget(self, action: #selector(didTouchedProfessionalButton(_:)), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(didTouchedSettingButton(_:)), for: .touchUpInside)
         
         addSubViews(views: [industryButton, professionalButton, settingButton])
         setConstraints()
@@ -72,61 +72,58 @@ class ChooseViewController: HJViewController {
         }
     }
     
-    @objc func updateIndustryData(_ sender: UIButton) {
+    
+    @objc func didTouchedIndustryButton(_ sender: UIButton) {
+        updateDatabase(.Industry, sender.titleLabel?.text)
+    }
+    
+    @objc func didTouchedProfessionalButton(_ sender: UIButton) {
+        let alert = AlertBuilder(title: "알림", message: "전문연구요원은\n데이터가 준비되어 있지 않습니다.\n추후 업데이트 예정입니다.").addOk()
+        present(builder: alert)
+    }
+    
+    @objc func didTouchedSettingButton(_ sender: UIBarButtonItem) {
+        let vc = SettingViewController("설정")
+        push(viewController: vc)
+    }
+    
+    
+    private func updateDatabase(_ kind: MilitaryServiceKind, _ title: String?) {
         firebaseManager().detectConnectionState { [weak self] result in
             guard let self = self else { return }
             
             if result {
-                self.startAnimating()
-                
                 firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
                     guard let self = self, let data = data else { return }
                     
-                    self.syncDatabase(.Industry, data) { [weak self] result in
+                    self.syncDatabase(kind, data) { [weak self] result in
                         guard let self = self else { return }
                         self.stopAnimating()
                         
                         if result {
-                            self.presentList(sender.titleLabel?.text, .Industry)
+                            self.presentList(title, kind)
                         } else {
                             self.presentUpdateFailAlert()
                         }
                     }
                 }
             } else {
-                if databaseManager().isNotEmpty(Industry.self) {
-                    self.presentList(sender.titleLabel?.text, .Industry)
+                var dataType: Military.Type
+                
+                switch kind {
+                case .Industry:
+                    dataType = Industry.self
+                case .Professional:
+                    dataType = Professional.self
+                }
+                
+                if databaseManager().isNotEmpty(dataType) {
+                    self.presentList(title, kind)
                 } else {
                     self.presentDisconnectAlert()
                 }
             }
         }
-    }
-    
-    @objc func updateProfessionalData(_ sender: UIButton) {
-        let alert = AlertBuilder(title: "알림", message: "전문연구요원은\n데이터가 준비되어 있지 않습니다.\n추후 업데이트 예정입니다.").addOk()
-        alert.present(parent: self, animated: true, completion: nil)
-        
-//        startAnimating()
-//        firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
-//            guard let self = self, let data = data else { return }
-//
-//            self.syncDatabase(.Professional, data) { [weak self] result in
-//                guard let self = self else { return }
-//                self.stopAnimating()
-//
-//                if result {
-//                    self.presentList(sender.titleLabel?.text, .Professional)
-//                } else {
-//                    self.presentFailAlert()
-//                }
-//            }
-//        }
-    }
-    
-    @objc func didTappedSettingButton(_ sender: UIBarButtonItem) {
-        let vc = SettingViewController("설정")
-        self.push(viewController: vc)
     }
     
     private func syncDatabase(_ kind: MilitaryServiceKind, _ data: [String: Any], _ completion: @escaping (Bool) -> Void) {
@@ -143,16 +140,30 @@ class ChooseViewController: HJViewController {
             databaseIsEmpty = databaseManager().isEmpty(Professional.self)
         }
         
+        let closure: () -> Void = { [weak self] in
+            guard let self = self else { return }
+            self.startAnimating()
+            firebaseManager().updateDatabase(kind, data, completion)
+        }
+        
         if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
             if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) || databaseIsEmpty {
-                firebaseManager().updateDatabase(kind, data, completion)
+                alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
             } else {
                 completion(true)
             }
         } else {
-            firebaseManager().updateDatabase(kind, data, completion)
+            alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
         }
     }
+    
+    private func alertUpdateDatabase(kind: MilitaryServiceKind, storage: String, closure: @escaping () -> Void) {
+        let alert = AlertBuilder(title: "알림", message: "\(kind.rawValue) 데이터(\(storage))를\n받아오시겠습니까?", cancellable: true).addOk {
+            closure()
+        }
+        present(builder: alert)
+    }
+    
     
     private func presentDisconnectAlert() {
         let alert = AlertBuilder(title: "알림", message: "인터넷 연결이 되어있지 않아\n데이터를 받아올 수 없습니다.").addOk()
@@ -163,6 +174,7 @@ class ChooseViewController: HJViewController {
         let alert = AlertBuilder(title: "알림", message: "데이터 업데이트를 실패하였습니다.").addOk()
         alert.present(parent: self, animated: true, completion: nil)
     }
+    
     
     private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
         switch kind {

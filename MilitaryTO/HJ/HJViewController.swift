@@ -15,7 +15,7 @@ protocol SetAutoLayout {
 
 class HJViewController: UIViewController, SetAutoLayout {
     private var indicatorLabel: UILabel = UILabel().then {
-        $0.text = "데이터를 받아오는 중입니다 ....\n업데이트가 끝나기 전까지 기다려주세요!"
+        $0.text = "데이터를 받아오는 중입니다 ....\n평균적으로 1분 이내 완료됩니다.\n(네트워크 환경에 따라 달라질 수 있습니다.)\n\n업데이트가 끝나기 전까지 기다려주세요!"
         $0.textColor = .white
         $0.font = $0.font.withSize(17)
         $0.numberOfLines = 0
@@ -79,7 +79,8 @@ class HJViewController: UIViewController, SetAutoLayout {
             self.indicatorBackgroundView.addSubview(self.indicator)
             self.indicatorBackgroundView.addSubview(self.indicatorLabel)
             self.indicator.snp.makeConstraints({ (make) in
-                make.center.equalToSuperview()
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview().multipliedBy(0.875)
                 make.width.height.equalTo(50)
             })
             self.indicatorLabel.snp.makeConstraints({ (make) in
