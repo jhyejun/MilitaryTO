@@ -14,7 +14,7 @@ class AlertBuilder {
     
     init(title: String?, message: String) {
         controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        controller.view.tintColor = .red
+//        controller.view.tintColor = .flatRed
     }
     
     convenience init(title: String?, message: String, cancellable: Bool, cancelHandler: ((UIAlertAction) -> Void)? = nil) {

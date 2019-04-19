@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>20190416001</string>
+	<string>20190418003</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -47,7 +47,9 @@
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
-	<array/>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -56,8 +58,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildCount</key>
-	<string>1</string>
+	<string>3</string>
 	<key>buildDay</key>
-	<string>20190416</string>
+	<string>20190418</string>
 </dict>
 </plist>
