@@ -93,6 +93,8 @@ class ChooseViewController: HJViewController {
             guard let self = self else { return }
             
             if result {
+                self.startAnimating()
+                
                 firebaseManager().request(child: FirebaseChild.version.rawValue) { [weak self] (data: [String: Any]?) in
                     guard let self = self, let data = data else { return }
                     
@@ -101,7 +103,7 @@ class ChooseViewController: HJViewController {
                         self.stopAnimating()
                         
                         if result {
-                            self.presentList(title, kind)
+                            self.presentList(kind, title)
                         } else {
                             self.presentUpdateFailAlert()
                         }
@@ -118,7 +120,7 @@ class ChooseViewController: HJViewController {
                 }
                 
                 if databaseManager().isNotEmpty(dataType) {
-                    self.presentList(title, kind)
+                    self.presentList(kind, title)
                 } else {
                     self.presentDisconnectAlert()
                 }
@@ -148,12 +150,14 @@ class ChooseViewController: HJViewController {
         
         if let version = data[FirebaseDatabaseVersion.industry_database_version.rawValue] as? Int {
             if firebaseManager().isNeedToUpdateDatabaseVersion(version, key) || databaseIsEmpty {
-                alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
+                firebaseManager().updateDatabase(kind, data, completion)
+//                alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
             } else {
                 completion(true)
             }
         } else {
-            alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
+            firebaseManager().updateDatabase(kind, data, completion)
+//            alertUpdateDatabase(kind: kind, storage: "3MB", closure: closure)
         }
     }
     
@@ -176,7 +180,7 @@ class ChooseViewController: HJViewController {
     }
     
     
-    private func presentList(_ title: String?, _ kind: MilitaryServiceKind) {
+    private func presentList(_ kind: MilitaryServiceKind, _ title: String?) {
         switch kind {
         case .Industry:
             let vc = ListTableViewController<Industry>(title, kind)
