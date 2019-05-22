@@ -25,9 +25,19 @@
 
 
 ## Used Open Source
+- `ChameleonFramework/Swift` : https://github.com/viccalexander/Chameleon
 - `Then` : https://github.com/devxoul/Then
-- `CSV.swift` : https://github.com/yaslab/CSV.swift
+- `SnapKit` : https://github.com/SnapKit/SnapKit
+- `NVActivityIndicatorView`: https://github.com/ninjaprox/NVActivityIndicatorView
+- `AlignedCollectionViewFlowLayout`: https://github.com/mischa-hildebrand/AlignedCollectionViewFlowLayout
+- `RxSwift`: https://github.com/ReactiveX/RxSwift
+- `RxCocoa`: https://github.com/ReactiveX/RxSwift/tree/master/RxCocoa
 - `RealmSwift` : https://github.com/realm/realm-cocoa
+- `Firebase/Core`: https://github.com/firebase/firebase-ios-sdk/tree/master/Firebase/Core
+- `Firebase/Database`: https://github.com/firebase/firebase-ios-sdk/tree/master/Firebase/Database
+- `ObjectMapper`: https://github.com/tristanhimmelman/ObjectMapper
+- `Carte`: https://github.com/devxoul/Carte
+
 
 
 ## Update
