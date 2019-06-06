@@ -49,7 +49,7 @@
 
 ## Review
 - 0.5 (2018.04.25)
-    - ['병티확 - 병역특례 티오 확인' 프로젝트 1차 리뷰](http://jhyejun.com/blog/review-military-to-ver-0.5)
+    - ['병티확 - 병역특례 티오 확인' 프로젝트 1차 리뷰](http://jhyejun.com/blog/review-military-to-ver-0.5){:target="_blank"}
 - 0.9 (2019.04.20)
     - 작성 중
 
