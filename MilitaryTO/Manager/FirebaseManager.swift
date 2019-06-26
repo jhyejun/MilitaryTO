@@ -32,11 +32,13 @@ class FirebaseManager {
     }
     
     func detectConnectionState(completion: @escaping (Bool) -> Void) {
-        Database.database().reference(withPath: ".info/connected").observeSingleEvent(of: .value) { snapshot in
+        Database.database().reference(withPath: ".info/connected").observeSingleEvent(of: .value) { [weak self] snapshot in
             if (snapshot.value as? Bool ?? false) == true {
                 completion(true)
             } else {
-                completion(false)
+                self?.detectConnectionState(completion: { (result) in
+                    completion(result)
+                })
             }
         }
     }
