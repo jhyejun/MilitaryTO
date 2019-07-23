@@ -32,7 +32,7 @@ func DEBUG_LOG(_ msg: Any, category: LogCategory = .Debug, file: String = #file,
     #endif
 }
 
-func ERROR_LOG(_ msg: Any, category: LogCategory, file: String = #file, function: String = #function, line: Int = #line) {
+func ERROR_LOG(_ msg: Any, category: LogCategory = .Error, file: String = #file, function: String = #function, line: Int = #line) {
     let fileName: String.SubSequence = file.split(separator: "/").last ?? "FileName is None"
     let functionName: String.SubSequence = function.split(separator: "(").first ?? "FunctionName is None"
     let logString: String = "[\(fileName)] \(functionName)(\(line)) : \(msg)"
