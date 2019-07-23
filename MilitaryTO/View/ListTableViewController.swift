@@ -63,13 +63,27 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
 
         searchTextField.rx.controlEvent(.editingChanged)
             .asObservable()
-            .map { self.searchTextField.text }
+            .map {
+                guard let text = self.searchTextField.text else { return }
+                return text
+            }
             .debounce(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .do(onNext: { text in
-                <#code#>
+            .do(onNext: { name in
+                if name.isEmpty {
+                    self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
+                    self.dataFiltered()
+                    self.tableView.reloadData()
+                }
             })
-        
+            .filter { $0.isNotEmpty }
+            .subscribe(onNext: { [weak self] (name) in
+                guard let self = self else { return }
+                
+                self.data = self.data?.filter { $0.name?.contains(name) ?? false }
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
 
         tableView.delegate = self
         tableView.dataSource = self
