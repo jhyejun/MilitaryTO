@@ -14,22 +14,22 @@ class DatabaseManager {
 
     private var version: UInt64 = 1
     private var realm: Realm? = nil
-    
+
     func initialize() {
         var config = Realm.Configuration.defaultConfiguration
         config.schemaVersion = version
         config.migrationBlock = { [weak self] (migration, oldSchemaVersion) in
             guard let self = self else { return }
-            
+
             if oldSchemaVersion < self.version {
                 self.deleteRealm()
             }
         }
         Realm.Configuration.defaultConfiguration = config
-        
+
         realm = try? Realm()
     }
-    
+
     private func deleteRealm() {
         let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
         let realmURLs = [
@@ -38,7 +38,7 @@ class DatabaseManager {
             realmURL.appendingPathExtension("note"),
             realmURL.appendingPathExtension("management")
         ]
-        
+
         for url in realmURLs {
             do {
                 try FileManager.default.removeItem(at: url)
@@ -47,26 +47,43 @@ class DatabaseManager {
             }
         }
     }
-    
-    func read<T: Military>(_ type: T.Type) -> Results<T>? {
+
+    private func read<T: Military>(_ type: T.Type) -> Results<T>? {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return nil
         }
-        
+
         return realm.objects(T.self)
     }
-    
-    func read<T: Military>(_ type: T.Type, query: NSPredicate) -> Results<T>? {
+
+    private func read<T: Military>(_ type: T.Type, query: NSPredicate) -> Results<T>? {
         return read(type)?.filter(query)
     }
-    
+
+    func read<T: Military>(_ type: T.Type, name: String? = nil, filter: [String: Set<String>] = [:]) -> Results<T>? {
+        var querys: [NSPredicate] = []
+
+        filter.forEach { key, value in
+            value.forEach {
+                querys.append(NSPredicate(format: "\(key) == %@", $0))
+            }
+        }
+
+        if let name = name, name != "" {
+            let query = NSCompoundPredicate(type: .and, subpredicates: [NSPredicate(format: "name CONTAINS %@", name), NSCompoundPredicate(type: .or, subpredicates: querys)])
+            return read(type, query: query)
+        } else {
+            return read(type, query: NSCompoundPredicate(type: .or, subpredicates: querys))
+        }
+    }
+
     func write(_ object: Military) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
         }
-        
+
         do {
             try realm.write {
                 realm.add(object)
@@ -75,13 +92,13 @@ class DatabaseManager {
             ERROR_LOG("Failed realm write object")
         }
     }
-    
+
     func write(_ objects: [Military]) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
         }
-        
+
         do {
             for object in objects {
                 try realm.write {
@@ -92,13 +109,13 @@ class DatabaseManager {
             ERROR_LOG("Failed realm write objects")
         }
     }
-    
+
     func delete(_ object: Military) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
         }
-        
+
         do {
             try realm.write {
                 realm.delete(object)
@@ -107,13 +124,13 @@ class DatabaseManager {
             ERROR_LOG("Failed realm delete")
         }
     }
-    
+
     private func delete<T: Military>(_ type: T.Type) {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
         }
-        
+
         if let object = read(T.self) {
             try? realm.write {
                 realm.delete(object)
@@ -123,13 +140,13 @@ class DatabaseManager {
             DEBUG_LOG("\(T.className()) object is nil")
         }
     }
-    
+
     func deleteAll() {
         guard let realm = self.realm else {
             ERROR_LOG("realm is nil")
             return
         }
-        
+
         do {
             try realm.write {
                 realm.deleteAll()
@@ -139,7 +156,7 @@ class DatabaseManager {
             ERROR_LOG("Failed realm deleteAll")
         }
     }
-    
+
     func isEmpty<T: Military>(_ type: T.Type) -> Bool {
         if let data = read(T.self), data.isNotEmpty {
             return false
@@ -147,7 +164,7 @@ class DatabaseManager {
             return true
         }
     }
-    
+
     func isNotEmpty<T: Military>(_ type: T.Type) -> Bool {
         return !isEmpty(T.self)
     }
@@ -163,18 +180,24 @@ extension DatabaseManager {
             .compactMap { $0 }
             .forEach { databaseManager().write($0) }
     }
-    
+
     func industryObjectDelete() {
         delete(Industry.self)
     }
-    
+
     func professionalObjectWrite(_ data: [[String: Any]]) {
         data.map { Mapper<Professional>().map(JSON: $0) }
             .compactMap { $0 }
             .forEach { databaseManager().write($0) }
     }
-    
+
     func professionalObjectDelete() {
         delete(Professional.self)
+    }
+}
+
+extension Results {
+    var isNotEmpty: Bool {
+        return !isEmpty
     }
 }
