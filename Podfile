@@ -16,8 +16,11 @@ target 'MilitaryTO' do
   pod 'AlignedCollectionViewFlowLayout'
   
   
+  # Reactive Library
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxOptional'
+  pod 'RxSwiftExt/Core'
   
   pod 'RealmSwift'
   pod 'Firebase/Core'

@@ -9,6 +9,7 @@
 import UIKit
 
 class ListTableViewController<T: Military>: HJViewController, UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate {
+    // MARK: - Property
     private let searchTextField: UITextField = UITextField().then {
         $0.placeholder = "업체명 검색"
         $0.font = $0.font?.withSize(15)
@@ -43,9 +44,10 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
 
     private let disposeBag: DisposeBag = DisposeBag()
 
+    // MARK: - Initialize
     init(_ title: String? = nil, _ kind: MilitaryServiceKind) {
         self.navigationTitle = title
-        self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
+        self.data = databaseManager().read(T.self, filter: filterList)?.compactMap { $0 as T }
         self.kind = kind
 
         super.init(nibName: nil, bundle: nil)
@@ -55,26 +57,25 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        searchTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        filterButton.addTarget(self, action: #selector(touchedFilterButton(_:)), for: .touchUpInside)
 
         tableView.delegate = self
         tableView.dataSource = self
 
         addSubViews(views: [searchTextField, filterButton, tableView, emptyLabel])
         setConstraints()
+        setEvent()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         navigationItem.title = navigationTitle
-        
+
         filterButton.isSelected = filterList.isNotEmpty
-        
+
         if filterButton.isSelected {
             filterButton.backgroundColor = .flatForestGreenDark
             filterButton.setBorder(color: .flatBlack, width: 0.5)
@@ -90,6 +91,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         searchTextField.endEditing(true)
     }
 
+    // MARK: - Set Layout Method
     override func setConstraints() {
         super.setConstraints()
 
@@ -118,34 +120,30 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         }
     }
 
-    @objc func textFieldEditingChanged(_ sender: UITextField) {
-        sender.rx.text
+    // MARk: - Set Event Method
+    private func setEvent() {
+        filterButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                let vc = FilterViewController<T>(kind: self.kind, filterList: self.filterList)
+                vc.delegate = self
+                self.push(viewController: vc)
+            }).disposed(by: disposeBag)
+
+        searchTextField.rx.text
             .orEmpty
             .debounce(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .do(onNext: { (name) in
-                if name.isEmpty {
-                    self.data = databaseManager().read(T.self)?.compactMap { $0 as T }
-                    self.dataFiltered()
-                    self.tableView.reloadData()
-                }
-            })
             .filter { $0.isNotEmpty }
             .subscribe(onNext: { [weak self] (name) in
                 guard let self = self else { return }
-                
-                self.data = self.data?.filter { $0.name?.contains(name) ?? false }
+
+                self.data = databaseManager().read(T.self, filter: self.filterList)?.compactMap { $0 as T }
                 self.tableView.reloadData()
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
 
-    @objc func touchedFilterButton(_ sender: UIButton) {
-        let vc = FilterViewController<T>(kind: kind, filterList: filterList)
-        vc.delegate = self
-        push(viewController: vc)
-    }
-    
+    // MARK: - Filter Data Method
     private func dataFiltered() {
         switch kind {
         case .Industry:
@@ -161,12 +159,6 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
                         guard let region = $0.region else { return false }
                         return value.contains(region)
                     }
-//                case .totalTO:
-//                    data = data?.filter {
-//                        guard let industry = $0 as? Industry,
-//                            let filterTO = Int(filterList[key.rawValue]?.first ?? "") else { return false }
-//                        return industry.totalTO >= filterTO
-//                    }
                 default:
                     break
                 }
@@ -192,7 +184,7 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
 
 
-    // TableView Delegate & DataSource
+    // MARK: - TableViewDelegate & TableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -211,15 +203,15 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let data = data?[indexPath.row] {
-            let cell = ListTableViewCell<T>(data: data, kind: kind)
-            cell.updateCell()
-
-            return cell
-        } else {
-            assertionFailure("ListTableViewController : data?[indexPath.row] is nil")
+        guard let data = data?[safe: indexPath.row] else {
+            assertionFailure("ListTableViewController : data?[safe: indexPath.row] is nil")
             return UITableViewCell()
         }
+
+        let cell: ListTableViewCell = ListTableViewCell<T>(data: data, kind: kind)
+        cell.updateCell()
+
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -229,25 +221,20 @@ class ListTableViewController<T: Military>: HJViewController, UITableViewDelegat
         }
     }
 
+
+    // MARK: - ScrollView Delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchTextField.endEditing(true)
     }
 
 
+    // MARK: - FilterViewControllerDelegate
     func apply(filter: [String: Set<String>]) {
-        guard filter.isNotEmpty, filter.values.isNotEmpty else {
-            filterList.removeAll()
-            data = databaseManager().read(T.self)?.compactMap { $0 as T }
+        if filterList != filter {
+            filterList = filter
+            data = databaseManager().read(T.self, name: searchTextField.text, filter: filter)?.compactMap { $0 as T }
             tableView.reloadData()
             tableView.scrollToRow(at: NSIndexPath(row: 0, section: 0) as IndexPath, at: .top, animated: false)
-            return
         }
-        guard filterList != filter else { return }
-        data = databaseManager().read(T.self)?.compactMap { $0 as T }
-        filterList = filter
-        
-        dataFiltered()
-        
-        tableView.reloadData()
     }
 }
